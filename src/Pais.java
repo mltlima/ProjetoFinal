@@ -1,4 +1,8 @@
-
+/**
+ * Classe Model 
+ * @author Miguel
+ *
+ */
 public class Pais {
 	
 	private String nome;

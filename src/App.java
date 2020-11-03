@@ -6,6 +6,7 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
 import java.text.ParseException;
+import java.util.HashMap;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -23,10 +24,19 @@ public class App {
 	
     public static void main( String[] args ) throws ParseException{
         
-    	Pais modelo = new Pais();
         ControllerPaises controller = new ControllerPaises();
         readApi(controller);
-        controller.printHashSet();
+        
+        
+        HashMap<String,Pais> paises = controller.getHashMap();
+        for (String key : paises.keySet()) {
+			String strPais = paises.get(key).getSlug();
+			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "/status/confirmed?from=2020-08-01T00:00:00Z&to=2020-08-01T10:00:00Z";
+			//System.out.println(link);
+			getDadosPais(controller,link);
+		}
+        
+        controller.printHashMap();
     }
     
     
@@ -51,24 +61,8 @@ public class App {
 		            
 					JsonObject respostaJson = JsonParser.parseString(resposta.body()).getAsJsonObject() ;
 					JsonArray paises =  respostaJson.get("Countries").getAsJsonArray();
-		            //JsonArray paises =  JsonParser.parseString(resposta.body()).getAsJsonArray();
-					
-					//String something = respostaJson.get("Global").toString();
-					//System.out.println(something);
-		        	
-					
-					/*
-					for (Object element : dayOne) {
-						String elements = element.toString();
-						System.out.println(elements);
-					}
-					*/
-					
-					
 		      
 					for (Object dados : paises) {
-						
-						controller.criarNovoPais();
 						
 					    String strDados = dados.toString();
 					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
@@ -77,9 +71,64 @@ public class App {
 					    String codigo = info.get("CountryCode").toString();
 					    String slug = info.get("Slug").toString();
 					    
+					    controller.criarNovoPais(nome);
 					    controller.setNome(nome);
 					    controller.setCodigo(codigo);
 					    controller.setSlug(slug);
+					     
+					}   
+		        } catch (IOException e) {
+		            System.err.println("Problema com a conexão");
+		            e.printStackTrace();
+		        } catch (InterruptedException e) {
+		            System.err.println("Requisição interrompida");
+		            e.printStackTrace();
+		        }
+	}
+	
+	
+	
+	
+	
+	public static void getDadosPais(ControllerPaises controller, String link) {
+		
+		HttpClient cliente = HttpClient.newBuilder()
+		        .version(Version.HTTP_2)
+		        .followRedirects(Redirect.ALWAYS)
+		        .build();
+		        
+		        HttpRequest requisicao = HttpRequest.newBuilder()
+		        .uri(URI.create(link))
+		        .build();
+		        
+		        try {
+		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
+
+		            
+
+		            JsonArray pais =  JsonParser.parseString(resposta.body()).getAsJsonArray();
+					
+		      
+					for (Object dados : pais) {
+						
+						
+					    String strDados = dados.toString();
+					    //System.out.println(strDados);
+					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
+					    
+					    String name = info.get("Country").toString();
+					    String province = info.get("Province").toString().replace("\"", "");
+					    controller.getPais(name);
+					    
+					    if (province.isBlank()) {
+					    	float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
+						    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
+						    controller.setLatitude(latitude);
+						    controller.setLongitude(longitude);
+						}
+					    
+					    
+					  
 					     
 					}   
 		        } catch (IOException e) {
