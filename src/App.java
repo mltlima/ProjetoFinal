@@ -1,3 +1,7 @@
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -7,6 +11,12 @@ import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
 import java.text.ParseException;
 import java.util.HashMap;
+//GUI
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -19,26 +29,25 @@ import com.google.gson.JsonParser;
  */
 public class App {
 	
-	/*
-	 * Testnando UTF8 ãñóõòáÀàü
-	 */
-	
-	
+	// Testnando UTF8 ãñóõòáÀàü
     public static void main( String[] args ) throws ParseException{
         
-        ControllerPaises controller = new ControllerPaises();
-        readApi(controller);
+        
+        new GUI();
         
         
-        HashMap<String,Pais> paises = controller.getHashMap();
-        for (String key : paises.keySet()) {
-			String strPais = paises.get(key).getSlug();
-			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "/status/confirmed?from=2020-08-01T00:00:00Z&to=2020-08-01T10:00:00Z";
-			//System.out.println(link);
-			getDadosPais(controller,link);
-		}
-        
-        controller.printHashMap();
+//        ControllerPaises controller = new ControllerPaises();
+//        readApi(controller);
+//        
+//        HashMap<String,Pais> paises = controller.getHashMap();
+//        for (String key : paises.keySet()) {
+//			String strPais = paises.get(key).getSlug();
+//			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "/status/confirmed?from=2020-08-01T00:00:00Z&to=2020-08-01T10:00:00Z";
+//			//System.out.println(link);
+//			getDadosPais(controller,link);
+//		}
+//        
+//        controller.printHashMap();
     }
     
     /**

@@ -10,7 +10,7 @@ public abstract class Estatistica {
 	public void inclui(Medicao observacao) {
 		
 	}
-	
+	/* temporario
 	public LocalDate dataInicio() {
 		
 	}
@@ -22,4 +22,5 @@ public abstract class Estatistica {
 	public float valor() {
 		
 	}
+	*/
 }
