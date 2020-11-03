@@ -19,7 +19,9 @@ import com.google.gson.JsonParser;
  */
 public class App {
 	
-	
+	/*
+	 * Testnando UTF8 ãñóõòáÀàü
+	 */
 	
 	
     public static void main( String[] args ) throws ParseException{
@@ -39,10 +41,11 @@ public class App {
         controller.printHashMap();
     }
     
-    
-    
-    
-    
+    /**
+     * Leitura inicial do banco de dados da covid 19, pela covid19api.com 
+     * Será lida para guardar na memória, de acordo com a UML do enunciado.
+     * @param controller
+     */
 	public static void readApi(ControllerPaises controller) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
@@ -78,18 +81,21 @@ public class App {
 					     
 					}   
 		        } catch (IOException e) {
-		            System.err.println("Problema com a conex�o");
+		            System.err.println("Problema com a conexão");
 		            e.printStackTrace();
 		        } catch (InterruptedException e) {
-		            System.err.println("Requisi��o interrompida");
+		            System.err.println("Requisição interrompida");
 		            e.printStackTrace();
 		        }
 	}
 	
 	
 	
-	
-	
+	/**
+	 *  
+	 * @param controller
+	 * @param link
+	 */
 	public static void getDadosPais(ControllerPaises controller, String link) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
@@ -132,10 +138,10 @@ public class App {
 					     
 					}   
 		        } catch (IOException e) {
-		            System.err.println("Problema com a conex�o");
+		            System.err.println("Problema com a conexão");
 		            e.printStackTrace();
 		        } catch (InterruptedException e) {
-		            System.err.println("Requisi��o interrompida");
+		            System.err.println("Requisição interrompida");
 		            e.printStackTrace();
 		        }
 	}
