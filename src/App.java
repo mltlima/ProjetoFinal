@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +34,17 @@ public class App {
     public static void main( String[] args ) throws ParseException{
         
         
-        new GUI();
+        new MainMenu();
+        EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainMenu menu = new MainMenu();
+					menu.setFrameVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
         
         
 //        ControllerPaises controller = new ControllerPaises();
