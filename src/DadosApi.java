@@ -27,6 +27,7 @@ public class DadosApi extends Estatistica{
 	public void start() {
 		
 		readApi(this.controller);
+		//valores para teste do metodo
 		getDadosByDateStatus("deaths","2020-09-01T00:00:00Z","2020-09-03T00:00:00Z");
 //      controller.printHashMap();
 	}
