@@ -3,7 +3,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 	/**
 	 * Controla o fluxo entre o menu e as funções de chamada.
-	 * Serve para checar os dados do menu inicial antes de iniciar de buscar no banco de dados
+	 * Serve para checar os dados do menu inicial antes de iniciar a busca no banco de dados
 	 * @author JoÃ£o Henrique Schmidt
 	 *
 	 */
