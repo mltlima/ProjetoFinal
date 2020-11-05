@@ -33,7 +33,7 @@ public class App {
 	// Testnando UTF8 ãñóõòáÀàü
     public static void main( String[] args ) throws ParseException{
         
-        
+        /*
         new MainMenu();
         EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -45,10 +45,9 @@ public class App {
 				}
 			}
 		});
-        
+        */
      
     DadosApi teste = new DadosApi();
-    teste.start();
     	
     }
 

@@ -13,7 +13,12 @@ import java.net.http.HttpClient.Version;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
+import com.google.gson.stream.JsonReader;
+/**
+ * 
+ * @author Miguel
+ *
+ */
 public class DadosApi extends Estatistica{
 	
 	private ControllerPaises controller = new ControllerPaises();
@@ -22,24 +27,21 @@ public class DadosApi extends Estatistica{
 	public void start() {
 		
 		readApi(this.controller);
-		getDadosByDate("deaths","2020-09-01T00:00:00Z","2020-10-01T00:00:00Z");
+		getDadosByDateStatus("deaths","2020-09-01T00:00:00Z","2020-09-03T00:00:00Z");
 //      controller.printHashMap();
 	}
 	
-	public void getDadosByDate(String status, String dateStart, String dateEnd) {
+	public void getDadosByDateStatus(String status, String dateStart, String dateEnd) {
 		
 		
 		
 		for (String key : this.paises.keySet()) {
 			
-			Medicao medicao = new Medicao();
-			super.inclui(medicao);
-			
 			String strPais = this.paises.get(key).getSlug();
-			medicao.setPais(this.paises.get(key));
-			
+			Pais pais = this.paises.get(key);
 			String link = "https://api.covid19api.com/total/country/" + strPais.replace("\"", "") + "/status/" + status + "?from=" + dateStart + "&to=" + dateEnd;
-			getDadosPais(this.controller,link,medicao);
+			getDadosPais(this.controller,link,pais);
+
 		}
 	}
 	
@@ -98,7 +100,7 @@ public class DadosApi extends Estatistica{
 	 * @param controller
 	 * @param link
 	 */
-	public static void getDadosPais(ControllerPaises controller, String link, Medicao medicao) {
+	public void getDadosPais(ControllerPaises controller, String link, Pais pais) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
 		        .version(Version.HTTP_2)
@@ -113,30 +115,37 @@ public class DadosApi extends Estatistica{
 		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
 
 		            
-
-		            JsonArray pais =  JsonParser.parseString(resposta.body()).getAsJsonArray();
+		           
+		            JsonArray paisArray =  JsonParser.parseString(resposta.body()).getAsJsonArray();
 					
+		     
 		      
-					for (Object dados : pais) {
+					for (Object dados : paisArray) {
 						
+						//Gera uma nova medicao para guardar os dados
+						Medicao medicao = new Medicao();
+						super.inclui(medicao);
+						medicao.setPais(pais);
 						
 					    String strDados = dados.toString();
-					    System.out.println(strDados);
+					    //System.out.println(strDados);
 					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
 					    
 					    int casos = Integer.parseInt(info.get("Cases").toString().replace("\"", ""));
 					    LocalDateTime data = converterData(info.get("Date").toString().replace("\"", ""));
-					    String status = info.get("Status").getAsString();
+					    String status = info.get("Status").getAsString().replace("\"", "");
 					    
-					    
-					    switch (status) {
-						case "deaths":
-							medicao.setStatus(StatusCaso.MORTOS);
-						case "confirmed":
-							medicao.setStatus(StatusCaso.COMFIRMADOS);
-						case "recovered":
-							medicao.setStatus(StatusCaso.RECUPERADOS);
+					    //Verifica o tipo de dado e passa para medicao
+					    if (status.equals("deaths")) {
+					    	medicao.setStatus(StatusCaso.MORTOS);
 						}
+					    if (status.equals("confirmed")) {
+					    	medicao.setStatus(StatusCaso.COMFIRMADOS);
+						}
+					    if (status.equals("recovered")) {
+					    	medicao.setStatus(StatusCaso.RECUPERADOS);
+						}
+					    
 					    
 					    medicao.setCasos(casos);
 					    medicao.setMomento(data);
@@ -166,7 +175,11 @@ public class DadosApi extends Estatistica{
 		            e.printStackTrace();
 		        }
 	}
-	
+	/**
+	 * Convert a data de String para LocalDateTime
+	 * @param data String em formato de data yyyy-MM-dd'T'HH:mm:ss'Z'
+	 * @return string formatada
+	 */
 	public static LocalDateTime converterData(String data) {
 		
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);

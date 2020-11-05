@@ -18,12 +18,14 @@ public abstract class Estatistica {
 	}
 	
 	public LocalDateTime dataFim() {
-		return this.observacoes.get(this.observacoes.size()).getMomento();
+		return this.observacoes.get(this.observacoes.size() - 1).getMomento();
 		
 	}
 	/*
 	public float valor() {
 		
 	}*/
+	
+	//TODO calculo das estatisticas com os dados recebidos
 	
 }
