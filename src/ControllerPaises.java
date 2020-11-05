@@ -6,6 +6,7 @@ import java.util.HashSet;
  *
  */
 public class ControllerPaises {
+	//teste
 	
 	private Pais pais;
 	private HashMap<String,Pais> paises = new HashMap<>();
