@@ -31,10 +31,12 @@ import com.google.gson.JsonParser;
 public class App {
 	
 	// Testnando UTF8 ãñóõòáÀàü
-    public static void main( String[] args ) throws ParseException{
+    public static void main( String[] args ) throws ParseException{    
         
-        System.out.println();
+
+        
         new View();
+
         EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,126 +48,11 @@ public class App {
 			}
 		});
         
-        
-//        ControllerPaises controller = new ControllerPaises();
-//        readApi(controller);
-//        
-//        HashMap<String,Pais> paises = controller.getHashMap();
-//        for (String key : paises.keySet()) {
-//			String strPais = paises.get(key).getSlug();
-//			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "/status/confirmed?from=2020-08-01T00:00:00Z&to=2020-08-01T10:00:00Z";
-//			//System.out.println(link);
-//			getDadosPais(controller,link);
-//		}
-//        
-//        controller.printHashMap();
+     
+    DadosApi teste = new DadosApi();
+    	
     }
-    
-    /**
-     * Leitura inicial do banco de dados da covid 19, pela covid19api.com 
-     * Será lida para guardar na memória, de acordo com a UML do enunciado.
-     * @param controller
-     */
-	public static void readApi(ControllerPaises controller) {
-		
-		HttpClient cliente = HttpClient.newBuilder()
-		        .version(Version.HTTP_2)
-		        .followRedirects(Redirect.ALWAYS)
-		        .build();
-		        
-		        HttpRequest requisicao = HttpRequest.newBuilder()
-		        .uri(URI.create("https://api.covid19api.com/summary"))
-		        .build();
-		        
-		        
-		        try {
-		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
 
-		            
-					JsonObject respostaJson = JsonParser.parseString(resposta.body()).getAsJsonObject() ;
-					JsonArray paises =  respostaJson.get("Countries").getAsJsonArray();
-		      
-					for (Object dados : paises) {
-						
-					    String strDados = dados.toString();
-					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
-					    
-					    String nome = info.get("Country").toString();
-					    String codigo = info.get("CountryCode").toString();
-					    String slug = info.get("Slug").toString();
-					    
-					    controller.criarNovoPais(nome);
-					    controller.setNome(nome);
-					    controller.setCodigo(codigo);
-					    controller.setSlug(slug);
-					     
-					}   
-		        } catch (IOException e) {
-		            System.err.println("Problema com a conexão");
-		            e.printStackTrace();
-		        } catch (InterruptedException e) {
-		            System.err.println("Requisição interrompida");
-		            e.printStackTrace();
-		        }
-	}
-	
-	
-	
-	/**
-	 *  
-	 * @param controller
-	 * @param link
-	 */
-	public static void getDadosPais(ControllerPaises controller, String link) {
-		
-		HttpClient cliente = HttpClient.newBuilder()
-		        .version(Version.HTTP_2)
-		        .followRedirects(Redirect.ALWAYS)
-		        .build();
-		        
-		        HttpRequest requisicao = HttpRequest.newBuilder()
-		        .uri(URI.create(link))
-		        .build();
-		        
-		        try {
-		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
-
-		            
-
-		            JsonArray pais =  JsonParser.parseString(resposta.body()).getAsJsonArray();
-					
-		      
-					for (Object dados : pais) {
-						
-						
-					    String strDados = dados.toString();
-					    //System.out.println(strDados);
-					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
-					    
-					    String name = info.get("Country").toString();
-					    String province = info.get("Province").toString().replace("\"", "");
-					    controller.getPais(name);
-					    
-					    if (province.isBlank()) {
-					    	float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
-						    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
-						    controller.setLatitude(latitude);
-						    controller.setLongitude(longitude);
-						}
-					    
-					    
-					  
-					     
-					}   
-		        } catch (IOException e) {
-		            System.err.println("Problema com a conexão");
-		            e.printStackTrace();
-		        } catch (InterruptedException e) {
-		            System.err.println("Requisição interrompida");
-		            e.printStackTrace();
-		        }
-	}
-	
 	public static void topNumeros(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {
 		// TODO Auto-generated method stub
 		System.out.println("topNumeros funcionando:");
@@ -205,5 +92,4 @@ public class App {
 		System.out.println("dataInicial" + dataInicial);
 		System.out.println("dataFinal" + dataFinal);
 	}
-
 }
