@@ -33,12 +33,12 @@ public class App {
 	// Testnando UTF8 ãñóõòáÀàü
     public static void main( String[] args ) throws ParseException{
         
-        
-        new MainMenu();
+        System.out.println();
+        new View();
         EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainMenu menu = new MainMenu();
+					View menu = new View();
 					menu.setFrameVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -164,6 +164,46 @@ public class App {
 		            System.err.println("Requisição interrompida");
 		            e.printStackTrace();
 		        }
+	}
+	
+	public static void topNumeros(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {
+		// TODO Auto-generated method stub
+		System.out.println("topNumeros funcionando:");
+		System.out.println("opcoes = " + (int) opcoes);
+		System.out.println("tsv = " + tsv);
+		System.out.println("csv = " + csv);
+		System.out.println("dataInicial" + dataInicial);
+		System.out.println("dataFinal" + dataFinal);
+		System.out.println();
+	}
+	public static void topCrescimento(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {
+		// TODO Auto-generated method stub
+		System.out.println("topCrescimento funcionando");
+		System.out.println("opcoes = " + (int) opcoes);
+		System.out.println("tsv = " + tsv);
+		System.out.println("csv = " + csv);
+		System.out.println("dataInicial" + dataInicial);
+		System.out.println("dataFinal" + dataFinal);
+		System.out.println();
+	}
+
+	public static void topMortalidade(boolean tsv, boolean csv, String dataInicial, String dataFinal) {
+		// TODO Auto-generated method stub
+		System.out.println("topMortalidade funcionando");
+		System.out.println("tsv = " + tsv);
+		System.out.println("csv = " + csv);
+		System.out.println("dataInicial" + dataInicial);
+		System.out.println("dataFinal" + dataFinal);
+		System.out.println();
+	}
+
+	public static void topLocal(boolean tsv, boolean csv, double km, String dataInicial, String dataFinal) {
+		// TODO Auto-generated method stub
+		System.out.println("topLocal funcionando");
+		System.out.println("tsv = " + tsv);
+		System.out.println("csv = " + csv);
+		System.out.println("dataInicial" + dataInicial);
+		System.out.println("dataFinal" + dataFinal);
 	}
 
 }
