@@ -38,6 +38,7 @@ public class DadosApi extends Estatistica{
 		
 		readApi(requisicao);
 		getDadosByDateStatus("deaths","2020-09-01T00:00:00Z","2020-09-03T00:00:00Z",requisicao);
+		//valores para teste do metodo
 //      controller.printHashMap();
 	}
 	

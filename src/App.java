@@ -50,6 +50,8 @@ public class App {
         
      
     DadosApi teste = new DadosApi();
+    teste.start();
+    teste.rankingNumerico();
     	
     }
 
