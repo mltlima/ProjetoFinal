@@ -4,12 +4,30 @@
  *
  */
 public class Pais {
-	
 	private String nome;
 	private String codigo;
 	private String slug;
 	private float latitude;
 	private float longitude;
+	/**
+	 * @param nome
+	 * @param codigo
+	 * @param slug
+	 * @param latitude
+	 * @param longitude
+	 */
+	public Pais(String nome, String codigo, String slug, float latitude, float longitude) {
+		this.nome = nome;
+		this.codigo = codigo;
+		this.slug = slug;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+	public Pais(String nome, String codigo, String slug) {
+		this.nome = nome;
+		this.codigo = codigo;
+		this.slug = slug;
+	}
 	/**
 	 * @return the nome
 	 */

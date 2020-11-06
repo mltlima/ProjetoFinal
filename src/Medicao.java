@@ -45,7 +45,4 @@ public class Medicao extends Estatistica{
 		this.status = status;
 	}
 	
-	
-	
-	
 }

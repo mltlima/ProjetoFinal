@@ -6,6 +6,8 @@ import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
@@ -21,49 +23,52 @@ import com.google.gson.stream.JsonReader;
  */
 public class DadosApi extends Estatistica{
 	
-	private ControllerPaises controller = new ControllerPaises();
-	private HashMap<String,Pais> paises = controller.getHashMap();
-	
-	public void start() {
+	HashSet<Medicao> dados = new HashSet<Medicao>();//podem trocar a classe da lista dps 
+	/**
+	 * O controller já validou os dados. 
+	 * Essa função calcula o caminho mais eficiente 
+	 * para pegar os dados da API
+	 * @param requisicao A requisição de dados que veio do usuário
+	 */
+	public void start(Controller requisicao) {//requição de dados
 		
-		readApi(this.controller);
-		getDadosByDateStatus("deaths","2020-09-01T00:00:00Z","2020-09-03T00:00:00Z");
+		
+		//Calculcar qual pesquisa deve ser feita aqui
+		//De preferência alguma que não exploda a API
+		
+		readApi(requisicao);
+		getDadosByDateStatus("deaths","2020-09-01T00:00:00Z","2020-09-03T00:00:00Z",requisicao);
 //      controller.printHashMap();
 	}
 	
-	public void getDadosByDateStatus(String status, String dateStart, String dateEnd) {
+	private void getDadosByDateStatus(String status, String dateStart, String dateEnd, Controller c) {
 		
+		//Miugel, medicao possui n paises. Substitua seu ControllePaises por Medicao aqui:  
 		
-		
-		for (String key : this.paises.keySet()) {
-			
-			String strPais = this.paises.get(key).getSlug();
-			Pais pais = this.paises.get(key);
-			String link = "https://api.covid19api.com/total/country/" + strPais.replace("\"", "") + "/status/" + status + "?from=" + dateStart + "&to=" + dateEnd;
-			getDadosPais(this.controller,link,pais);
-
-		}
+//		for (String key : this.paises.keySet()) {
+//			
+//			String strPais = this.paises.get(key).getSlug();
+//			Pais pais = this.paises.get(key);
+//			String link = "https://api.covid19api.com/total/country/" + strPais.replace("\"", "") + "/status/" + status + "?from=" + dateStart + "&to=" + dateEnd;
+//			getDadosPais(c,link,pais);
+//
+//		}
 	}
 	
-	/**
-     * Leitura inicial do banco de dados da covid 19, pela covid19api.com 
-     * Será lida para guardar na memória, de acordo com a UML do enunciado.
-     * @param controller
-     */
-	public static void readApi(ControllerPaises controller) {
+	private static void readApi(Controller requisicao) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
 		        .version(Version.HTTP_2)
 		        .followRedirects(Redirect.ALWAYS)
 		        .build();
 		        
-		        HttpRequest requisicao = HttpRequest.newBuilder()
+		        HttpRequest hRequest = HttpRequest.newBuilder()
 		        .uri(URI.create("https://api.covid19api.com/summary"))
 		        .build();
 		        
 		        
 		        try {
-		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
+		            HttpResponse<String> resposta = cliente.send(hRequest, HttpResponse.BodyHandlers.ofString());
 
 		            
 					JsonObject respostaJson = JsonParser.parseString(resposta.body()).getAsJsonObject() ;
@@ -78,12 +83,9 @@ public class DadosApi extends Estatistica{
 					    String codigo = info.get("CountryCode").toString();
 					    String slug = info.get("Slug").toString();
 					    
-					    controller.criarNovoPais(nome);
-					    controller.setNome(nome);
-					    controller.setCodigo(codigo);
-					    controller.setSlug(slug);
-					     
+					    Pais pais = new Pais(nome,codigo,slug);
 					}   
+					
 		        } catch (IOException e) {
 		            System.err.println("Problema com a conexão");
 		            e.printStackTrace();
@@ -95,12 +97,7 @@ public class DadosApi extends Estatistica{
 	
 	
 	
-	/**
-	 *  
-	 * @param controller
-	 * @param link
-	 */
-	public void getDadosPais(ControllerPaises controller, String link, Pais pais) {
+	private void getDadosPais(Controller c, String link, Pais pais) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
 		        .version(Version.HTTP_2)
@@ -175,12 +172,7 @@ public class DadosApi extends Estatistica{
 		            e.printStackTrace();
 		        }
 	}
-	/**
-	 * Convert a data de String para LocalDateTime
-	 * @param data String em formato de data yyyy-MM-dd'T'HH:mm:ss'Z'
-	 * @return string formatada
-	 */
-	public static LocalDateTime converterData(String data) {
+	private static LocalDateTime converterData(String data) {
 		
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
 		LocalDateTime date = LocalDateTime.parse(data, formato);

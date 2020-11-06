@@ -19,7 +19,6 @@ public abstract class Estatistica {
 	
 	public LocalDateTime dataFim() {
 		return this.observacoes.get(this.observacoes.size() - 1).getMomento();
-		
 	}
 	/*
 	public float valor() {
