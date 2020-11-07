@@ -44,6 +44,13 @@ public class DadosApi extends Estatistica{
 
 	}
 	
+	
+	
+	/**
+	 * Pega todos os casos, mortes e recuperados para todos os paises no intervalo dado
+	 * @param dateStart primeira data
+	 * @param dateEnd segunda data
+	 */
 	public void getDadosByDate(String dateStart, String dateEnd) {
 		
 		for (String key : this.paises.keySet()) {
@@ -106,7 +113,11 @@ public class DadosApi extends Estatistica{
 	}
 	
 	
-	
+	/**
+	 * Pega dados de todos os casos, recuperados e mortos da API
+	 * @param link 
+	 * @param pais
+	 */
 	private void getDadosPais(String link, Pais pais) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
@@ -195,6 +206,13 @@ public class DadosApi extends Estatistica{
 		            e.printStackTrace();
 		        }
 	}
+	
+	
+	/**
+	 * Converte a data para LocalDateTime formato yyyy-MM-ddTHH:mm:ssZ
+	 * @param data 
+	 * @return data formatada
+	 */
 	private static LocalDateTime converterData(String data) {
 		
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
