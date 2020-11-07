@@ -13,24 +13,41 @@ public abstract class Estatistica {
 	private List<Medicao> copiaObservacoes;
 	
 	
+	
+	/**
+	 * Insere objeto na lista de medicoes
+	 * @param observacao dados da medicao
+	 */
 	public void inclui(Medicao observacao) {
 		this.observacoes.add(observacao);
 	}
-	
+	/**
+	 * 
+	 * @return data do inico da medicao
+	 */
 	public LocalDateTime dataInicio() {
 		LocalDateTime data = this.copiaObservacoes.get(0).getMomento();
 		return data;
 	}
-	
+	/**
+	 * 
+	 * @return data do fim da medicao
+	 */
 	public LocalDateTime dataFim() {
 		LocalDateTime data = this.copiaObservacoes.get(this.copiaObservacoes.size() - 1).getMomento();
 		return data;
 	}
-	
+	/**
+	 * Valor da taxa de mortalidade e crescimento adicionada ao ultimo medicao do pais
+	 * @param valor taxa calculada
+	 */
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	
+	/**
+	 * 
+	 * @return valor da taxa calculada
+	 */
 	public float valor() {
 		return this.valor;
 	}
@@ -52,7 +69,7 @@ public abstract class Estatistica {
 	
 	
 	
-	
+	// deletar apos testes
 	public void test() {
 		for (Medicao medicao : observacoes) {
 			
@@ -112,7 +129,7 @@ public abstract class Estatistica {
 						medicao.setValor((medicao.getCasos() - temp) * 1.0f / temp);
 						temp = 0;
 					} else {
-						medicao.setValor(temp);
+						medicao.setValor((medicao.getCasos() - 1) * 1.0f);
 					}
 				
 				}
@@ -169,7 +186,7 @@ public abstract class Estatistica {
 						if (temp != 0) {
 							medicao.setValor((medicao.getCasos() - temp) * 1.0f / (casosFim - casosInicio));							
 						} else {
-							medicao.setValor(temp);
+							medicao.setValor((medicao.getCasos() - 1) * 1.0f / (casosFim - casosInicio));
 						}
 						
 					}
@@ -214,7 +231,7 @@ public abstract class Estatistica {
 	
 	
 	/**
-	 * Inner class para comparar elementos do tipo Medicao especifico para a taxa de crescimento
+	 * Inner class para comparar elementos do tipo Medicao especifico para a taxa de crescimento e mortalidade
 	 * @author Miguel
 	 *
 	 */

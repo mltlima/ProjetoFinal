@@ -55,14 +55,14 @@ public class App {
     teste.copy();
     //teste.rankingNumerico();
     //teste.test();
-    teste.test();	
+    //teste.test();	
+    teste.rankingMortalidade();
     try {
 		TimeUnit.SECONDS.sleep(60);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-    teste.rankingMortalidade();
     }
 
 	public static void topNumeros(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {
