@@ -157,7 +157,7 @@ public class View{
 		View thisV = this;
 		buttonGerar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Controller.Gerar(thisV);
+				new Controller(thisV);
 			}
 		});
 		

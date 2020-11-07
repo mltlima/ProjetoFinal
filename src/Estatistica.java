@@ -25,7 +25,6 @@ public abstract class Estatistica {
 	public LocalDateTime dataFim() {
 		LocalDateTime data = this.copiaObservacoes.get(this.copiaObservacoes.size() - 1).getMomento();
 		return data;
-		
 	}
 	
 	public void setValor(float valor) {

@@ -2,51 +2,183 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 	/**
-	 * Controla o fluxo entre o menu e as funções de chamada.
-	 * Serve para checar os dados do menu inicial antes de iniciar a busca no banco de dados
+	 * Cada Controller representa uma requisição do usuário.
+	 * Excplore seus getters para ver as diretamente as opções escolhidas no menu.
 	 * @author JoÃ£o Henrique Schmidt
 	 *
 	 */
 public class Controller {
+	private String dataInicial;
+	private String dataFinal;
+	private double distancia;
+	private boolean tsv;
+	private boolean csv;
+	private boolean maiorMortalidade;
+	private char opcoesListaNumeros;
+	private char opcoesListaCrescimento;
+	
 	/**
-	 * Processa as opções do menu e chama as funções apropriadas
-	 * <p> topNumeros para requisitar o rank de números absolutos <p/>
-	 * <p> topCrescimento para requisitar o rank crescimento <p/>
-	 * <p> topNumeros para requisitar o rank de números absolutos <p/>
-	 * <p> topNumeros para requisitar o rank de números absolutos <p/>
-	 * @param menu
+	 * @param dataInicial
+	 * @param dataFinal
+	 * @param distancia
+	 * @param tsv
+	 * @param csv
+	 * @param maiorMortalidade
+	 * @param opcoesListaNumeros
+	 * @param opcoesListaCrescimento
 	 */
-	public static void Gerar(View menu) {
-		if(UDF.isDateValid(menu.getDataInicial())) {
-			if(UDF.isDateValid(menu.getDataFinal())) {
-				if(menu.getOpcoesListNumbers() != 0) {//checando se ranking de números foi selecionado
-					App.topNumeros(menu.getOpcoesListNumbers(), menu.getCheckTSV(), menu.getCheckCSV(),
-							menu.getDataInicial(),menu.getDataFinal());
-				}
-				if(menu.getOpcoesListGrowth() != 0) {//checando se ranking de crescimento foi selecionado
-					App.topCrescimento(menu.getOpcoesListNumbers(), menu.getCheckTSV(), menu.getCheckCSV(),
-							menu.getDataInicial(),menu.getDataFinal());
-				}
-				if(menu.getCheckMortality()) {//checando se ranking de mortalidade foi selecionado
-					App.topMortalidade(menu.getCheckTSV(), menu.getCheckCSV(),
-							menu.getDataInicial(),menu.getDataFinal());
-				}
-				if(menu.getKm() != null && !menu.getKm().equals("")) { //checando se ranking de locais mais próximos foi selecionado
-					if(UDF.isFloat(menu.getKm())) {
-					App.topLocal(menu.getCheckTSV(), menu.getCheckCSV(),Float.parseFloat(menu.getKm()),
-							menu.getDataInicial(),menu.getDataFinal());
-					}else {
-						msgBox("Distância não é válida");
-					}
-				}
-			}else {
-				msgBox("Data final não é válida.");
-			}
+	public Controller(View v) {
+		if(UDF.isDateValid(v.getDataInicial())) {
+			this.dataInicial = v.getDataInicial();
 		}else {
 			msgBox("Data inicial não é válida.");
 		}
+		if(UDF.isDateValid(v.getDataFinal())) {
+			this.dataFinal = dataFinal;
+		}else{
+			msgBox("Data final não é válida.");
+		}
+		if(UDF.isFloat(v.getKm())) {
+			this.distancia = distancia;
+		}else {
+			msgBox("Distância não é válida");
+		}
+		
+		this.tsv = v.getCheckTSV();
+		this.csv = v.getCheckCSV();
+		this.maiorMortalidade = v.getCheckCSV();
+		this.opcoesListaNumeros = v.getOpcoesListNumbers();
+		this.opcoesListaCrescimento = v.getOpcoesListGrowth();
 	}
+	
 	private static void msgBox(String s) {
 		JOptionPane.showMessageDialog(null, s, "Error", JOptionPane.ERROR_MESSAGE);
+	}
+
+	/**
+	 * @return the dataInicial
+	 */
+	public String getDataInicial() {
+		return dataInicial;
+	}
+
+
+	/**
+	 * @param dataInicial the dataInicial to set
+	 */
+	public void setDataInicial(String dataInicial) {
+		this.dataInicial = dataInicial;
+	}
+
+
+	/**
+	 * @return the dataFinal
+	 */
+	public String getDataFinal() {
+		return dataFinal;
+	}
+
+
+	/**
+	 * @param dataFinal the dataFinal to set
+	 */
+	public void setDataFinal(String dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
+
+	/**
+	 * @return the distancia
+	 */
+	public double getDistancia() {
+		return distancia;
+	}
+
+
+	/**
+	 * @param distancia the distancia to set
+	 */
+	public void setDistancia(double distancia) {
+		this.distancia = distancia;
+	}
+
+
+	/**
+	 * @return the tsv
+	 */
+	public boolean isTsv() {
+		return tsv;
+	}
+
+
+	/**
+	 * @param tsv the tsv to set
+	 */
+	public void setTsv(boolean tsv) {
+		this.tsv = tsv;
+	}
+
+
+	/**
+	 * @return the csv
+	 */
+	public boolean isCsv() {
+		return csv;
+	}
+
+
+	/**
+	 * @param csv the csv to set
+	 */
+	public void setCsv(boolean csv) {
+		this.csv = csv;
+	}
+
+
+	/**
+	 * @return the maiorMortalidade
+	 */
+	public boolean isMaiorMortalidade() {
+		return maiorMortalidade;
+	}
+
+
+	/**
+	 * @param maiorMortalidade the maiorMortalidade to set
+	 */
+	public void setMaiorMortalidade(boolean maiorMortalidade) {
+		this.maiorMortalidade = maiorMortalidade;
+	}
+
+
+	/**
+	 * @return the opcoesListaNumeros
+	 */
+	public char getOpcoesListaNumeros() {
+		return opcoesListaNumeros;
+	}
+
+
+	/**
+	 * @param opcoesListaNumeros the opcoesListaNumeros to set
+	 */
+	public void setOpcoesListaNumeros(char opcoesListaNumeros) {
+		this.opcoesListaNumeros = opcoesListaNumeros;
+	}
+
+
+	/**
+	 * @return the opcoesListaCrescimento
+	 */
+	public char getOpcoesListaCrescimento() {
+		return opcoesListaCrescimento;
+	}
+
+
+	/**
+	 * @param opcoesListaCrescimento the opcoesListaCrescimento to set
+	 */
+	public void setOpcoesListaCrescimento(char opcoesListaCrescimento) {
+		this.opcoesListaCrescimento = opcoesListaCrescimento;
 	}
 }
