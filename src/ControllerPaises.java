@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 /**
  * Classe Controller Paises
  * @author Miguel
@@ -9,7 +10,7 @@ public class ControllerPaises {
 	//teste
 	
 	private Pais pais;
-	private HashMap<String,Pais> paises = new HashMap<>();
+	private LinkedHashMap<String,Pais> paises = new LinkedHashMap<>();
 	
 	public ControllerPaises() {
 		
@@ -71,7 +72,7 @@ public class ControllerPaises {
 	 * Acesso ao atributo pais
 	 */
 	
-	public HashMap<String,Pais> getHashMap() {
+	public LinkedHashMap<String,Pais> getHashMap() {
 		return this.paises;
 	}
 	/**

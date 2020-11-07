@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.util.concurrent.TimeUnit;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -33,7 +34,7 @@ public class App {
 	// Testnando UTF8 ãñóõòáÀàü
     public static void main( String[] args ) throws ParseException{    
         
-
+/*
         
         new View();
 
@@ -47,12 +48,21 @@ public class App {
 				}
 			}
 		});
-        
+        */
      
     DadosApi teste = new DadosApi();
     teste.start();
-    teste.rankingNumerico();
-    	
+    teste.copy();
+    //teste.rankingNumerico();
+    //teste.test();
+    teste.test();	
+    try {
+		TimeUnit.SECONDS.sleep(60);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    teste.rankingMortalidade();
     }
 
 	public static void topNumeros(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {

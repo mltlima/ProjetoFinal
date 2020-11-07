@@ -6,6 +6,7 @@ import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
@@ -22,29 +23,76 @@ import com.google.gson.stream.JsonReader;
 public class DadosApi extends Estatistica{
 	
 	private ControllerPaises controller = new ControllerPaises();
-	private HashMap<String,Pais> paises = controller.getHashMap();
+	private LinkedHashMap<String,Pais> paises = controller.getHashMap();
 	
 	public void start() {
 		
 		readApi(this.controller);
 		//valores para teste do metodo
-		getDadosByDateStatus("deaths","2020-09-01T00:00:00Z","2020-09-03T00:00:00Z");
+		getDadosByDate("2020-08-01T00:00:00Z","2020-08-30T00:00:00Z");
 //      controller.printHashMap();
 	}
 	
-	public void getDadosByDateStatus(String status, String dateStart, String dateEnd) {
+	public void getDadosByDate(String dateStart, String dateEnd) {
 		
-		
+		//https://api.covid19api.com/country/south-africa?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z
 		
 		for (String key : this.paises.keySet()) {
 			
 			String strPais = this.paises.get(key).getSlug();
 			Pais pais = this.paises.get(key);
-			String link = "https://api.covid19api.com/total/country/" + strPais.replace("\"", "") + "/status/" + status + "?from=" + dateStart + "&to=" + dateEnd;
+			String link = "https://api.covid19api.com/total/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "&to=" + dateEnd;
 			getDadosPais(this.controller,link,pais);
 
 		}
 	}
+	
+	
+	
+	
+	
+	
+	public int consultaDadosApi(String slug, String status, String data) {
+		
+		String parts[] = data.split("T");
+		//Adiciona 1 hora a data
+		String dataMaisUm = parts[0] + "T01:00:00Z";
+		data = data + ":00Z";
+		String link =  "https://api.covid19api.com/total/country/" + slug.replace("\"", "") + "/status/" + status + "?from=" + data  + "&to=" + dataMaisUm ;
+
+
+		HttpClient cliente = HttpClient.newBuilder()
+		        .version(Version.HTTP_2)
+		        .followRedirects(Redirect.ALWAYS)
+		        .build();
+		        
+		        HttpRequest requisicao = HttpRequest.newBuilder()
+		        .uri(URI.create(link))
+		        .build();
+		        
+		        try {
+		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
+
+		            
+		            JsonArray dadosArray =  JsonParser.parseString(resposta.body()).getAsJsonArray();
+		            
+		            JsonObject dados =  dadosArray.get(0).getAsJsonObject();
+		            int casos = Integer.parseInt(dados.get("Cases").toString().replace("\"", ""));
+		     
+		            return casos;
+					
+		        } catch (IOException e) {
+		            System.err.println("Problema com a conexão");
+		            e.printStackTrace();
+		        } catch (InterruptedException e) {
+		            System.err.println("Requisição interrompida");
+		            e.printStackTrace();
+		        }
+		        
+		        return 0;
+	}
+	
+	
 	
 	/**
      * Leitura inicial do banco de dados da covid 19, pela covid19api.com 
@@ -132,10 +180,40 @@ public class DadosApi extends Estatistica{
 					    //System.out.println(strDados);
 					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
 					    
-					    int casos = Integer.parseInt(info.get("Cases").toString().replace("\"", ""));
+					    //int casos = Integer.parseInt(info.get("Cases").toString().replace("\"", ""));
 					    LocalDateTime data = converterData(info.get("Date").toString().replace("\"", ""));
-					    String status = info.get("Status").getAsString().replace("\"", "");
+					    //String status = info.get("Status").getAsString().replace("\"", "");
 					    
+					    
+					    //Medicao para casos confirmadados
+					    int confirmed = Integer.parseInt(info.get("Confirmed").getAsString().replace("\"", ""));
+					    medicao.setStatus(StatusCaso.COMFIRMADOS);
+					    medicao.setCasos(confirmed);
+					    medicao.setMomento(data);
+					    
+					    
+					    
+					    //Nova medicao para mortes
+					    Medicao medicao2 = new Medicao();
+						super.inclui(medicao2);
+						medicao2.setPais(pais);
+					    int deaths = Integer.parseInt(info.get("Deaths").getAsString().replace("\"", ""));
+					    medicao2.setStatus(StatusCaso.MORTOS);
+					    medicao2.setCasos(deaths);
+					    medicao2.setMomento(data);
+					    
+					    
+					    //Nova medicao para Recuperados
+					    Medicao medicao3 = new Medicao();
+						super.inclui(medicao3);
+						medicao3.setPais(pais);
+						int recovered = Integer.parseInt(info.get("Recovered").getAsString().replace("\"", ""));
+					    medicao3.setStatus(StatusCaso.RECUPERADOS);
+					    medicao3.setCasos(recovered);
+					    medicao3.setMomento(data);
+					    
+					    
+					    /*
 					    //Verifica o tipo de dado e passa para medicao
 					    if (status.equals("deaths")) {
 					    	medicao.setStatus(StatusCaso.MORTOS);
@@ -152,7 +230,7 @@ public class DadosApi extends Estatistica{
 					    medicao.setMomento(data);
 					    
 					    
-					    /*
+					    
 					    String name = info.get("Country").toString();
 					    String province = info.get("Province").toString().replace("\"", "");
 					    controller.getPais(name);
