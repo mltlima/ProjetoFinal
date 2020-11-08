@@ -74,7 +74,7 @@ public abstract class Estatistica {
 		for (Medicao medicao : observacoes) {
 			
 			
-				System.out.println(medicao.getPais().getLatitude() + "  " + medicao.getPais().getLongitude());
+				System.out.println(medicao.getStatus() + "  " + medicao.getCasos());
 				System.out.println(medicao.getPais().getSlug());
 			
 		}
@@ -167,8 +167,8 @@ public abstract class Estatistica {
 			
 			if (medicao.getStatus().equals(StatusCaso.MORTOS) || 
 					(medicao.getStatus().equals(StatusCaso.COMFIRMADOS))) {
-
-				String pais = medicao.getPais().getSlug();
+				
+				//String pais = medicao.getPais().getSlug();
 			
 				if (medicao.getMomento().equals(dataInicio())) {
 					
@@ -184,7 +184,8 @@ public abstract class Estatistica {
 						casosFim = medicao.getCasos();
 					} else {
 						if (temp != 0) {
-							medicao.setValor((medicao.getCasos() - temp) * 1.0f / (casosFim - casosInicio));							
+							medicao.setValor((medicao.getCasos() - temp) * 1.0f / (casosFim - casosInicio));	
+							System.out.println(medicao.valor());
 						} else {
 							medicao.setValor((medicao.getCasos() - 1) * 1.0f / (casosFim - casosInicio));
 						}

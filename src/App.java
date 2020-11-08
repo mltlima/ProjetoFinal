@@ -53,13 +53,14 @@ public class App {
     DadosApi teste = new DadosApi();
     teste.start();
     teste.copy();
-    teste.test();
-    try {
+    //teste.test();
+    teste.rankingMortalidade();
+    /*try {
 		TimeUnit.SECONDS.sleep(60);
 	} catch (InterruptedException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
     }
 
 	public static void topNumeros(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {

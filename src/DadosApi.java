@@ -139,11 +139,7 @@ public class DadosApi extends Estatistica{
 		     
 		      
 					for (Object dados : paisArray) {
-						
-						//Gera uma nova medicao para guardar os dados
-						Medicao medicao = new Medicao();
-						super.inclui(medicao);
-						medicao.setPais(pais);
+					
 						
 					    String strDados = dados.toString();
 					    //System.out.println(strDados);
@@ -156,7 +152,12 @@ public class DadosApi extends Estatistica{
 							return;
 						}
 					    
-					    
+					    //Gera uma nova medicao para guardar os dados
+						Medicao medicao = new Medicao();
+						super.inclui(medicao);
+						medicao.setPais(pais);
+						
+						
 					    float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
 					    pais.setLatitude(latitude);
 					    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
@@ -230,7 +231,7 @@ public class DadosApi extends Estatistica{
 //			//Adiciona 1 hora a data
 //			String dataMaisUm = parts[0] + "T01:00:00Z";
 //			data = data + ":00Z";
-			String link =  "https://api.covid19api.com/world?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z" ;
+			String link =  "https://api.covid19api.com/world?from=2020-09-01T00:00:00Z&to=2020-09-08T00:00:00Z" ;
 	
 	
 			HttpClient cliente = HttpClient.newBuilder()
