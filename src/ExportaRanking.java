@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * 
@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class ExportaRanking {
 	
-	private File topNumeros;
-	private File topCrescimentos;
-	private File topMortalidade;
-	private File topLocal;
+	private File rankingNumeros;
+	private File rankingCrescimentos;
+	private File rankingMortalidade;
+	private File rankingLocal;
 	
 	/**
 	 * Exporta ranking de maiores casos/recuperados/mortos para arquivo csv e tsv
@@ -20,16 +20,12 @@ public class ExportaRanking {
 	 * @param tsv
 	 * @param ranking
 	 */
-	public void exportaNumeros(int opcoes, boolean csv, boolean tsv, ArrayList<Medicao> ranking) {
+	public void exportaNumeros(StatusCaso status, boolean csv, boolean tsv, List<Medicao> ranking) {
 		
-		String status = "Mortes";
-		if (opcoes%2==1) status = "Casos";
-		else if (opcoes>=4) status = "Recuperados";
-		
-		if (csv){
-			topNumeros = new File("topNumeros.tsv");
+		if (tsv){
+			rankingNumeros = new File("rankingNumeros.tsv");
 			try {
-				FileWriter fw = new FileWriter(topNumeros);
+				FileWriter fw = new FileWriter(rankingNumeros);
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+"	"+"País"+"	"+status);
@@ -44,17 +40,17 @@ public class ExportaRanking {
 				System.out.println("Erro ao exportar para arquivo");
 			}
 		}
-		else {
-			topNumeros = new File("topNumeros.csv");
+		if (csv) {
+			rankingNumeros = new File("rankingNumeros.csv");
 			try {
-				FileWriter fw = new FileWriter(topNumeros);
+				FileWriter fw = new FileWriter(rankingNumeros);
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+","+"País"+","+status);
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
 					String dado = Integer.toString(ranking.get(i).getCasos());
-					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
+					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
 				}
 				pw.close();
 			}
@@ -71,18 +67,19 @@ public class ExportaRanking {
 	 * @param tsv
 	 * @param ranking
 	 */
-	public void exportaCrescimentos(boolean csv, boolean tsv, ArrayList<Medicao> ranking) {
+	public void exportaCrescimentos(StatusCaso status, boolean csv, boolean tsv, List<Medicao> ranking) {
 		
-		if (csv){
-			topNumeros = new File("topNumeros.tsv");
+		if (tsv){
+			rankingCrescimentos = new File("rankingCrescimentos.tsv");
 			try {
-				FileWriter fw = new FileWriter(topNumeros);
+				FileWriter fw = new FileWriter(rankingCrescimentos);
 				PrintWriter pw = new PrintWriter(fw);
 				
-				pw.println("Posição"+"	"+"País");
+				pw.println("Posição"+"	"+"País"+"	"+status);
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
-					pw.println(Integer.toString(i+1)+"	"+nomePais);
+					String dado = Float.toString(ranking.get(i).valor());
+					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();
 			}
@@ -90,16 +87,17 @@ public class ExportaRanking {
 				System.out.println("Erro ao exportar para arquivo");
 			}
 		}
-		else {
-			topNumeros = new File("topNumeros.csv");
+		if (csv) {
+			rankingNumeros = new File("rankingCrescimentos.csv");
 			try {
-				FileWriter fw = new FileWriter(topNumeros);
+				FileWriter fw = new FileWriter(rankingCrescimentos);
 				PrintWriter pw = new PrintWriter(fw);
 				
-				pw.println("Posição"+","+"País");
+				pw.println("Posição"+","+"País"+","+status);
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
-					pw.println(Integer.toString(i+1)+"	"+nomePais);
+					String dado = Float.toString(ranking.get(i).valor());
+					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
 				}
 				pw.close();
 			}
@@ -116,18 +114,18 @@ public class ExportaRanking {
 	 * @param tsv
 	 * @param ranking
 	 */
-	public void exportaMortalidade(boolean csv, boolean tsv, ArrayList<Medicao> ranking) {
+	public void exportaMortalidade(boolean csv, boolean tsv, List<Medicao> ranking) {
 		
-		if (csv){
-			topNumeros = new File("topNumeros.tsv");
+		if (tsv){
+			rankingMortalidade = new File("rankingMortalidade.tsv");
 			try {
-				FileWriter fw = new FileWriter(topNumeros);
+				FileWriter fw = new FileWriter(rankingMortalidade);
 				PrintWriter pw = new PrintWriter(fw);
 				
-				pw.println("Posição"+"	"+"País"+"	"+"Mortes");
+				pw.println("Posição"+"	"+"País"+"	"+"Mortalidade");
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
-					String dado = Integer.toString(ranking.get(i).getCasos());
+					String dado = Float.toString(ranking.get(i).valor());
 					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();
@@ -136,17 +134,17 @@ public class ExportaRanking {
 				System.out.println("Erro ao exportar para arquivo");
 			}
 		}
-		else {
-			topNumeros = new File("topNumeros.csv");
+		if (csv) {
+			rankingMortalidade = new File("rankingMortalidade.csv");
 			try {
-				FileWriter fw = new FileWriter(topNumeros);
+				FileWriter fw = new FileWriter(rankingMortalidade);
 				PrintWriter pw = new PrintWriter(fw);
 				
-				pw.println("Posição"+","+"País"+","+"Mortes");
+				pw.println("Posição"+","+"País"+","+"Mortalidade");
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
-					String dado = Integer.toString(ranking.get(i).getCasos());
-					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
+					String dado = Float.toString(ranking.get(i).valor());
+					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
 				}
 				pw.close();
 			}
@@ -156,5 +154,6 @@ public class ExportaRanking {
 		}
 		
 	}
+	
 
 }

@@ -86,7 +86,7 @@ public abstract class Estatistica {
 	 * Organiza lista com medicoes do maior numero de casos ao menor
 	 * @param status
 	 */
-	public void rankingNumerico(StatusCaso status) {
+	public void rankingNumerico(StatusCaso status, boolean tsv, boolean csv) {
 		
 		// organiza do menor ao maior
 		Collections.sort(this.observacoes, new medicaoComparator());
@@ -99,6 +99,10 @@ public abstract class Estatistica {
 				System.out.println(medicao.getCasos());
 			}
 		}
+		if (tsv || csv) {
+			ExportaRanking er = new ExportaRanking();
+			er.exportaNumeros(status, csv, tsv, this.observacoes);
+		}
 	}
 	
 	
@@ -110,7 +114,7 @@ public abstract class Estatistica {
 	 * para calcular a taxa de crescimento
 	 * @param status tipo de medicao confirmados, recuperados ou mortos
 	 */
-	public void rankingCrescimento(StatusCaso status) {
+	public void rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
 		
 		float temp = 0;
 		
@@ -138,6 +142,12 @@ public abstract class Estatistica {
 		
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
+		
+		
+		if (tsv || csv) {
+			ExportaRanking er = new ExportaRanking();
+			er.exportaCrescimentos(status, csv, tsv, this.observacoes);
+		}
 		//teste taxa
 		/*
 		for (Medicao medicao : observacoes) {
@@ -156,7 +166,7 @@ public abstract class Estatistica {
 	/**
 	 * Organiza paises pela maior taxa de mortalidade
 	 */
-	public void rankingMortalidade() {
+	public void rankingMortalidade(boolean tsv, boolean csv) {
 		
 		float temp = 0;
 		int casosInicio = 0;
@@ -207,6 +217,11 @@ public abstract class Estatistica {
 				System.out.println(medicao.getPais().getSlug());
 			}
 		}
+		
+		if (tsv || csv) {
+			ExportaRanking er = new ExportaRanking();
+			er.exportaMortalidade(csv, tsv, this.observacoes);
+		}
 	}
 	
 	
@@ -215,7 +230,7 @@ public abstract class Estatistica {
 	public void distanciaKm(float raio) {
 		
 		//organiza lista por casos confirmados
-		rankingCrescimento(StatusCaso.CONFIRMADOS);
+		rankingCrescimento(StatusCaso.CONFIRMADOS,false,false);
 		
 		//Coordenadas do local com maior crescimento
 		float lat = this.observacoes.get(0).getPais().getLatitude();
