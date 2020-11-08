@@ -167,13 +167,13 @@ public abstract class Estatistica {
 			
 			
 			if (medicao.getStatus().equals(StatusCaso.MORTOS) || 
-					(medicao.getStatus().equals(StatusCaso.COMFIRMADOS))) {
+					(medicao.getStatus().equals(StatusCaso.CONFIRMADOS))) {
 				
 				//String pais = medicao.getPais().getSlug();
 			
 				if (medicao.getMomento().equals(dataInicio())) {
 					
-					if (medicao.getStatus().equals(StatusCaso.COMFIRMADOS)) {
+					if (medicao.getStatus().equals(StatusCaso.CONFIRMADOS)) {
 						casosInicio = medicao.getCasos();
 					} else {
 						temp = medicao.getCasos();						
@@ -181,7 +181,7 @@ public abstract class Estatistica {
 				}
 				if (medicao.getMomento().equals(dataFim())) {
 					
-					if (medicao.getStatus().equals(StatusCaso.COMFIRMADOS)) {
+					if (medicao.getStatus().equals(StatusCaso.CONFIRMADOS)) {
 						casosFim = medicao.getCasos();
 					} else {
 						if (temp != 0) {
@@ -215,7 +215,7 @@ public abstract class Estatistica {
 	public void distanciaKm(float raio) {
 		
 		//organiza lista por casos confirmados
-		rankingCrescimento(StatusCaso.COMFIRMADOS);
+		rankingCrescimento(StatusCaso.CONFIRMADOS);
 		
 		//Coordenadas do local com maior crescimento
 		float lat = this.observacoes.get(0).getPais().getLatitude();

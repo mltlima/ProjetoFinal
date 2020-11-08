@@ -1,6 +1,6 @@
 
 public enum StatusCaso {
-	COMFIRMADOS,
+	CONFIRMADOS,
 	RECUPERADOS,
 	MORTOS;
 }

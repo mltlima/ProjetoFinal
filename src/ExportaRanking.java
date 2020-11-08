@@ -13,8 +13,14 @@ public class ExportaRanking {
 	private File topMortalidade;
 	private File topLocal;
 	
-	
-	public void exportaNumeros(int opcoes, boolean csv, boolean tsv, ArrayList<Medicao> medicoes) {
+	/**
+	 * Exporta ranking de maiores casos/recuperados/mortos para arquivo csv e tsv
+	 * @param opcoes 
+	 * @param csv
+	 * @param tsv
+	 * @param ranking
+	 */
+	public void exportaNumeros(int opcoes, boolean csv, boolean tsv, ArrayList<Medicao> ranking) {
 		
 		String status = "Mortes";
 		if (opcoes%2==1) status = "Casos";
@@ -27,9 +33,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+"	"+"País"+"	"+status);
-				for (int i=0; i<medicoes.size(); i++) {
-					String nomePais = medicoes.get(i).getPais().getNome();
-					String dado = Integer.toString(medicoes.get(i).getCasos());
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Integer.toString(ranking.get(i).getCasos());
 					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();
@@ -45,9 +51,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+","+"País"+","+status);
-				for (int i=0; i<medicoes.size(); i++) {
-					String nomePais = medicoes.get(i).getPais().getNome();
-					String dado = Integer.toString(medicoes.get(i).getCasos());
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Integer.toString(ranking.get(i).getCasos());
 					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();
@@ -59,8 +65,13 @@ public class ExportaRanking {
 		
 	}
 	
-	
-	public void exportaCrescimentos(boolean csv, boolean tsv, ArrayList<Medicao> medicoes) {
+	/**
+	 * Exporta ranking de crescimento de casos/recuperados/mortos para arquivo csv e tsv
+	 * @param csv
+	 * @param tsv
+	 * @param ranking
+	 */
+	public void exportaCrescimentos(boolean csv, boolean tsv, ArrayList<Medicao> ranking) {
 		
 		if (csv){
 			topNumeros = new File("topNumeros.tsv");
@@ -69,8 +80,8 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+"	"+"País");
-				for (int i=0; i<medicoes.size(); i++) {
-					String nomePais = medicoes.get(i).getPais().getNome();
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
 					pw.println(Integer.toString(i+1)+"	"+nomePais);
 				}
 				pw.close();
@@ -86,8 +97,8 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+","+"País");
-				for (int i=0; i<medicoes.size(); i++) {
-					String nomePais = medicoes.get(i).getPais().getNome();
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
 					pw.println(Integer.toString(i+1)+"	"+nomePais);
 				}
 				pw.close();
@@ -99,8 +110,13 @@ public class ExportaRanking {
 		
 	}
 	
-	
-	public void exportaMortalidade(boolean csv, boolean tsv, ArrayList<Medicao> medicoes) {
+	/**
+	 * Exporta ranking de mortalidade para arquivo csv e tsv
+	 * @param csv
+	 * @param tsv
+	 * @param ranking
+	 */
+	public void exportaMortalidade(boolean csv, boolean tsv, ArrayList<Medicao> ranking) {
 		
 		if (csv){
 			topNumeros = new File("topNumeros.tsv");
@@ -109,9 +125,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+"	"+"País"+"	"+"Mortes");
-				for (int i=0; i<medicoes.size(); i++) {
-					String nomePais = medicoes.get(i).getPais().getNome();
-					String dado = Integer.toString(medicoes.get(i).getCasos());
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Integer.toString(ranking.get(i).getCasos());
 					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();
@@ -127,9 +143,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 				
 				pw.println("Posição"+","+"País"+","+"Mortes");
-				for (int i=0; i<medicoes.size(); i++) {
-					String nomePais = medicoes.get(i).getPais().getNome();
-					String dado = Integer.toString(medicoes.get(i).getCasos());
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Integer.toString(ranking.get(i).getCasos());
 					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();

@@ -170,7 +170,7 @@ public class DadosApi extends Estatistica{
 					    
 					    //Medicao para casos confirmadados
 					    int confirmed = Integer.parseInt(info.get("Confirmed").getAsString().replace("\"", ""));
-					    medicao.setStatus(StatusCaso.COMFIRMADOS);
+					    medicao.setStatus(StatusCaso.CONFIRMADOS);
 					    medicao.setCasos(confirmed);
 					    medicao.setMomento(data);
 					    
@@ -256,10 +256,10 @@ public class DadosApi extends Estatistica{
 			            
 						
 			        } catch (IOException e) {
-			            System.err.println("Problema com a conexão");
+			            System.err.println("Problema com a conexï¿½o");
 			            e.printStackTrace();
 			        } catch (InterruptedException e) {
-			            System.err.println("Requisição interrompida");
+			            System.err.println("Requisiï¿½ï¿½o interrompida");
 			            e.printStackTrace();
 			        }
 			        
