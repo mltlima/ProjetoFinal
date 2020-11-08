@@ -54,7 +54,7 @@ public class App {
     teste.start();
     teste.copy();
     //teste.test();
-    teste.rankingMortalidade();
+    teste.distanciaKm(500f);
     /*try {
 		TimeUnit.SECONDS.sleep(60);
 	} catch (InterruptedException e) {

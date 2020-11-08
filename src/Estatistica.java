@@ -139,13 +139,14 @@ public abstract class Estatistica {
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
 		//teste taxa
+		/*
 		for (Medicao medicao : observacoes) {
 			//Printa taxa maior que 0
 			if (medicao.valor() > 0) {
 				System.out.println(medicao.valor());
 				System.out.println(medicao.getPais().getSlug());
 			}
-		}
+		}*/
 	}
 	
 	
@@ -209,6 +210,68 @@ public abstract class Estatistica {
 	}
 	
 	
+	
+	
+	public void distanciaKm(float raio) {
+		
+		//organiza lista por casos confirmados
+		rankingCrescimento(StatusCaso.COMFIRMADOS);
+		
+		//Coordenadas do local com maior crescimento
+		float lat = this.observacoes.get(0).getPais().getLatitude();
+		float lon = this.observacoes.get(0).getPais().getLongitude();
+		
+		String pais = this.observacoes.get(0).getPais().getNome();
+		String temp = null;
+		System.out.println("\n\n" + pais + "\n\n");
+		
+		for (Medicao medicao : copiaObservacoes) {
+			
+			float lat2 = medicao.getPais().getLatitude();
+			float lon2 = medicao.getPais().getLongitude();
+			
+			float distancia = haversine(lat,lon,lat2,lon2);
+			
+			String pais2 = medicao.getPais().getNome();
+			
+			if (distancia <= raio && !pais.equals(pais2) && !pais2.equals(temp)) {
+				System.out.println(pais2);
+				System.out.println(distancia);
+				temp = pais2;
+			}
+		}
+		
+	}
+	
+	
+	
+	/**
+	 * Calcula da distancia em KM das coordenadas usando a formula de Haversine
+	 * @param latitude1
+	 * @param longitude1
+	 * @param latitude2
+	 * @param longitude2
+	 * @return distancia em km entre os dois pontos
+	 */
+	public float haversine(float latitude1, float longitude1, float latitude2, float longitude2) {
+		//Raio da terra em km
+		double raio = 6372.8;
+		
+		//Distancia entrea as coordenadas em radianos
+        double distanciaLat = Math.toRadians(latitude2 - latitude1);
+        double distanciaLon = Math.toRadians(longitude2 - longitude1);
+        
+        //Conversao das latitudes em radianos
+        latitude1 = (float) Math.toRadians(latitude1);
+        latitude2 = (float) Math.toRadians(latitude2);
+        
+        // hav(x) = sin^2(x/2) 
+        //hav(distanciaLat) + cos(latitude1) * cos(latitude2) * hav(distanciaLon)
+        double a = Math.pow(Math.sin(distanciaLat / 2),2) + Math.cos(latitude1) * Math.cos(latitude2) * Math.pow(Math.sin(distanciaLon / 2),2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        
+        return (float) (raio * c);
+    }
 	
 	
 	
