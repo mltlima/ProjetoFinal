@@ -57,7 +57,7 @@ public class DadosApi extends Estatistica{
 			
 			String strPais = this.paises.get(key).getSlug();
 			Pais pais = this.paises.get(key);
-			String link = "https://api.covid19api.com/total/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "&to=" + dateEnd;
+			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "&to=" + dateEnd;
 			getDadosPais(link,pais);
 
 		}
@@ -149,6 +149,19 @@ public class DadosApi extends Estatistica{
 					    //System.out.println(strDados);
 					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
 					    
+					    String province = info.get("Province").toString().replace("\"", "");
+					    
+					    //Pula dados se nao for dado geral do pais
+					    if (!province.isBlank()) {
+							return;
+						}
+					    
+					    
+					    float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
+					    pais.setLatitude(latitude);
+					    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
+					    pais.setLongitude(longitude);
+					    
 					    //int casos = Integer.parseInt(info.get("Cases").toString().replace("\"", ""));
 					    LocalDateTime data = converterData(info.get("Date").toString().replace("\"", ""));
 					    //String status = info.get("Status").getAsString().replace("\"", "");
@@ -206,6 +219,58 @@ public class DadosApi extends Estatistica{
 		            e.printStackTrace();
 		        }
 	}
+	
+	
+	
+			
+	//Teste
+	public void consultaDadosApi() {
+			//String slug, String status, String data
+//			String parts[] = data.split("T");
+//			//Adiciona 1 hora a data
+//			String dataMaisUm = parts[0] + "T01:00:00Z";
+//			data = data + ":00Z";
+			String link =  "https://api.covid19api.com/world?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z" ;
+	
+	
+			HttpClient cliente = HttpClient.newBuilder()
+			        .version(Version.HTTP_2)
+			        .followRedirects(Redirect.ALWAYS)
+			        .build();
+			        
+			        HttpRequest requisicao = HttpRequest.newBuilder()
+			        .uri(URI.create(link))
+			        .build();
+			        
+			        try {
+			            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
+	
+			            
+			            JsonArray dadosArray =  JsonParser.parseString(resposta.body()).getAsJsonArray();
+			            System.out.println(dadosArray);
+			            
+			            JsonObject dados =  dadosArray.get(0).getAsJsonObject();
+			            
+			     
+			            
+						
+			        } catch (IOException e) {
+			            System.err.println("Problema com a conexão");
+			            e.printStackTrace();
+			        } catch (InterruptedException e) {
+			            System.err.println("Requisição interrompida");
+			            e.printStackTrace();
+			        }
+			        
+			        
+		}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	/**

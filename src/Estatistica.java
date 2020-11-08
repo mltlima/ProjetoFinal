@@ -74,7 +74,7 @@ public abstract class Estatistica {
 		for (Medicao medicao : observacoes) {
 			
 			
-				System.out.println(medicao.valor() + "  " + medicao.getCasos());
+				System.out.println(medicao.getPais().getLatitude() + "  " + medicao.getPais().getLongitude());
 				System.out.println(medicao.getPais().getSlug());
 			
 		}

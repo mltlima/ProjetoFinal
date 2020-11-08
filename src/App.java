@@ -53,10 +53,7 @@ public class App {
     DadosApi teste = new DadosApi();
     teste.start();
     teste.copy();
-    //teste.rankingNumerico();
-    //teste.test();
-    //teste.test();	
-    teste.rankingMortalidade();
+    teste.test();
     try {
 		TimeUnit.SECONDS.sleep(60);
 	} catch (InterruptedException e) {
