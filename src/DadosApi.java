@@ -52,58 +52,61 @@ public class DadosApi extends Estatistica{
 		getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
 		super.copy(); //Copia medidas realizadas
 		
+		boolean tsv = requisicao.isTsv();
+		boolean csv = requisicao.isCsv();
+		
 		char maiorNumero = requisicao.getOpcoesListaNumeros();
 		
 		switch (maiorNumero) {
 		case 1:
 
-			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 2:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 3:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 4:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 		
 		case 5:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 6:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 7:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 		}
@@ -116,53 +119,53 @@ public class DadosApi extends Estatistica{
 		switch (maiorCrescimento) {
 		case 1:
 
-			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 2:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 3:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 4:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 		
 		case 5:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 6:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 			
 		case 7:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv));
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv));
 			super.restart();
 			break;
 		}
@@ -270,7 +273,9 @@ public class DadosApi extends Estatistica{
 					    String strDados = dados.toString();
 					    
 					    
+
 					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
+
 					    
 					  
 					    
@@ -300,7 +305,7 @@ public class DadosApi extends Estatistica{
 						    
 						    //Medicao para casos confirmadados
 						    int confirmed = Integer.parseInt(info.get("Confirmed").getAsString().replace("\"", ""));
-						    medicao.setStatus(StatusCaso.COMFIRMADOS);
+						    medicao.setStatus(StatusCaso.CONFIRMADOS);
 						    medicao.setCasos(confirmed);
 						    medicao.setMomento(data);
 						    
@@ -350,7 +355,6 @@ public class DadosApi extends Estatistica{
 		            e.printStackTrace();
 		        }
 	}
-	
 	
 	
 	
