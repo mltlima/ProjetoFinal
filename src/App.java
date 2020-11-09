@@ -64,43 +64,4 @@ public class App {
         
     }
 
-	public static void topNumeros(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {
-		// TODO Auto-generated method stub
-		System.out.println("topNumeros funcionando:");
-		System.out.println("opcoes = " + (int) opcoes);
-		System.out.println("tsv = " + tsv);
-		System.out.println("csv = " + csv);
-		System.out.println("dataInicial" + dataInicial);
-		System.out.println("dataFinal" + dataFinal);
-		System.out.println();
-	}
-	public static void topCrescimento(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {
-		// TODO Auto-generated method stub
-		System.out.println("topCrescimento funcionando");
-		System.out.println("opcoes = " + (int) opcoes);
-		System.out.println("tsv = " + tsv);
-		System.out.println("csv = " + csv);
-		System.out.println("dataInicial" + dataInicial);
-		System.out.println("dataFinal" + dataFinal);
-		System.out.println();
-	}
-
-	public static void topMortalidade(boolean tsv, boolean csv, String dataInicial, String dataFinal) {
-		// TODO Auto-generated method stub
-		System.out.println("topMortalidade funcionando");
-		System.out.println("tsv = " + tsv);
-		System.out.println("csv = " + csv);
-		System.out.println("dataInicial" + dataInicial);
-		System.out.println("dataFinal" + dataFinal);
-		System.out.println();
-	}
-
-	public static void topLocal(boolean tsv, boolean csv, double km, String dataInicial, String dataFinal) {
-		// TODO Auto-generated method stub
-		System.out.println("topLocal funcionando");
-		System.out.println("tsv = " + tsv);
-		System.out.println("csv = " + csv);
-		System.out.println("dataInicial" + dataInicial);
-		System.out.println("dataFinal" + dataFinal);
-	}
 }

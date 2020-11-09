@@ -6,14 +6,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 	/**
 	 * Cada Controller representa uma requisição do usuário.
-	 * Excplore seus getters para ver as diretamente as opções escolhidas no menu.
+	 * Excplore seus getters para ver diretamente as opções escolhidas no menu.
 	 * @author JoÃ£o Henrique Schmidt
 	 *
 	 */
 public class Controller {
 	private String dataInicial;
 	private String dataFinal;
-	private float distancia;
+	private double distancia;
 	private boolean tsv;
 	private boolean csv;
 	private boolean maiorMortalidade;
@@ -21,6 +21,7 @@ public class Controller {
 	private char opcoesListaCrescimento;
 	
 	/**
+	 * Pega os dados das opções do menu
 	 * @param dataInicial
 	 * @param dataFinal
 	 * @param distancia
@@ -41,10 +42,14 @@ public class Controller {
 		}else{
 			msgBox("Data final não é válida.");
 		}
-		if(UDF.isFloat(v.getKm())) {
-			this.distancia = Float.parseFloat(v.getKm());
+		if(!v.getKm().equals("")) {
+			if(UDF.isFloat(v.getKm())) {
+				this.distancia = Float.parseFloat(v.getKm());
+			}else {
+				msgBox("Distância não é válida");
+			}
 		}else {
-			msgBox("Distância não é válida");
+			this.distancia = -1;
 		}
 		
 		this.tsv = v.getCheckTSV();
@@ -81,6 +86,7 @@ public class Controller {
 	}
 
 	/**
+	 * Acesso ao atributo dataInicial
 	 * @return the dataInicial
 	 */
 	public String getDataInicial() {
@@ -89,46 +95,24 @@ public class Controller {
 
 
 	/**
-	 * @param dataInicial the dataInicial to set
-	 */
-	public void setDataInicial(String dataInicial) {
-		this.dataInicial = dataInicial;
-	}
-
-
-	/**
+	 * Acesso ao atributo dataFinal
 	 * @return the dataFinal
 	 */
 	public String getDataFinal() {
 		return dataFinal;
 	}
-
-
+	
 	/**
-	 * @param dataFinal the dataFinal to set
-	 */
-	public void setDataFinal(String dataFinal) {
-		this.dataFinal = dataFinal;
-	}
-
-
-	/**
+	 * Acesso ao atributo distancia
 	 * @return the distancia
 	 */
-	public float getDistancia() {
+	public double getDistancia() {
 		return distancia;
 	}
 
 
 	/**
-	 * @param distancia the distancia to set
-	 */
-	public void setDistancia(float distancia) {
-		this.distancia = distancia;
-	}
-
-
-	/**
+	 * Acesso ao atributo tsv
 	 * @return the tsv
 	 */
 	public boolean isTsv() {
@@ -136,15 +120,9 @@ public class Controller {
 	}
 
 
-	/**
-	 * @param tsv the tsv to set
-	 */
-	public void setTsv(boolean tsv) {
-		this.tsv = tsv;
-	}
-
 
 	/**
+	 * Acesso ao atributo csv
 	 * @return the csv
 	 */
 	public boolean isCsv() {
@@ -153,14 +131,7 @@ public class Controller {
 
 
 	/**
-	 * @param csv the csv to set
-	 */
-	public void setCsv(boolean csv) {
-		this.csv = csv;
-	}
-
-
-	/**
+	 * Acesso ao atributo maiorMortalidade
 	 * @return the maiorMortalidade
 	 */
 	public boolean isMaiorMortalidade() {
@@ -169,42 +140,19 @@ public class Controller {
 
 
 	/**
-	 * @param maiorMortalidade the maiorMortalidade to set
-	 */
-	public void setMaiorMortalidade(boolean maiorMortalidade) {
-		this.maiorMortalidade = maiorMortalidade;
-	}
-
-
-	/**
+	 * Acesso ao atributo opcoesListaNumeros
 	 * @return the opcoesListaNumeros
 	 */
 	public char getOpcoesListaNumeros() {
 		return opcoesListaNumeros;
 	}
 
-
 	/**
-	 * @param opcoesListaNumeros the opcoesListaNumeros to set
-	 */
-	public void setOpcoesListaNumeros(char opcoesListaNumeros) {
-		this.opcoesListaNumeros = opcoesListaNumeros;
-	}
-
-
-	/**
+	 * Acesso ao atributo opcoesListaCrescimento
 	 * @return the opcoesListaCrescimento
 	 */
 	public char getOpcoesListaCrescimento() {
 		return opcoesListaCrescimento;
 	}
 
-
-	/**
-	 * @param opcoesListaCrescimento the opcoesListaCrescimento to set
-	 */
-	public void setOpcoesListaCrescimento(char opcoesListaCrescimento) {
-		this.opcoesListaCrescimento = opcoesListaCrescimento;
-	}
-	
 }

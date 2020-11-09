@@ -6,15 +6,8 @@ import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
@@ -54,9 +47,6 @@ public class DadosApi extends Estatistica{
 		
 		boolean tsv = requisicao.isTsv();
 		boolean csv = requisicao.isCsv();
-		boolean mortalidade = requisicao.isMaiorMortalidade();
-		
-		float raio = requisicao.getDistancia();
 		
 		char maiorNumero = requisicao.getOpcoesListaNumeros();
 		
@@ -173,16 +163,6 @@ public class DadosApi extends Estatistica{
 			break;
 		}
 		
-		
-		if (mortalidade) {
-			v.printOutput(super.rankingMortalidade(tsv, csv));
-			super.restart();
-		}
-		
-		if (raio > 0) {
-			v.printOutput(super.distanciaKm(raio));
-			super.restart();
-		}
 
 	}
 	
@@ -222,7 +202,6 @@ public class DadosApi extends Estatistica{
 		        HttpRequest hRequest = HttpRequest.newBuilder()
 		        .uri(URI.create("https://api.covid19api.com/summary"))
 		        .build();
-		        
 		        
 		        try {
 		            HttpResponse<String> resposta = cliente.send(hRequest, HttpResponse.BodyHandlers.ofString());

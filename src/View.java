@@ -230,7 +230,6 @@ public class View{
 		readRegistrosName(listModel);
 		JList<String> listSessions = new JList<String>(listModel);
 		listSessions.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		//listSessions.setBounds(10, 48, 155, 94);
 		//Scrollbar
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 45, 155, 91);
