@@ -5,6 +5,7 @@ import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
@@ -47,7 +48,7 @@ public class DadosApi extends Estatistica{
 		//exemplo de link para peguar todos os rankings necessários:
 		//https://api.covid19api.com/country/south-africa?from=2020-06-01T00:00:00Z&to=2020-06-01T00:00:01Z
 		
-		getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:01Z");
+		getDadosByDate(dataInicial, dataFinal);
 		//getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
 		super.copy(); //Copia medidas realizadas
 		
@@ -174,26 +175,6 @@ public class DadosApi extends Estatistica{
 	
 	
 	
-	/**
-	 * Pega todos os casos, mortes e recuperados para todos os paises no intervalo dado
-	 * @param dateStart primeira data
-	 * @param dateEnd segunda data
-	 */
-	public void getDadosByDate(String dateStart, String dateEnd) {
-		int count = 0;
-		for (String key : this.paises.keySet()) {
-			
-			String strPais = this.paises.get(key).getSlug();
-			Pais pais = this.paises.get(key);
-			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "&to=" + dateEnd;
-			getDadosPais(link,pais);
-			count++;
-			if(count == 3) {
-				break;
-			}
-		}
-	}
-	
 	
 	/**
      * Leitura inicial do banco de dados da covid 19, pela covid19api.com 
@@ -242,25 +223,59 @@ public class DadosApi extends Estatistica{
 		        }
 	}
 	
+
+	/**
+	 * Pega todos os casos, mortes e recuperados para todos os paises no intervalo dado
+	 * @param dateStart primeira data
+	 * @param dateEnd segunda data
+	 */
+	public void getDadosByDate(String dateStart, String dateEnd) {
+		// + "T00:00:00Z"
+		// + "T00:00:01Z"
+		int count = 0;
+		for (String key : this.paises.keySet()) {
+			String strPais = this.paises.get(key).getSlug();
+			Pais pais = this.paises.get(key);
+			
+			//https://api.covid19api.com/country/south-africa/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00ZS
+			String linkInicial = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" +
+			dateStart + "T00:00:00Z&to=" + dateStart + "T00:00:01Z";
+			String linkFinal = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" +
+			dateStart + "T00:00:00Z&to=" + dateEnd + "T00:00:01Z";
+			getDadosPais(linkInicial, linkFinal,pais);
+			count++;
+			if(count == 3) {
+				break;
+			}
+		}
+	}
+	
+	
 	
 	/**
 	 * Pega dados de todos os casos, recuperados e mortos da API
 	 * @param link 
+	 * @param linkFinal 
 	 * @param pais
 	 */
-	private void getDadosPais(String link, Pais pais) {
+	private void getDadosPais(String linkInicial, String linkFinal, Pais pais) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
 		        .version(Version.HTTP_2)
 		        .followRedirects(Redirect.ALWAYS)
 		        .build();
 		        
-		        HttpRequest requisicao = HttpRequest.newBuilder()
-		        .uri(URI.create(link))
+				//requisção para o primeiro valor
+		        HttpRequest requisicaoDataInicial = HttpRequest.newBuilder()
+		        .uri(URI.create(linkInicial))
 		        .build();
+		        //requisição para o segundo valor
+		        HttpRequest requisicaoDataFinal = HttpRequest.newBuilder()
+				        .uri(URI.create(linkFinal))
+				        .build();
 		        
 		        try {
-		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
+		            HttpResponse<String> resposta = cliente.send(requisicaoDataInicial, HttpResponse.BodyHandlers.ofString());
 		            
 		           
 		           
