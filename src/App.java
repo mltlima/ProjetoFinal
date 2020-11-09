@@ -34,7 +34,7 @@ public class App {
 	// Testnando UTF8 ãñóõòáÀàü
     public static void main( String[] args ) throws ParseException{    
         
-/*
+
         
         new View();
 
@@ -48,8 +48,8 @@ public class App {
 				}
 			}
 		});
-        */
-     
+        
+     /*
     DadosApi teste = new DadosApi();
     teste.start();
     teste.copy();
@@ -61,6 +61,7 @@ public class App {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}*/
+        
     }
 
 	public static void topNumeros(char opcoes, boolean tsv, boolean csv, String dataInicial, String dataFinal) {

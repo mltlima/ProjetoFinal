@@ -1,6 +1,9 @@
 import java.util.List;
 
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 	/**
 	 * Cada Controller representa uma requisição do usuário.
 	 * Excplore seus getters para ver as diretamente as opções escolhidas no menu.
@@ -34,7 +37,7 @@ public class Controller {
 			msgBox("Data inicial não é válida.");
 		}
 		if(UDF.isDateValid(v.getDataFinal())) {
-			this.dataFinal = dataFinal;
+			this.dataFinal = v.getDataFinal();
 		}else{
 			msgBox("Data final não é válida.");
 		}
@@ -49,10 +52,32 @@ public class Controller {
 		this.maiorMortalidade = v.getCheckCSV();
 		this.opcoesListaNumeros = v.getOpcoesListNumbers();
 		this.opcoesListaCrescimento = v.getOpcoesListGrowth();
+		
+		DadosApi dados = new DadosApi();
+		dados.start(this, v);
 	}
 	
 	private static void msgBox(String s) {
 		JOptionPane.showMessageDialog(null, s, "Error", JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public void output(List<String> output) {
+		
+			
+			
+			   JScrollPane scrollpane = new JScrollPane(); 
+			  
+			   JList list = new JList(output.toArray());
+			
+			   scrollpane = new JScrollPane(list);
+			
+			   JPanel panel = new JPanel(); 
+			   panel.add(scrollpane);
+			
+			   scrollpane.getViewport().add(list);
+			   JOptionPane.showMessageDialog(null, scrollpane, "Output",  
+			   JOptionPane.PLAIN_MESSAGE);
+			
 	}
 
 	/**
@@ -181,4 +206,5 @@ public class Controller {
 	public void setOpcoesListaCrescimento(char opcoesListaCrescimento) {
 		this.opcoesListaCrescimento = opcoesListaCrescimento;
 	}
+	
 }

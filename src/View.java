@@ -431,6 +431,28 @@ public class View{
 					+ "das sessões e portanto as sessões não foram apresentadas");
 		}
 	}
+	
+	//Resultado pesquisa
+	public void printOutput(List<String> output) {
+		
+		
+		   JScrollPane scrollpane = new JScrollPane(); 
+		  
+		   JList lista = new JList(output.toArray());
+		
+		   scrollpane = new JScrollPane(lista);
+		
+		   JPanel panel = new JPanel(); 
+		   panel.add(scrollpane);
+		
+		   scrollpane.getViewport().add(lista);
+		   JOptionPane.showMessageDialog(null, scrollpane, "Output",  
+		   JOptionPane.PLAIN_MESSAGE);
+		}
+	
+	
+	
+	
 	//Checa se o usuário está sobrescrevendo uma linha, e deleta essa linha 
 	private static boolean isOverwritingLine(String sessionName) {
 		//Cria novo arquivo sem a linha selecionada. Processo lento, mas feito mais rápido com os buffers

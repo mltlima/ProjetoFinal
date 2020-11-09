@@ -5,12 +5,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 public abstract class Estatistica {
 	
 	private String nome;
 	private List<Medicao> observacoes  = new ArrayList<Medicao>();
 	private float valor;
 	private List<Medicao> copiaObservacoes;
+	
 	
 	
 	
@@ -86,19 +92,23 @@ public abstract class Estatistica {
 	 * Organiza lista com medicoes do maior numero de casos ao menor
 	 * @param status
 	 */
-	public void rankingNumerico(StatusCaso status) {
+	public List<String> rankingNumerico(StatusCaso status) {
 		
 		// organiza do menor ao maior
 		Collections.sort(this.observacoes, new medicaoComparator());
 		// inverte a ordem
 		Collections.reverse(this.observacoes);
+		List<String> output = new ArrayList<>();
+		
 		for (Medicao medicao : observacoes) {
-			//Printa taxa maior que 0
+			
 			if (medicao.getStatus().equals(status)) {
-				System.out.println(medicao.getPais().getSlug());
-				System.out.println(medicao.getCasos());
+				String str = medicao.getPais().getSlug() + " " + medicao.getCasos();
+				output.add(str);
 			}
 		}
+		return output;
+		
 	}
 	
 	
@@ -110,7 +120,7 @@ public abstract class Estatistica {
 	 * para calcular a taxa de crescimento
 	 * @param status tipo de medicao confirmados, recuperados ou mortos
 	 */
-	public void rankingCrescimento(StatusCaso status) {
+	public List<String> rankingCrescimento(StatusCaso status) {
 		
 		float temp = 0;
 		
@@ -138,15 +148,17 @@ public abstract class Estatistica {
 		
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
-		//teste taxa
-		/*
+		
+		List<String> output = new ArrayList<>();
+		
 		for (Medicao medicao : observacoes) {
 			//Printa taxa maior que 0
 			if (medicao.valor() > 0) {
-				System.out.println(medicao.valor());
-				System.out.println(medicao.getPais().getSlug());
+				String str = medicao.getPais().getSlug() + " " + medicao.valor();
+				output.add(str);
 			}
-		}*/
+		}
+		return output;
 	}
 	
 	
@@ -211,7 +223,10 @@ public abstract class Estatistica {
 	
 	
 	
-	
+	/**
+	 * Compara distancia em km
+	 * @param raio de pesquisa
+	 */
 	public void distanciaKm(float raio) {
 		
 		//organiza lista por casos confirmados

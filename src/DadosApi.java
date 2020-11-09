@@ -6,9 +6,16 @@ import java.net.http.HttpResponse;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
 
@@ -27,20 +34,139 @@ public class DadosApi extends Estatistica{
 	private LinkedHashMap<String,Pais> paises = new LinkedHashMap<>();
 	
 	
-	
 	/**
 	 * O controller já validou os dados. 
 	 * Essa função calcula o caminho mais eficiente 
 	 * para pegar os dados da API
 	 * @param requisicao A requisição de dados que veio do usuário
 	 */
-//	public void start(Controller requisicao) {//requição de dados
-	public void start() {
+	public void start(Controller requisicao, View v) {//requição de dados
 		//Calculcar qual pesquisa deve ser feita aqui
 		//De preferência alguma que não exploda a API
+		String parts[] = requisicao.getDataInicial().split("-");
+		String parts2[] = requisicao.getDataFinal().split("-");
+		String dataInicial = parts[2] + "-" + parts[1] + "-" + parts[0];
+		String dataFinal = parts2[2] + "-" + parts2[1] + "-" + parts2[0];
 		
 		readApi();
-		getDadosByDate("2020-08-01T00:00:00Z","2020-08-30T00:00:00Z");
+		getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
+		super.copy(); //Copia medidas realizadas
+		
+		char maiorNumero = requisicao.getOpcoesListaNumeros();
+		
+		switch (maiorNumero) {
+		case 1:
+
+			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			super.restart();
+			break;
+			
+		case 2:
+			
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			super.restart();
+			break;
+			
+		case 3:
+			
+			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			super.restart();
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			super.restart();
+			break;
+			
+		case 4:
+			
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+		
+		case 5:
+			
+			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			super.restart();
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+			
+		case 6:
+			
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			super.restart();
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+			
+		case 7:
+			
+			v.printOutput(super.rankingNumerico(StatusCaso.COMFIRMADOS));
+			super.restart();
+			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS));
+			super.restart();
+			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+		}
+		
+		
+		
+		char maiorCrescimento = requisicao.getOpcoesListaCrescimento();
+		
+		
+		switch (maiorCrescimento) {
+		case 1:
+
+			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			super.restart();
+			break;
+			
+		case 2:
+			
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			super.restart();
+			break;
+			
+		case 3:
+			
+			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			super.restart();
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			super.restart();
+			break;
+			
+		case 4:
+			
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+		
+		case 5:
+			
+			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			super.restart();
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+			
+		case 6:
+			
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			super.restart();
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+			
+		case 7:
+			
+			v.printOutput(super.rankingCrescimento(StatusCaso.COMFIRMADOS));
+			super.restart();
+			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS));
+			super.restart();
+			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS));
+			super.restart();
+			break;
+		}
+		
 
 	}
 	
@@ -132,7 +258,7 @@ public class DadosApi extends Estatistica{
 		        try {
 		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
 
-		            
+		           
 		           
 		            JsonArray paisArray =  JsonParser.parseString(resposta.body()).getAsJsonArray();
 					
@@ -142,60 +268,64 @@ public class DadosApi extends Estatistica{
 					
 						
 					    String strDados = dados.toString();
-					    //System.out.println(strDados);
+					    
+					    
 					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
+					    
+					  
 					    
 					    String province = info.get("Province").toString().replace("\"", "");
 					    
+					    
 					    //Pula dados se nao for dado geral do pais
-					    if (!province.isBlank()) {
-							return;
-						}
-					    
-					    //Gera uma nova medicao para guardar os dados
-						Medicao medicao = new Medicao();
-						super.inclui(medicao);
-						medicao.setPais(pais);
+					    if (province.isBlank()) {
+							
 						
-						
-					    float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
-					    pais.setLatitude(latitude);
-					    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
-					    pais.setLongitude(longitude);
 					    
-					    //int casos = Integer.parseInt(info.get("Cases").toString().replace("\"", ""));
-					    LocalDateTime data = converterData(info.get("Date").toString().replace("\"", ""));
-					    //String status = info.get("Status").getAsString().replace("\"", "");
+						    //Gera uma nova medicao para guardar os dados
+							Medicao medicao = new Medicao();
+							super.inclui(medicao);
+							medicao.setPais(pais);
+							
+							
+						    float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
+						    pais.setLatitude(latitude);
+						    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
+						    pais.setLongitude(longitude);
+						    
+						    
+						    LocalDateTime data = converterData(info.get("Date").toString().replace("\"", ""));
+						    
+						    
+						    
+						    //Medicao para casos confirmadados
+						    int confirmed = Integer.parseInt(info.get("Confirmed").getAsString().replace("\"", ""));
+						    medicao.setStatus(StatusCaso.COMFIRMADOS);
+						    medicao.setCasos(confirmed);
+						    medicao.setMomento(data);
+						    
+						    
+						    
+						    //Nova medicao para mortes
+						    Medicao medicao2 = new Medicao();
+							super.inclui(medicao2);
+							medicao2.setPais(pais);
+						    int deaths = Integer.parseInt(info.get("Deaths").getAsString().replace("\"", ""));
+						    medicao2.setStatus(StatusCaso.MORTOS);
+						    medicao2.setCasos(deaths);
+						    medicao2.setMomento(data);
+						    
+						    
+						    //Nova medicao para Recuperados
+						    Medicao medicao3 = new Medicao();
+							super.inclui(medicao3);
+							medicao3.setPais(pais);
+							int recovered = Integer.parseInt(info.get("Recovered").getAsString().replace("\"", ""));
+						    medicao3.setStatus(StatusCaso.RECUPERADOS);
+						    medicao3.setCasos(recovered);
+						    medicao3.setMomento(data);
 					    
-					    
-					    //Medicao para casos confirmadados
-					    int confirmed = Integer.parseInt(info.get("Confirmed").getAsString().replace("\"", ""));
-					    medicao.setStatus(StatusCaso.COMFIRMADOS);
-					    medicao.setCasos(confirmed);
-					    medicao.setMomento(data);
-					    
-					    
-					    
-					    //Nova medicao para mortes
-					    Medicao medicao2 = new Medicao();
-						super.inclui(medicao2);
-						medicao2.setPais(pais);
-					    int deaths = Integer.parseInt(info.get("Deaths").getAsString().replace("\"", ""));
-					    medicao2.setStatus(StatusCaso.MORTOS);
-					    medicao2.setCasos(deaths);
-					    medicao2.setMomento(data);
-					    
-					    
-					    //Nova medicao para Recuperados
-					    Medicao medicao3 = new Medicao();
-						super.inclui(medicao3);
-						medicao3.setPais(pais);
-						int recovered = Integer.parseInt(info.get("Recovered").getAsString().replace("\"", ""));
-					    medicao3.setStatus(StatusCaso.RECUPERADOS);
-					    medicao3.setCasos(recovered);
-					    medicao3.setMomento(data);
-					    
-					    
+					    }
 					    /*
 					    String name = info.get("Country").toString();
 					    String province = info.get("Province").toString().replace("\"", "");
@@ -220,51 +350,6 @@ public class DadosApi extends Estatistica{
 		            e.printStackTrace();
 		        }
 	}
-	
-	
-	
-			
-	//Teste
-	public void consultaDadosApi() {
-			//String slug, String status, String data
-//			String parts[] = data.split("T");
-//			//Adiciona 1 hora a data
-//			String dataMaisUm = parts[0] + "T01:00:00Z";
-//			data = data + ":00Z";
-			String link =  "https://api.covid19api.com/world?from=2020-09-01T00:00:00Z&to=2020-09-08T00:00:00Z" ;
-	
-	
-			HttpClient cliente = HttpClient.newBuilder()
-			        .version(Version.HTTP_2)
-			        .followRedirects(Redirect.ALWAYS)
-			        .build();
-			        
-			        HttpRequest requisicao = HttpRequest.newBuilder()
-			        .uri(URI.create(link))
-			        .build();
-			        
-			        try {
-			            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
-	
-			            
-			            JsonArray dadosArray =  JsonParser.parseString(resposta.body()).getAsJsonArray();
-			            System.out.println(dadosArray);
-			            
-			            JsonObject dados =  dadosArray.get(0).getAsJsonObject();
-			            
-			     
-			            
-						
-			        } catch (IOException e) {
-			            System.err.println("Problema com a conex�o");
-			            e.printStackTrace();
-			        } catch (InterruptedException e) {
-			            System.err.println("Requisi��o interrompida");
-			            e.printStackTrace();
-			        }
-			        
-			        
-		}
 	
 	
 	
