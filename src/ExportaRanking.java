@@ -156,7 +156,7 @@ public class ExportaRanking {
 	}
 	
 	
-	public void exportaLocal(boolean csv, boolean tsv, List<Medicao> ranking, Pais pais) {
+	public void exportaLocal(boolean csv, boolean tsv, List<Pais> ranking, Pais pais) {
 		
 		String nomePais = pais.getNome();
 		float lat = pais.getLatitude();
@@ -171,9 +171,9 @@ public class ExportaRanking {
 				pw.println("País"+"	"+"Próximos"+"	"+"Distância");
 				pw.println("nomePais");
 				for (int i=0; i<ranking.size(); i++) {
-					String paises = ranking.get(i).getPais().getNome();
-					float lat2 = ranking.get(i).getPais().getLatitude();
-					float lon2 = ranking.get(i).getPais().getLongitude();
+					String paises = ranking.get(i).getNome();
+					float lat2 = ranking.get(i).getLatitude();
+					float lon2 = ranking.get(i).getLongitude();
 					float distancia = haversine(lat,lon,lat2,lon2);
 					pw.println("	"+paises+"	"+distancia);
 				}
@@ -192,9 +192,9 @@ public class ExportaRanking {
 				pw.println("País"+","+"Próximos"+","+"Distância");
 				pw.println("nomePais");
 				for (int i=0; i<ranking.size(); i++) {
-					String paises = ranking.get(i).getPais().getNome();
-					float lat2 = ranking.get(i).getPais().getLatitude();
-					float lon2 = ranking.get(i).getPais().getLongitude();
+					String paises = ranking.get(i).getNome();
+					float lat2 = ranking.get(i).getLatitude();
+					float lon2 = ranking.get(i).getLongitude();
 					float distancia = haversine(lat,lon,lat2,lon2);
 					pw.println(","+paises+","+distancia);
 				}
