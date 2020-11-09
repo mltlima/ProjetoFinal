@@ -32,21 +32,25 @@ public class Controller {
 	 * @param opcoesListaCrescimento
 	 */
 	public Controller(View v) {
+		boolean isValid = true;
 		if(UDF.isDateValid(v.getDataInicial())) {
 			this.dataInicial = v.getDataInicial();
 		}else {
 			msgBox("Data inicial não é válida.");
+			isValid = false;
 		}
 		if(UDF.isDateValid(v.getDataFinal())) {
 			this.dataFinal = v.getDataFinal();
 		}else{
 			msgBox("Data final não é válida.");
+			isValid = false;
 		}
 		if(!v.getKm().equals("")) {
 			if(UDF.isFloat(v.getKm())) {
 				this.distancia = Float.parseFloat(v.getKm());
 			}else {
 				msgBox("Distância não é válida");
+				isValid = false;
 			}
 		}else {
 			this.distancia = -1;
@@ -57,9 +61,10 @@ public class Controller {
 		this.maiorMortalidade = v.getCheckCSV();
 		this.opcoesListaNumeros = v.getOpcoesListNumbers();
 		this.opcoesListaCrescimento = v.getOpcoesListGrowth();
-		
-		DadosApi dados = new DadosApi();
-		dados.start(this, v);
+		if(isValid) {
+			DadosApi dados = new DadosApi();
+			dados.start(this, v);
+		}
 	}
 	
 	private static void msgBox(String s) {
