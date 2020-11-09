@@ -440,10 +440,10 @@ public class View{
 		   JList lista = new JList(output.toArray());
 		
 		   scrollpane = new JScrollPane(lista);
-		
+		   scrollpane.setBounds(10, 45, 155, 300);
 		   JPanel panel = new JPanel(); 
 		   panel.add(scrollpane);
-		
+		   
 		   scrollpane.getViewport().add(lista);
 		   JOptionPane.showMessageDialog(null, scrollpane, "Output",  
 		   JOptionPane.PLAIN_MESSAGE);

@@ -42,7 +42,13 @@ public class DadosApi extends Estatistica{
 		String dataFinal = parts2[2] + "-" + parts2[1] + "-" + parts2[0];
 		
 		readApi();
-		getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
+		
+		
+		//exemplo de link para peguar todos os rankings necessários:
+		//https://api.covid19api.com/country/south-africa?from=2020-06-01T00:00:00Z&to=2020-06-01T00:00:01Z
+		
+		getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:01Z");
+		//getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
 		super.copy(); //Copia medidas realizadas
 		
 		boolean tsv = requisicao.isTsv();
@@ -174,14 +180,17 @@ public class DadosApi extends Estatistica{
 	 * @param dateEnd segunda data
 	 */
 	public void getDadosByDate(String dateStart, String dateEnd) {
-		
+		int count = 0;
 		for (String key : this.paises.keySet()) {
 			
 			String strPais = this.paises.get(key).getSlug();
 			Pais pais = this.paises.get(key);
 			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "&to=" + dateEnd;
 			getDadosPais(link,pais);
-
+			count++;
+			if(count == 3) {
+				break;
+			}
 		}
 	}
 	
@@ -200,7 +209,7 @@ public class DadosApi extends Estatistica{
 		        .build();
 		        
 		        HttpRequest hRequest = HttpRequest.newBuilder()
-		        .uri(URI.create("https://api.covid19api.com/summary"))
+		        .uri(URI.create("https://api.covid19api.com/countries"))
 		        .build();
 		        
 		        try {
@@ -216,11 +225,11 @@ public class DadosApi extends Estatistica{
 					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
 					    
 					    String nome = info.get("Country").toString();
-					    String codigo = info.get("CountryCode").toString();
+					    //ISO2 = código com 2 letras apenas
+					    String codigo = info.get("ISO2").toString();
 					    String slug = info.get("Slug").toString();
-					    
+					    //System.out.println(slug);
 					    Pais pais = new Pais(nome,codigo,slug);
-					    
 					    this.paises.put(nome, pais);
 					}   
 					
@@ -252,7 +261,7 @@ public class DadosApi extends Estatistica{
 		        
 		        try {
 		            HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
-
+		            
 		           
 		           
 		            JsonArray paisArray =  JsonParser.parseString(resposta.body()).getAsJsonArray();
@@ -280,6 +289,7 @@ public class DadosApi extends Estatistica{
 						
 					    
 						    //Gera uma nova medicao para guardar os dados
+					    	//
 							Medicao medicao = new Medicao();
 							super.inclui(medicao);
 							medicao.setPais(pais);
