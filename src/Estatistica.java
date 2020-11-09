@@ -244,7 +244,7 @@ public abstract class Estatistica {
 	 * Compara distancia em km
 	 * @param raio de pesquisa
 	 */
-	public void distanciaKm(float raio) {
+	public void distanciaKm(float raio, boolean tsv, boolean csv) {
 		
 		//organiza lista por casos confirmados
 		rankingCrescimento(StatusCaso.CONFIRMADOS,false,false);
@@ -257,6 +257,7 @@ public abstract class Estatistica {
 		String temp = null;
 		System.out.println("\n\n" + pais + "\n\n");
 		
+		List<Pais> ranking = new ArrayList<Pais>();
 		for (Medicao medicao : copiaObservacoes) {
 			
 			float lat2 = medicao.getPais().getLatitude();
@@ -270,9 +271,15 @@ public abstract class Estatistica {
 				System.out.println(pais2);
 				System.out.println(distancia);
 				temp = pais2;
+				ranking.add(medicao.getPais());
 			}
 		}
 		
+		if (tsv || csv) {
+			ExportaRanking er = new ExportaRanking();
+			er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
+		}
+				
 	}
 	
 	
