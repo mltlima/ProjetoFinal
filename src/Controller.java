@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 public class Controller {
 	private String dataInicial;
 	private String dataFinal;
-	private double distancia;
+	private float distancia;
 	private boolean tsv;
 	private boolean csv;
 	private boolean maiorMortalidade;
@@ -42,7 +42,7 @@ public class Controller {
 			msgBox("Data final não é válida.");
 		}
 		if(UDF.isFloat(v.getKm())) {
-			this.distancia = distancia;
+			this.distancia = Float.parseFloat(v.getKm());
 		}else {
 			msgBox("Distância não é válida");
 		}
@@ -115,7 +115,7 @@ public class Controller {
 	/**
 	 * @return the distancia
 	 */
-	public double getDistancia() {
+	public float getDistancia() {
 		return distancia;
 	}
 
@@ -123,7 +123,7 @@ public class Controller {
 	/**
 	 * @param distancia the distancia to set
 	 */
-	public void setDistancia(double distancia) {
+	public void setDistancia(float distancia) {
 		this.distancia = distancia;
 	}
 

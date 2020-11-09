@@ -75,18 +75,6 @@ public abstract class Estatistica {
 	
 	
 	
-	// deletar apos testes
-	public void test() {
-		for (Medicao medicao : observacoes) {
-			
-			
-				System.out.println(medicao.getStatus() + "  " + medicao.getCasos());
-				System.out.println(medicao.getPais().getSlug());
-			
-		}
-	}
-	
-	
 	
 	/**
 	 * Organiza lista com medicoes do maior numero de casos ao menor
@@ -137,7 +125,7 @@ public abstract class Estatistica {
 				
 				if (medicao.getMomento().equals(dataInicio())) {
 					temp = medicao.getCasos();
-					//System.out.println(temp);
+					
 				}
 				if (medicao.getMomento().equals(dataFim())) {
 					//Passa o valor da taxa para a ultima data
@@ -183,7 +171,7 @@ public abstract class Estatistica {
 	/**
 	 * Organiza paises pela maior taxa de mortalidade
 	 */
-	public void rankingMortalidade(boolean tsv, boolean csv) {
+	public List<String> rankingMortalidade(boolean tsv, boolean csv) {
 		
 		float temp = 0;
 		int casosInicio = 0;
@@ -213,7 +201,7 @@ public abstract class Estatistica {
 					} else {
 						if (temp != 0) {
 							medicao.setValor((medicao.getCasos() - temp) * 1.0f / (casosFim - casosInicio));	
-							System.out.println(medicao.valor());
+							
 						} else {
 							medicao.setValor((medicao.getCasos() - 1) * 1.0f / (casosFim - casosInicio));
 						}
@@ -226,19 +214,21 @@ public abstract class Estatistica {
 		}
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
-		//teste taxa
+		
+		List<String> output = new ArrayList<>();
+		
 		for (Medicao medicao : observacoes) {
-			//Printa taxa maior que 0
-			if (medicao.valor() > 0) {
-				System.out.println(medicao.valor());
-				System.out.println(medicao.getPais().getSlug());
-			}
+			
+			String str = medicao.getPais().getSlug() + " " + medicao.valor();
+			output.add(str);
 		}
 		
 		if (tsv || csv) {
 			ExportaRanking er = new ExportaRanking();
 			er.exportaMortalidade(csv, tsv, this.observacoes);
 		}
+		
+		return output;
 	}
 	
 	
@@ -247,7 +237,7 @@ public abstract class Estatistica {
 	 * Compara distancia em km
 	 * @param raio de pesquisa
 	 */
-	public void distanciaKm(float raio) {
+	public List<String> distanciaKm(float raio) {
 		
 		//organiza lista por casos confirmados
 		rankingCrescimento(StatusCaso.CONFIRMADOS,false,false);
@@ -258,7 +248,8 @@ public abstract class Estatistica {
 		
 		String pais = this.observacoes.get(0).getPais().getNome();
 		String temp = null;
-		System.out.println("\n\n" + pais + "\n\n");
+		
+		List<String> output = new ArrayList<>();
 		
 		for (Medicao medicao : copiaObservacoes) {
 			
@@ -270,11 +261,13 @@ public abstract class Estatistica {
 			String pais2 = medicao.getPais().getNome();
 			
 			if (distancia <= raio && !pais.equals(pais2) && !pais2.equals(temp)) {
-				System.out.println(pais2);
-				System.out.println(distancia);
+				String str = pais2 + " " + distancia;
+				output.add(str);
 				temp = pais2;
 			}
 		}
+		
+		return output;
 		
 	}
 	
@@ -288,7 +281,7 @@ public abstract class Estatistica {
 	 * @param longitude2
 	 * @return distancia em km entre os dois pontos
 	 */
-	public float haversine(float latitude1, float longitude1, float latitude2, float longitude2) {
+	private float haversine(float latitude1, float longitude1, float latitude2, float longitude2) {
 		//Raio da terra em km
 		double raio = 6372.8;
 		

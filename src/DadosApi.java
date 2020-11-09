@@ -54,6 +54,9 @@ public class DadosApi extends Estatistica{
 		
 		boolean tsv = requisicao.isTsv();
 		boolean csv = requisicao.isCsv();
+		boolean mortalidade = requisicao.isMaiorMortalidade();
+		
+		float raio = requisicao.getDistancia();
 		
 		char maiorNumero = requisicao.getOpcoesListaNumeros();
 		
@@ -170,6 +173,16 @@ public class DadosApi extends Estatistica{
 			break;
 		}
 		
+		
+		if (mortalidade) {
+			v.printOutput(super.rankingMortalidade(tsv, csv));
+			super.restart();
+		}
+		
+		if (raio > 0) {
+			v.printOutput(super.distanciaKm(raio));
+			super.restart();
+		}
 
 	}
 	
