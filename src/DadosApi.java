@@ -19,7 +19,7 @@ import com.google.gson.JsonParser;
 
 /**
  * 
- * @author Miguel
+ * @author Miguel, João
  *
  */
 public class DadosApi extends Estatistica{
@@ -35,7 +35,8 @@ public class DadosApi extends Estatistica{
 	 * @param requisicao A requisição de dados que veio do usuário
 	 */
 	public void start(Controller requisicao, View v) {//requição de dados
-		//Calculcar qual pesquisa deve ser feita aqui
+		//Miguel, calcule qual pesquise deve ser feita. Mas preste atenção no uso de dados
+		//Não precisamos de todas as datas, apenas o final e o inicio dos rankings
 		//De preferência alguma que não exploda a API
 		String parts[] = requisicao.getDataInicial().split("-");
 		String parts2[] = requisicao.getDataFinal().split("-");
@@ -230,21 +231,20 @@ public class DadosApi extends Estatistica{
 	 * @param dateEnd segunda data
 	 */
 	public void getDadosByDate(String dateStart, String dateEnd) {
-		// + "T00:00:00Z"
-		// + "T00:00:01Z"
 		int count = 0;
 		for (String key : this.paises.keySet()) {
 			String strPais = this.paises.get(key).getSlug();
 			Pais pais = this.paises.get(key);
 			
-			//https://api.covid19api.com/country/south-africa/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00ZS
+			//link de exemplo:
+			//https://api.covid19api.com/country/south-africa?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z
 			String linkInicial = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" +
 			dateStart + "T00:00:00Z&to=" + dateStart + "T00:00:01Z";
 			String linkFinal = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" +
 			dateStart + "T00:00:00Z&to=" + dateEnd + "T00:00:01Z";
 			getDadosPais(linkInicial, linkFinal,pais);
 			count++;
-			if(count == 3) {
+			if(count == 3) { //desative isso, para pegar os outros países
 				break;
 			}
 		}
@@ -265,63 +265,53 @@ public class DadosApi extends Estatistica{
 		        .followRedirects(Redirect.ALWAYS)
 		        .build();
 		        
-				//requisção para o primeiro valor
+				//requisção para o valor na data inicial
 		        HttpRequest requisicaoDataInicial = HttpRequest.newBuilder()
 		        .uri(URI.create(linkInicial))
 		        .build();
-		        //requisição para o segundo valor
+		        //requisição para o valor na data final
 		        HttpRequest requisicaoDataFinal = HttpRequest.newBuilder()
 				        .uri(URI.create(linkFinal))
 				        .build();
 		        
 		        try {
-		            HttpResponse<String> resposta = cliente.send(requisicaoDataInicial, HttpResponse.BodyHandlers.ofString());
-		            
+		            HttpResponse<String> respostaInicial = cliente.send(requisicaoDataInicial, HttpResponse.BodyHandlers.ofString());
+		            HttpResponse<String> respostaFinal = cliente.send(requisicaoDataInicial, HttpResponse.BodyHandlers.ofString());
 		           
-		           
-		            JsonArray paisArray =  JsonParser.parseString(resposta.body()).getAsJsonArray();
-					
+		            JsonArray arrayInicial =  JsonParser.parseString(respostaInicial.body()).getAsJsonArray();
+		            JsonArray arrayFinal =  JsonParser.parseString(respostaFinal.body()).getAsJsonArray();
 		     
 		      
-					for (Object dados : paisArray) {
+					for (Object dados : arrayInicial) {
 					
-						
-					    String strDados = dados.toString();
-					    
-					    
+						//coloca os dados numa string
+					    String strDados = dados.toString();										
+					    //coloca a string como json, para ler mais facilmente com o get("atributo")
+					    JsonObject infoInicial = JsonParser.parseString(strDados).getAsJsonObject();	
 
-					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
-
-					    
-					  
-					    
-					    String province = info.get("Province").toString().replace("\"", "");
-					    
+					    //Miguel, a variável infoFinal precisa ser feita ainda
 					    
 					    //Pula dados se nao for dado geral do pais
-					    if (province.isBlank()) {
-							
-						
+					    if (infoInicial.get("Province").toString().replace("\"", "").isBlank()) {
 					    
 						    //Gera uma nova medicao para guardar os dados
-					    	//
 							Medicao medicao = new Medicao();
 							super.inclui(medicao);
 							medicao.setPais(pais);
 							
 							
-						    float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
+						    float latitude = Float.parseFloat(infoInicial.get("Lat").toString().replace("\"", ""));
 						    pais.setLatitude(latitude);
-						    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
+						    float longitude = Float.parseFloat(infoInicial.get("Lon").toString().replace("\"", ""));
 						    pais.setLongitude(longitude);
 						    
 						    
-						    LocalDateTime data = converterData(info.get("Date").toString().replace("\"", ""));
+						    LocalDateTime data = converterData(infoInicial.get("Date").toString().replace("\"", ""));
 						    
 						    
 						    
 						    //Medicao para casos confirmadados
-						    int confirmed = Integer.parseInt(info.get("Confirmed").getAsString().replace("\"", ""));
+						    int confirmed = Integer.parseInt(infoInicial.get("Confirmed").getAsString().replace("\"", ""));
 						    medicao.setStatus(StatusCaso.CONFIRMADOS);
 						    medicao.setCasos(confirmed);
 						    medicao.setMomento(data);
@@ -332,7 +322,7 @@ public class DadosApi extends Estatistica{
 						    Medicao medicao2 = new Medicao();
 							super.inclui(medicao2);
 							medicao2.setPais(pais);
-						    int deaths = Integer.parseInt(info.get("Deaths").getAsString().replace("\"", ""));
+						    int deaths = Integer.parseInt(infoInicial.get("Deaths").getAsString().replace("\"", ""));
 						    medicao2.setStatus(StatusCaso.MORTOS);
 						    medicao2.setCasos(deaths);
 						    medicao2.setMomento(data);
@@ -342,7 +332,7 @@ public class DadosApi extends Estatistica{
 						    Medicao medicao3 = new Medicao();
 							super.inclui(medicao3);
 							medicao3.setPais(pais);
-							int recovered = Integer.parseInt(info.get("Recovered").getAsString().replace("\"", ""));
+							int recovered = Integer.parseInt(infoInicial.get("Recovered").getAsString().replace("\"", ""));
 						    medicao3.setStatus(StatusCaso.RECUPERADOS);
 						    medicao3.setCasos(recovered);
 						    medicao3.setMomento(data);

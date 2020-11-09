@@ -9,10 +9,6 @@ public class Medicao extends Estatistica{
 	private int casos;
 	private StatusCaso status;
 	
-	public Medicao() {
-		
-	}
-
 	public Pais getPais() {
 		return pais;
 	}
