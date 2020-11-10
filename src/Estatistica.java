@@ -1,14 +1,9 @@
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public abstract class Estatistica {
 	
@@ -16,6 +11,7 @@ public abstract class Estatistica {
 	private List<Medicao> observacoes  = new ArrayList<Medicao>();
 	private float valor;
 	private List<Medicao> copiaObservacoes;
+	ExportaRanking er = new ExportaRanking();
 	
 	/**
 	 * Insere objeto na lista de medicoes
@@ -67,24 +63,6 @@ public abstract class Estatistica {
 		Collections.copy(this.observacoes, this.copiaObservacoes); 
 	}
 	
-	
-	
-	
-	
-	
-	// deletar apos testes
-	public void test() {
-		for (Medicao medicao : observacoes) {
-			
-			
-				System.out.println(medicao.getStatus() + "  " + medicao.getCasos());
-				System.out.println(medicao.getPais().getSlug());
-			
-		}
-	}
-	
-	
-	
 	/**
 	 * Organiza lista com medicoes do maior numero de casos ao menor
 	 * @param status
@@ -123,7 +101,7 @@ public abstract class Estatistica {
 	 * @param status tipo de medicao confirmados, recuperados ou mortos
 	 */
 
-	public List<String> rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
+	public void rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
 
 		
 		float temp = 0;
@@ -142,8 +120,10 @@ public abstract class Estatistica {
 						//Divide numero diferente de zero
 						medicao.setValor((medicao.getCasos() - temp) * 1.0f / temp);
 						temp = 0;
-					} else {
+					} else if((medicao.getCasos() >= 1 )) {
 						medicao.setValor((medicao.getCasos() - 1) * 1.0f);
+					}else {
+						medicao.setValor(0);
 					}
 				
 				}
@@ -153,24 +133,8 @@ public abstract class Estatistica {
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
 		
-
-		List<String> output = new ArrayList<>();
 		
-		
-		for (Medicao medicao : observacoes) {
-			//Printa taxa maior que 0
-			if (medicao.valor() > 0) {
-				String str = medicao.getPais().getSlug() + " " + medicao.valor();
-				output.add(str);
-			}
-		}
-		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaCrescimentos(status, csv, tsv, this.observacoes);
-		}
-		
-		return output;
+		er.exportaCrescimentos(status, csv, tsv, this.observacoes);
 	}
 	
 	
@@ -232,10 +196,7 @@ public abstract class Estatistica {
 			}
 		}
 		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaMortalidade(csv, tsv, this.observacoes);
-		}
+		er.exportaMortalidade(csv, tsv, this.observacoes);
 	}
 	
 	
@@ -275,10 +236,7 @@ public abstract class Estatistica {
 			}
 		}
 		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
-		}
+		er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
 				
 	}
 	
