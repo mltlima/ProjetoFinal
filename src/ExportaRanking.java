@@ -12,6 +12,33 @@ public class ExportaRanking {
 	private File rankingCrescimentos;
 	private File rankingMortalidade;
 	private File rankingLocal;
+	private File rankingHtml = new File("rankingHtml.html");
+	
+	/**
+	 * Construtor
+	 */
+	public void ExportaRanking() {
+		try {
+			FileWriter fw = new FileWriter(rankingHtml);
+			PrintWriter pw = new PrintWriter(fw);
+			
+			pw.println("<!DOCTYPE html>");
+			pw.println("<html>");
+			pw.println("<head>");
+			pw.println("<style>");
+			pw.println("table, th, td {");
+			pw.println("  border: 1px solid black;");
+			pw.println("}");
+			pw.println("</style>");
+			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
+			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
+			pw.println("</head>");
+			
+		}
+		catch (IOException f) {
+			System.out.println("Erro ao exportar para arquivo");
+		}
+	}
 	
 	/**
 	 * Exporta ranking de maiores casos/recuperados/mortos para arquivo csv e tsv
@@ -60,23 +87,13 @@ public class ExportaRanking {
 			}
 		}
 		
-		rankingNumeros = new File("rankingNumeros.html");
 		try {
-			FileWriter fw = new FileWriter(rankingNumeros);
+			FileWriter fw = new FileWriter(rankingHtml,true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("<!DOCTYPE html>");
-			pw.println("<html>");
-			pw.println("<head>");
-			pw.println("<style>");
-			pw.println("table, th, td {");
-			pw.println("  border: 1px solid black;");
-			pw.println("}");
-			pw.println("</style>");
-			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
-			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
-			pw.println("</head>");
 			pw.println("<table class=\"table\">");
+			pw.println("<tr class=\"table-secondary\">");
+			pw.println(" <td colspan=\"4\">RANKING DO NÚMERO DE "+status+"</td>");
 			pw.println("  <thead>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
@@ -153,23 +170,13 @@ public class ExportaRanking {
 			}
 		}
 		
-		rankingCrescimentos = new File("rankingCrescimentos.html");
 		try {
-			FileWriter fw = new FileWriter(rankingCrescimentos);
+			FileWriter fw = new FileWriter(rankingHtml,true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("<!DOCTYPE html>");
-			pw.println("<html>");
-			pw.println("<head>");
-			pw.println("<style>");
-			pw.println("table, th, td {");
-			pw.println("  border: 1px solid black;");
-			pw.println("}");
-			pw.println("</style>");
-			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
-			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
-			pw.println("</head>");
 			pw.println("<table class=\"table\">");
+			pw.println("<tr class=\"table-secondary\">");
+			pw.println(" <td colspan=\"4\">RANKING DO CRESCIMENTO DE "+status+"</td>");
 			pw.println("  <thead>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
@@ -246,23 +253,13 @@ public class ExportaRanking {
 			}
 		}
 		
-		rankingMortalidade = new File("rankingMortalidade.html");
 		try {
-			FileWriter fw = new FileWriter(rankingMortalidade);
+			FileWriter fw = new FileWriter(rankingHtml,true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("<!DOCTYPE html>");
-			pw.println("<html>");
-			pw.println("<head>");
-			pw.println("<style>");
-			pw.println("table, th, td {");
-			pw.println("  border: 1px solid black;");
-			pw.println("}");
-			pw.println("</style>");
-			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
-			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
-			pw.println("</head>");
 			pw.println("<table class=\"table\">");
+			pw.println("<tr class=\"table-secondary\">");
+			pw.println(" <td colspan=\"4\">RANKING DE MORTALIDADE</td>");
 			pw.println("  <thead>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
@@ -344,29 +341,17 @@ public class ExportaRanking {
 			}
 		}
 		
-		rankingLocal = new File("rankingLocal.html");
 		try {
-			FileWriter fw = new FileWriter(rankingLocal);
+			FileWriter fw = new FileWriter(rankingHtml);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("<!DOCTYPE html>");
-			pw.println("<html>");
-			pw.println("<head>");
-			pw.println("<style>");
-			pw.println("table, th, td {");
-			pw.println("  border: 1px solid black;");
-			pw.println("}");
-			pw.println("</style>");
-			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
-			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
-			pw.println("</head>");
-			pw.println("<caption>"+nomePais+"</caption>");
 			pw.println("<table class=\"table\">");
+			pw.println("<tr class=\"table-secondary\">");
+			pw.println(" <td colspan=\"4\">Países próximos a "+pais.getNome()+"</td>");
 			pw.println("  <thead>");
 			pw.println("    <tr>");
-			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
-			pw.println("      <th scope=\"col\">MORTALIDADE</th>");
+			pw.println("      <th scope=\"col\">DISTÂNCIA(km)</th>");
 			pw.println("    </tr>");
 			pw.println("  </thead>");
 			pw.println("  <tbody>");

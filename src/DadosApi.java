@@ -244,7 +244,7 @@ public class DadosApi extends Estatistica{
 			dateStart + "T00:00:00Z&to=" + dateEnd + "T00:00:01Z";
 			getDadosPais(linkInicial, linkFinal,pais);
 			count++;
-			if(count == 3) { //desative isso, para pegar os outros países
+			if(count == 50) { //desative isso, para pegar os outros países
 				break;
 			}
 		}
