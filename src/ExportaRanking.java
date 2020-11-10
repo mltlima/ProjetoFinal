@@ -27,7 +27,7 @@ public class ExportaRanking {
 			try {
 				FileWriter fw = new FileWriter(rankingNumeros);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("Posição"+"	"+"País"+"	"+status);
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
@@ -40,12 +40,13 @@ public class ExportaRanking {
 				System.out.println("Erro ao exportar para arquivo");
 			}
 		}
+		
 		if (csv) {
 			rankingNumeros = new File("rankingNumeros.csv");
 			try {
 				FileWriter fw = new FileWriter(rankingNumeros);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("Posição"+","+"País"+","+status);
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
@@ -59,7 +60,52 @@ public class ExportaRanking {
 			}
 		}
 		
+		rankingNumeros = new File("rankingNumeros.html");
+		try {
+			FileWriter fw = new FileWriter(rankingNumeros);
+			PrintWriter pw = new PrintWriter(fw);
+			
+			pw.println("<!DOCTYPE html>");
+			pw.println("<html>");
+			pw.println("<head>");
+			pw.println("<style>");
+			pw.println("table, th, td {");
+			pw.println("  border: 1px solid black;");
+			pw.println("}");
+			pw.println("</style>");
+			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
+			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
+			pw.println("</head>");
+			pw.println("<table class=\"table\">");
+			pw.println("  <thead>");
+			pw.println("    <tr>");
+			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
+			pw.println("      <th scope=\"col\">PAÍS</th>");
+			pw.println("      <th scope=\"col\">"+status+"</th>");
+			pw.println("    </tr>");
+			pw.println("  </thead>");
+			pw.println("  <tbody>");
+			
+			for (int i=0; i<ranking.size(); i++) {
+				String posicao = Integer.toString(i+1);
+				String nomePais = ranking.get(i).getPais().getNome();
+				String dado = Integer.toString(ranking.get(i).getCasos());
+				pw.println("    <tr>");
+				pw.println("      <th scope=\"row\">"+posicao+"</th>");
+				pw.println("      <td>"+ nomePais +"</td>");
+				pw.println("      <td>"+ dado +"</td>");
+				pw.println("    </tr>");
+			}
+			pw.println("  </tbody>");
+			pw.println("</table>");
+		
+			pw.close();
+		}
+		catch (IOException f) {
+			System.out.println("Erro ao exportar para arquivo");
+		}
 	}
+
 	
 	/**
 	 * Exporta ranking de crescimento de casos/recuperados/mortos para arquivo csv e tsv
@@ -74,7 +120,7 @@ public class ExportaRanking {
 			try {
 				FileWriter fw = new FileWriter(rankingCrescimentos);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("Posição"+"	"+"País"+"	"+status);
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
@@ -87,12 +133,13 @@ public class ExportaRanking {
 				System.out.println("Erro ao exportar para arquivo");
 			}
 		}
+			
 		if (csv) {
 			rankingNumeros = new File("rankingCrescimentos.csv");
 			try {
 				FileWriter fw = new FileWriter(rankingCrescimentos);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("Posição"+","+"País"+","+status);
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
@@ -104,6 +151,51 @@ public class ExportaRanking {
 			catch (IOException f) {
 				System.out.println("Erro ao exportar para arquivo");
 			}
+		}
+		
+		rankingCrescimentos = new File("rankingCrescimentos.html");
+		try {
+			FileWriter fw = new FileWriter(rankingCrescimentos);
+			PrintWriter pw = new PrintWriter(fw);
+			
+			pw.println("<!DOCTYPE html>");
+			pw.println("<html>");
+			pw.println("<head>");
+			pw.println("<style>");
+			pw.println("table, th, td {");
+			pw.println("  border: 1px solid black;");
+			pw.println("}");
+			pw.println("</style>");
+			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
+			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
+			pw.println("</head>");
+			pw.println("<table class=\"table\">");
+			pw.println("  <thead>");
+			pw.println("    <tr>");
+			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
+			pw.println("      <th scope=\"col\">PAÍS</th>");
+			pw.println("      <th scope=\"col\">"+status+"</th>");
+			pw.println("    </tr>");
+			pw.println("  </thead>");
+			pw.println("  <tbody>");
+			
+			for (int i=0; i<ranking.size(); i++) {
+				String posicao = Integer.toString(i+1);
+				String nomePais = ranking.get(i).getPais().getNome();
+				String dado = Float.toString(ranking.get(i).valor());
+				pw.println("    <tr>");
+				pw.println("      <th scope=\"row\">"+posicao+"</th>");
+				pw.println("      <td>"+ nomePais +"</td>");
+				pw.println("      <td>"+ dado +"</td>");
+				pw.println("    </tr>");
+			}
+			pw.println("  </tbody>");
+			pw.println("</table>");
+		
+			pw.close();
+		}
+		catch (IOException f) {
+			System.out.println("Erro ao exportar para arquivo");
 		}
 		
 	}
@@ -121,7 +213,7 @@ public class ExportaRanking {
 			try {
 				FileWriter fw = new FileWriter(rankingMortalidade);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("Posição"+"	"+"País"+"	"+"Mortalidade");
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
@@ -134,12 +226,13 @@ public class ExportaRanking {
 				System.out.println("Erro ao exportar para arquivo");
 			}
 		}
+		
 		if (csv) {
 			rankingLocal = new File("rankingMortalidade.csv");
 			try {
 				FileWriter fw = new FileWriter(rankingMortalidade);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("Posição"+","+"País"+","+"Mortalidade");
 				for (int i=0; i<ranking.size(); i++) {
 					String nomePais = ranking.get(i).getPais().getNome();
@@ -151,6 +244,51 @@ public class ExportaRanking {
 			catch (IOException f) {
 				System.out.println("Erro ao exportar para arquivo");
 			}
+		}
+		
+		rankingMortalidade = new File("rankingMortalidade.html");
+		try {
+			FileWriter fw = new FileWriter(rankingMortalidade);
+			PrintWriter pw = new PrintWriter(fw);
+			
+			pw.println("<!DOCTYPE html>");
+			pw.println("<html>");
+			pw.println("<head>");
+			pw.println("<style>");
+			pw.println("table, th, td {");
+			pw.println("  border: 1px solid black;");
+			pw.println("}");
+			pw.println("</style>");
+			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
+			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
+			pw.println("</head>");
+			pw.println("<table class=\"table\">");
+			pw.println("  <thead>");
+			pw.println("    <tr>");
+			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
+			pw.println("      <th scope=\"col\">PAÍS</th>");
+			pw.println("      <th scope=\"col\">MORTALIDADE</th>");
+			pw.println("    </tr>");
+			pw.println("  </thead>");
+			pw.println("  <tbody>");
+			
+			for (int i=0; i<ranking.size(); i++) {
+				String posicao = Integer.toString(i+1);
+				String nomePais = ranking.get(i).getPais().getNome();
+				String dado = Float.toString(ranking.get(i).valor());
+				pw.println("    <tr>");
+				pw.println("      <th scope=\"row\">"+posicao+"</th>");
+				pw.println("      <td>"+ nomePais +"</td>");
+				pw.println("      <td>"+ dado +"</td>");
+				pw.println("    </tr>");
+			}
+			pw.println("  </tbody>");
+			pw.println("</table>");
+		
+			pw.close();
+		}
+		catch (IOException f) {
+			System.out.println("Erro ao exportar para arquivo");
 		}
 		
 	}
@@ -167,7 +305,7 @@ public class ExportaRanking {
 			try {
 				FileWriter fw = new FileWriter(rankingLocal);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("País"+"	"+"Próximos"+"	"+"Distância");
 				pw.println("nomePais");
 				for (int i=0; i<ranking.size(); i++) {
@@ -183,12 +321,13 @@ public class ExportaRanking {
 				System.out.println("Erro ao exportar para arquivo");
 			}
 		}
+		
 		if (csv) {
 			rankingLocal = new File("rankingMortalidade.csv");
 			try {
 				FileWriter fw = new FileWriter(rankingLocal);
 				PrintWriter pw = new PrintWriter(fw);
-				
+
 				pw.println("País"+","+"Próximos"+","+"Distância");
 				pw.println("nomePais");
 				for (int i=0; i<ranking.size(); i++) {
@@ -203,6 +342,52 @@ public class ExportaRanking {
 			catch (IOException f) {
 				System.out.println("Erro ao exportar para arquivo");
 			}
+		}
+		
+		rankingLocal = new File("rankingLocal.html");
+		try {
+			FileWriter fw = new FileWriter(rankingLocal);
+			PrintWriter pw = new PrintWriter(fw);
+			
+			pw.println("<!DOCTYPE html>");
+			pw.println("<html>");
+			pw.println("<head>");
+			pw.println("<style>");
+			pw.println("table, th, td {");
+			pw.println("  border: 1px solid black;");
+			pw.println("}");
+			pw.println("</style>");
+			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
+			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
+			pw.println("</head>");
+			pw.println("<caption>"+nomePais+"</caption>");
+			pw.println("<table class=\"table\">");
+			pw.println("  <thead>");
+			pw.println("    <tr>");
+			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
+			pw.println("      <th scope=\"col\">PAÍS</th>");
+			pw.println("      <th scope=\"col\">MORTALIDADE</th>");
+			pw.println("    </tr>");
+			pw.println("  </thead>");
+			pw.println("  <tbody>");
+			
+			for (int i=0; i<ranking.size(); i++) {
+				String paises = ranking.get(i).getNome();
+				float lat2 = ranking.get(i).getLatitude();
+				float lon2 = ranking.get(i).getLongitude();
+				String distancia = Float.toString(haversine(lat,lon,lat2,lon2));
+				pw.println("    <tr>");
+				pw.println("      <th scope=\"row\">"+paises+"</th>");
+				pw.println("      <td>"+ distancia +"</td>");
+				pw.println("    </tr>");
+			}
+			pw.println("  </tbody>");
+			pw.println("</table>");
+		
+			pw.close();
+		}
+		catch (IOException f) {
+			System.out.println("Erro ao exportar para arquivo");
 		}
 		
 	}
