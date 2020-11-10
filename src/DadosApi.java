@@ -196,8 +196,7 @@ public class DadosApi extends Estatistica{
 		            HttpResponse<String> resposta = cliente.send(hRequest, HttpResponse.BodyHandlers.ofString());
 
 		            
-					JsonObject respostaJson = JsonParser.parseString(resposta.body()).getAsJsonObject() ;
-					JsonArray paises =  respostaJson.get("Countries").getAsJsonArray();
+					JsonArray paises =  JsonParser.parseString(resposta.body()).getAsJsonArray();
 		      
 					for (Object dados : paises) {
 						
@@ -237,7 +236,7 @@ public class DadosApi extends Estatistica{
 			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "&to=" + dateEnd;
 			getDadosPais(link,pais);
 			count++;
-			if(count == 50) { //desative isso, para pegar os outros países
+			if(count == 10) { //desative isso, para pegar os outros países
 				break;
 			}
 		}

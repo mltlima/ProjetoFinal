@@ -152,7 +152,7 @@ public class ExportaRanking {
 		}
 			
 		if (csv) {
-			rankingNumeros = new File("rankingCrescimentos.csv");
+			rankingCrescimentos = new File("rankingCrescimentos.csv");
 			try {
 				FileWriter fw = new FileWriter(rankingCrescimentos);
 				PrintWriter pw = new PrintWriter(fw);
@@ -216,7 +216,7 @@ public class ExportaRanking {
 	public void exportaMortalidade(boolean csv, boolean tsv, List<Medicao> ranking) {
 		
 		if (tsv){
-			rankingLocal = new File("rankingMortalidade.tsv");
+			rankingMortalidade = new File("rankingMortalidade.tsv");
 			try {
 				FileWriter fw = new FileWriter(rankingMortalidade);
 				PrintWriter pw = new PrintWriter(fw);
@@ -235,7 +235,7 @@ public class ExportaRanking {
 		}
 		
 		if (csv) {
-			rankingLocal = new File("rankingMortalidade.csv");
+			rankingMortalidade = new File("rankingMortalidade.csv");
 			try {
 				FileWriter fw = new FileWriter(rankingMortalidade);
 				PrintWriter pw = new PrintWriter(fw);
