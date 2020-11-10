@@ -5,10 +5,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+
+/**
+ * 
+ * @author Jonathan
+ *
+ */
 
 public abstract class Estatistica {
 	
@@ -16,7 +18,23 @@ public abstract class Estatistica {
 	private List<Medicao> observacoes  = new ArrayList<Medicao>();
 	private float valor;
 	private List<Medicao> copiaObservacoes;
+	private LocalDate dataFim;
+	private LocalDate dataInicio;
+	//para manter a integridade dos arquivos
+	private ExportaRanking er;
 	
+	/**
+	 * @param dataFim data de inicio da estatistica
+	 * @param dataInicio data final da estatistica
+	 */
+	public Estatistica(LocalDate dataFim, LocalDate dataInicio) {
+		this.dataFim = dataFim;
+		this.dataInicio = dataInicio;
+	}
+	/**
+	 * Caso queira iniciar estatisticas sem as datas, também é possível
+	 */
+	public Estatistica() {}
 	/**
 	 * Insere objeto na lista de medicoes
 	 * @param observacao dados da medicao
@@ -28,31 +46,32 @@ public abstract class Estatistica {
 	 * 
 	 * @return data do inico da medicao
 	 */
-	public LocalDateTime dataInicio() {
-		LocalDateTime data = this.copiaObservacoes.get(0).getMomento();
-		return data;
+	public LocalDate dataInicio() {
+//		LocalDateTime data = this.copiaObservacoes.get(0).getMomento();
+//		return data;
+		return dataInicio;
 	}
 	/**
 	 * 
 	 * @return data do fim da medicao
 	 */
-	public LocalDateTime dataFim() {
-		LocalDateTime data = this.copiaObservacoes.get(this.copiaObservacoes.size() - 1).getMomento();
-		return data;
+	public LocalDate dataFim() {
+//		LocalDateTime data = this.copiaObservacoes.get(this.copiaObservacoes.size() - 1).getMomento();
+//		return data;
+		return dataFim;
 	}
+	
 	/**
-	 * Valor da taxa de mortalidade e crescimento adicionada ao ultimo medicao do pais
-	 * @param valor taxa calculada
-	 */
-	public void setValor(float valor) {
-		this.valor = valor;
-	}
-	/**
-	 * 
 	 * @return valor da taxa calculada
 	 */
 	public float valor() {
 		return this.valor;
+	}
+	/**
+	 * @param valor the valor to set
+	 */
+	public void setValor(float valor) {
+		this.valor = valor;
 	}
 	/**
 	 * Copia lista de medicoes
@@ -66,10 +85,18 @@ public abstract class Estatistica {
 	public void restart() {
 		Collections.copy(this.observacoes, this.copiaObservacoes); 
 	}
-	
-	
-	
-	
+	/**
+	 * @param dataFim the dataFim to set
+	 */
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+	/**
+	 * @param dataInicio the dataInicio to set
+	 */
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
 	
 	
 	// deletar apos testes
@@ -98,17 +125,14 @@ public abstract class Estatistica {
 		List<String> output = new ArrayList<>();
 		
 		for (Medicao medicao : observacoes) {
-			
 			if (medicao.getStatus().equals(status)) {
-				String str = medicao.getPais().getSlug() + " " + medicao.getCasos();
+				String str = medicao.getPais().getSlug() + " " + medicao.valor();
 				output.add(str);
 			}
 		}
 		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaNumeros(status, csv, tsv, this.observacoes);
-		}
+		ExportaRanking er = new ExportaRanking();
+		er.exportaNumeros(status, csv, tsv, this.observacoes);
 		
 		return output;
 	}
@@ -126,29 +150,29 @@ public abstract class Estatistica {
 	public List<String> rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
 
 		
-		float temp = 0;
-		
-		for (Medicao medicao : observacoes) {
-			
-			if (medicao.getStatus().equals(status)) {
-				
-				if (medicao.getMomento().equals(dataInicio())) {
-					temp = medicao.getCasos();
-					//System.out.println(temp);
-				}
-				if (medicao.getMomento().equals(dataFim())) {
-					//Passa o valor da taxa para a ultima data
-					if (temp != 0) {
-						//Divide numero diferente de zero
-						medicao.setValor((medicao.getCasos() - temp) * 1.0f / temp);
-						temp = 0;
-					} else {
-						medicao.setValor((medicao.getCasos() - 1) * 1.0f);
-					}
-				
-				}
-			}
-		}
+//		float temp = 0;
+//		
+//		for (Medicao medicao : observacoes) {
+//			
+//			if (medicao.getStatus().equals(status)) {
+//				
+//				if (medicao.getMomento().equals(dataInicio())) {
+//					temp = medicao.getCasos();
+//					//System.out.println(temp);
+//				}
+//				if (medicao.getMomento().equals(dataFim())) {
+//					//Passa o valor da taxa para a ultima data
+//					if (temp != 0) {
+//						//Divide numero diferente de zero
+//						medicao.setValor((medicao.getCasos() - temp) / temp);
+//						temp = 0;
+//					} else {
+//						medicao.setValor((medicao.getCasos() - 1) * 1.0f);
+//					}
+//				
+//				}
+//			}
+//		}
 		
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
@@ -165,10 +189,8 @@ public abstract class Estatistica {
 			}
 		}
 		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaCrescimentos(status, csv, tsv, this.observacoes);
-		}
+		ExportaRanking er = new ExportaRanking();
+		er.exportaCrescimentos(status, csv, tsv, this.observacoes);
 		
 		return output;
 	}
@@ -179,48 +201,67 @@ public abstract class Estatistica {
 	
 	/**
 	 * Organiza paises pela maior taxa de mortalidade
+	 * @return false se não achar algum dado
 	 */
 	public void rankingMortalidade(boolean tsv, boolean csv) {
 		
-		float temp = 0;
-		int casosInicio = 0;
-		int casosFim = 0;
-		//DadosApi consulta = new DadosApi();
-		
-		for (Medicao medicao : observacoes) {
-			
-			
-			if (medicao.getStatus().equals(StatusCaso.MORTOS) || 
-					(medicao.getStatus().equals(StatusCaso.CONFIRMADOS))) {
-				
-				//String pais = medicao.getPais().getSlug();
-			
-				if (medicao.getMomento().equals(dataInicio())) {
-					
-					if (medicao.getStatus().equals(StatusCaso.CONFIRMADOS)) {
-						casosInicio = medicao.getCasos();
-					} else {
-						temp = medicao.getCasos();						
-					}
-				}
-				if (medicao.getMomento().equals(dataFim())) {
-					
-					if (medicao.getStatus().equals(StatusCaso.CONFIRMADOS)) {
-						casosFim = medicao.getCasos();
-					} else {
-						if (temp != 0) {
-							medicao.setValor((medicao.getCasos() - temp) * 1.0f / (casosFim - casosInicio));	
-							System.out.println(medicao.valor());
-						} else {
-							medicao.setValor((medicao.getCasos() - 1) * 1.0f / (casosFim - casosInicio));
+//		float temp = 0;
+//		int casosInicio = 0;
+//		int casosFim = 0;
+//		DadosApi consulta = new DadosApi();
+//		
+//		for (Medicao medicao : observacoes) {
+//			
+//			
+//			if (medicao.getStatus().equals(StatusCaso.MORTOS) || 
+//					(medicao.getStatus().equals(StatusCaso.CONFIRMADOS))) {
+//				
+//				//String pais = medicao.getPais().getSlug();
+//			
+//				if (medicao.getMomento().equals(dataInicio())) {
+//					
+//					if (medicao.getStatus().equals(StatusCaso.CONFIRMADOS)) {
+//						casosInicio = medicao.getCasos();
+//					} else {
+//						temp = medicao.getCasos();						
+//					}
+//				}
+//				if (medicao.getMomento().equals(dataFim())) {
+//					
+//					if (medicao.getStatus().equals(StatusCaso.CONFIRMADOS)) {
+//						casosFim = medicao.getCasos();
+//					} else {
+//						if (temp != 0) {
+//							medicao.setValor((medicao.getCasos() - temp) * 1.0f / (casosFim - casosInicio));	
+//							System.out.println(medicao.valor());
+//						} else {
+//							medicao.setValor((medicao.getCasos() - 1) * 1.0f / (casosFim - casosInicio));
+//						}
+//						
+//					}
+//				
+//				}
+//			
+//			}
+		//procura os dados de maneira bem ineficiente btw
+		for(Medicao medicao : observacoes) {
+			if (medicao.getStatus().equals(StatusCaso.MORTOS)) {
+				for(Medicao medicaoCasos : observacoes) {
+					if(medicao.getPais().equals(medicaoCasos.getPais()) 
+							&& medicaoCasos.getStatus().equals(StatusCaso.CONFIRMADOS)){
+						if(medicao.getCasosInicial() != 0) {
+							medicao.setValor(medicao.getCasos() - medicao.getCasosInicial()* 1.0f /
+									(medicaoCasos.getCasos()  - medicaoCasos.getCasosInicial())); 
+						}else {
+							medicao.setValor(medicao.getCasos() - 1 * 1.0f /
+									(medicaoCasos.getCasos()  - medicaoCasos.getCasosInicial())); 
 						}
-						
 					}
-				
 				}
-			
 			}
 		}
+		
+		//Organiza as medições para exportar mortalidade
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
 		//teste taxa
@@ -231,11 +272,7 @@ public abstract class Estatistica {
 				System.out.println(medicao.getPais().getSlug());
 			}
 		}
-		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaMortalidade(csv, tsv, this.observacoes);
-		}
+		er.exportaMortalidade(csv, tsv, this.observacoes);
 	}
 	
 	
@@ -275,10 +312,8 @@ public abstract class Estatistica {
 			}
 		}
 		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
-		}
+		ExportaRanking er = new ExportaRanking();
+		er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
 				
 	}
 	

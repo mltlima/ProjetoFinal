@@ -297,7 +297,7 @@ public class View{
 						}
 						br.close();
 					} catch (IOException e1) {
-						msgWarning("Não foi possível carregar sessão");
+						UDF.msgWarning("Não foi possível carregar sessão");
 					}
 				}
 			}
@@ -337,9 +337,9 @@ public class View{
 					registroWrite.write(sessao);
 					registroWrite.close();
 				} catch (IOException e1) {
-					msgBox("Não foi possível criar o arquivo para registrar os dados.");
+					UDF.msgBox("Não foi possível criar o arquivo para registrar os dados.");
 				} catch (IncorrectFileNameException e2 ) {
-					msgBox(e2.getMessage());
+					UDF.msgBox(e2.getMessage());
 				}
 			}
 		});
@@ -378,7 +378,7 @@ public class View{
 						outFile.renameTo(inFile); //arq temporario é agr arq novo
 					}
 				} catch (IOException e1) {
-					msgBox("Não foi possível criar o arquivo para registrar os dados.");
+					UDF.msgBox("Não foi possível criar o arquivo para registrar os dados.");
 				}
 			}
 		});
@@ -404,14 +404,7 @@ public class View{
 			soma+=4;
 		return soma;//0 até 7
 	}
-	//Usada para alertar o usuário de erros no menu
-	private static void msgBox(String s) {
-		JOptionPane.showMessageDialog(null, s, "Error", JOptionPane.ERROR_MESSAGE);
-	}
-	//Usada para altertar possíveis problemas
-	private static void msgWarning(String s) {
-		JOptionPane.showMessageDialog(null, s,"Warning", JOptionPane.WARNING_MESSAGE);
-	}
+	
 	//retorna os nomes das sessões para a lista de sessões
 	private static void readRegistrosName(DefaultListModel<String> listModel) {
 		File file;
@@ -426,7 +419,7 @@ public class View{
 			}
 			br.close();
 		} catch (IOException e) {
-			msgWarning("Não foi possível achar os registros "
+			UDF.msgWarning("Não foi possível achar os registros "
 					+ "das sessões e portanto as sessões não foram apresentadas");
 		}
 	}
@@ -485,7 +478,7 @@ public class View{
 				outFile.renameTo(inFile); //arq temporario é agr arq novo
 			}
 		} catch (IOException e1) {
-			msgBox("Não foi possível criar o arquivo para registrar os dados.");
+			UDF.msgBox("Não foi possível criar o arquivo para registrar os dados.");
 		}
 		return isOverwriting;
 	}

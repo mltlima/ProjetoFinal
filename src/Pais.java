@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 /**
  * Classe Model 
  * @author Miguel
@@ -46,6 +48,26 @@ public class Pais {
 	public String getCodigo() {
 		return codigo;
 	}
+	/**
+	 * Serve para ser usado em comparações
+	 */
+	@Override
+	public boolean equals(Object o) {
+	    // self check
+	    if (this == o)
+	        return true;
+	    // null check
+	    if (o == null)
+	        return false;
+	    // type check and cast
+	    if (getClass() != o.getClass())
+	        return false;
+	    Pais p = (Pais) o;
+	    // field comparison
+	    return Objects.equals(slug, p.getSlug())
+	            && Objects.equals(codigo,p.getCodigo());
+	}
+
 	/**
 	 * @param codigo the codigo to set
 	 */

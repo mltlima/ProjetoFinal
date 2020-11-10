@@ -1,7 +1,8 @@
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import javax.swing.JOptionPane;
 
 /**
  * Utilitarios e funções definidas pelo usuário (UDF)
@@ -63,5 +64,19 @@ public class UDF {
 			return false;
 		}
 		return true;
+	}
+	/**
+	 * Usada para alertar o usuário sobre erros
+	 * @param s Mensagem de erro
+	 */
+	public static void msgBox(String s) {
+		JOptionPane.showMessageDialog(null, s, "Error", JOptionPane.ERROR_MESSAGE);
+	}
+	/**
+	 * Usada para altertar possíveis problemas
+	 * @param s Mensagem de alerta
+	 */
+	public static void msgWarning(String s) {
+		JOptionPane.showMessageDialog(null, s,"Warning", JOptionPane.WARNING_MESSAGE);
 	}
 }

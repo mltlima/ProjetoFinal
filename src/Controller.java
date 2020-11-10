@@ -38,7 +38,7 @@ public class Controller {
 		}else if(dataFinal.equals("DD/MM/YYYY")) {
 				this.dataFinal = "DD/MM/YYYY";
 		}else {
-			msgWarning("Data inicial não é válida.");
+			UDF.msgWarning("Data inicial não é válida.");
 			isValid = false;
 		}
 		if(UDF.isDateValid(v.getDataFinal())) {
@@ -46,14 +46,14 @@ public class Controller {
 		}else if(dataFinal.equals("DD/MM/YYYY")){
 			this.dataFinal = "DD/MM/YYYY";
 		}else{
-			msgWarning("Data final não é válida.");
+			UDF.msgWarning("Data final não é válida.");
 			isValid = false;
 		}
 		if(!v.getKm().equals("")) {
 			if(UDF.isFloat(v.getKm())) {
 				this.distancia = Float.parseFloat(v.getKm());
 			}else {
-				msgBox("Distância não é válida");
+				UDF.msgBox("Distância não é válida");
 				isValid = false;
 			}
 		}else {
@@ -70,15 +70,7 @@ public class Controller {
 			dados.start(this, v);
 		}
 	}
-	//Usada para alertar o usuário de erros no menu
-	private static void msgBox(String s) {
-		JOptionPane.showMessageDialog(null, s, "Error", JOptionPane.ERROR_MESSAGE);
-	}
 	
-	//Usada para altertar possíveis problemas
-		private static void msgWarning(String s) {
-			JOptionPane.showMessageDialog(null, s,"Warning", JOptionPane.WARNING_MESSAGE);
-	}
 	public void output(List<String> output) {
 		
 			
