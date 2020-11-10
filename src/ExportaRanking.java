@@ -22,6 +22,44 @@ public class ExportaRanking {
 	 */
 	public void exportaNumeros(StatusCaso status, boolean csv, boolean tsv, List<Medicao> ranking) {
 		
+		if (tsv){
+			rankingNumeros = new File("rankingNumeros.tsv");
+			try {
+				FileWriter fw = new FileWriter(rankingNumeros);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("Posição"+"	"+"País"+"	"+status);
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Integer.toString(ranking.get(i).getCasos());
+					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
+		
+		if (csv) {
+			rankingNumeros = new File("rankingNumeros.csv");
+			try {
+				FileWriter fw = new FileWriter(rankingNumeros);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("Posição"+","+"País"+","+status);
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Integer.toString(ranking.get(i).getCasos());
+					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
+		
 		rankingNumeros = new File("rankingNumeros.html");
 		try {
 			FileWriter fw = new FileWriter(rankingNumeros);
@@ -76,6 +114,44 @@ public class ExportaRanking {
 	 * @param ranking
 	 */
 	public void exportaCrescimentos(StatusCaso status, boolean csv, boolean tsv, List<Medicao> ranking) {
+		
+		if (tsv){
+			rankingCrescimentos = new File("rankingCrescimentos.tsv");
+			try {
+				FileWriter fw = new FileWriter(rankingCrescimentos);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("Posição"+"	"+"País"+"	"+status);
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Float.toString(ranking.get(i).valor());
+					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
+			
+		if (csv) {
+			rankingNumeros = new File("rankingCrescimentos.csv");
+			try {
+				FileWriter fw = new FileWriter(rankingCrescimentos);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("Posição"+","+"País"+","+status);
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Float.toString(ranking.get(i).valor());
+					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
 		
 		rankingCrescimentos = new File("rankingCrescimentos.html");
 		try {
@@ -132,6 +208,44 @@ public class ExportaRanking {
 	 */
 	public void exportaMortalidade(boolean csv, boolean tsv, List<Medicao> ranking) {
 		
+		if (tsv){
+			rankingLocal = new File("rankingMortalidade.tsv");
+			try {
+				FileWriter fw = new FileWriter(rankingMortalidade);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("Posição"+"	"+"País"+"	"+"Mortalidade");
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Float.toString(ranking.get(i).valor());
+					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
+		
+		if (csv) {
+			rankingLocal = new File("rankingMortalidade.csv");
+			try {
+				FileWriter fw = new FileWriter(rankingMortalidade);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("Posição"+","+"País"+","+"Mortalidade");
+				for (int i=0; i<ranking.size(); i++) {
+					String nomePais = ranking.get(i).getPais().getNome();
+					String dado = Float.toString(ranking.get(i).valor());
+					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
+		
 		rankingMortalidade = new File("rankingMortalidade.html");
 		try {
 			FileWriter fw = new FileWriter(rankingMortalidade);
@@ -185,6 +299,50 @@ public class ExportaRanking {
 		String nomePais = pais.getNome();
 		float lat = pais.getLatitude();
 		float lon = pais.getLongitude();
+		
+		if (tsv){
+			rankingLocal = new File("rankingLocal.tsv");
+			try {
+				FileWriter fw = new FileWriter(rankingLocal);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("País"+"	"+"Próximos"+"	"+"Distância");
+				pw.println("nomePais");
+				for (int i=0; i<ranking.size(); i++) {
+					String paises = ranking.get(i).getNome();
+					float lat2 = ranking.get(i).getLatitude();
+					float lon2 = ranking.get(i).getLongitude();
+					float distancia = haversine(lat,lon,lat2,lon2);
+					pw.println("	"+paises+"	"+distancia);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
+		
+		if (csv) {
+			rankingLocal = new File("rankingMortalidade.csv");
+			try {
+				FileWriter fw = new FileWriter(rankingLocal);
+				PrintWriter pw = new PrintWriter(fw);
+
+				pw.println("País"+","+"Próximos"+","+"Distância");
+				pw.println("nomePais");
+				for (int i=0; i<ranking.size(); i++) {
+					String paises = ranking.get(i).getNome();
+					float lat2 = ranking.get(i).getLatitude();
+					float lon2 = ranking.get(i).getLongitude();
+					float distancia = haversine(lat,lon,lat2,lon2);
+					pw.println(","+paises+","+distancia);
+				}
+				pw.close();
+			}
+			catch (IOException f) {
+				System.out.println("Erro ao exportar para arquivo");
+			}
+		}
 		
 		rankingLocal = new File("rankingLocal.html");
 		try {
