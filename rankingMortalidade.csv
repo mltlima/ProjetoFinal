@@ -1,2 +1,148 @@
-País,Próximos,Distância
-nomePais
+Posição,País,Mortalidade
+1,"Montenegro",1.0
+2,"Slovenia",0.43589744
+3,"Andorra",0.4
+4,"Brunei Darussalam",0.33333334
+5,"Yemen",0.23631124
+6,"France",0.20883693
+7,"Italy",0.2033063
+8,"Hungary",0.19825073
+9,"Belgium",0.18798102
+10,"Ecuador",0.17983074
+11,"Japan",0.17451772
+12,"Croatia",0.17391305
+13,"Tanzania, United Republic of",0.1724138
+14,"Netherlands",0.15827657
+15,"Switzerland",0.14236706
+16,"Niger",0.13913043
+17,"United Kingdom",0.13477805
+18,"Greece",0.12745099
+19,"Bosnia and Herzegovina",0.113055184
+20,"Mexico",0.11272972
+21,"Spain",0.10580624
+22,"New Zealand",0.10526316
+23,"Sweden",0.09798556
+24,"Germany",0.0932008
+25,"Ireland",0.09103807
+26,"Estonia",0.09090909
+27,"Lithuania",0.089605734
+28,"Chad",0.08507671
+29,"Luxembourg",0.08294931
+30,"Tunisia",0.08139535
+31,"Romania",0.07788025
+32,"Bulgaria",0.0746888
+33,"Macedonia, Republic of",0.071863584
+34,"Taiwan, Republic of China",0.071428575
+35,"Austria",0.06572379
+36,"Mali",0.06443618
+37,"Liberia",0.0625
+38,"United States of America",0.05787453
+39,"Portugal",0.056742415
+40,"Sudan",0.056465518
+41,"Israel",0.056179777
+42,"Finland",0.05452563
+43,"Brazil",0.054174487
+44,"Sierra Leone",0.053497944
+45,"Czech Republic",0.051757187
+46,"Indonesia",0.051314905
+47,"Denmark",0.048576213
+48,"Burkina Faso",0.045454547
+49,"Nicaragua",0.04295302
+50,"Guyana",0.04225352
+51,"Slovakia",0.042016808
+52,"Moldova",0.041780822
+53,"Latvia",0.040816326
+54,"Norway",0.039215688
+55,"Algeria",0.03881321
+56,"Philippines",0.038617473
+57,"Poland",0.03824593
+58,"Mauritania",0.037931036
+59,"Somalia",0.03586498
+60,"Angola",0.035714287
+61,"Cuba",0.034798536
+62,"Uruguay",0.033898305
+63,"Ukraine",0.03299029
+64,"Malta",0.032894738
+65,"Honduras",0.031154014
+66,"Turkey",0.030795006
+67,"Iran, Islamic Republic of",0.030391673
+68,"Cameroon",0.030230012
+69,"Kenya",0.029813664
+70,"Bolivia",0.029778542
+71,"Egypt",0.0292352
+72,"Korea (South)",0.02890933
+73,"Republic of Kosovo",0.028880866
+74,"Congo (Brazzaville)",0.028795812
+75,"Colombia",0.027887767
+76,"Nigeria",0.027473835
+77,"India",0.027216922
+78,"Peru",0.027087513
+79,"Serbia",0.02684841
+80,"Argentina",0.025692774
+81,"Iraq",0.025662778
+82,"Syrian Arab Republic (Syria)",0.025316456
+83,"Thailand",0.024590164
+84,"Sao Tome and Principe",0.023504274
+85,"Georgia",0.021929825
+86,"Cyprus",0.02173913
+87,"Panama",0.021357313
+88,"Guatemala",0.021312874
+89,"South Africa",0.020735055
+90,"Pakistan",0.02061262
+91,"Libya",0.01904762
+92,"Dominican Republic",0.018378062
+93,"Haiti",0.017281644
+94,"El Salvador",0.016682113
+95,"Congo (Kinshasa)",0.015438055
+96,"Afghanistan",0.014685054
+97,"Armenia",0.014433552
+98,"Togo",0.0125
+99,"Russian Federation",0.01227088
+100,"Bangladesh",0.012156141
+101,"Senegal",0.0121546965
+102,"Tajikistan",0.011505753
+103,"Azerbaijan",0.011292017
+104,"Costa Rica",0.011142061
+105,"Côte d'Ivoire",0.011124846
+106,"Equatorial Guinea",0.011099899
+107,"San Marino",0.010989011
+108,"Swaziland",0.010695187
+109,"Palestinian Territory",0.010416667
+110,"Morocco",0.010416667
+111,"Comoros",0.00952381
+112,"South Sudan",0.009483667
+113,"Cape Verde",0.008928572
+114,"Djibouti",0.008899677
+115,"Kuwait",0.0081248665
+116,"Ethiopia",0.008007118
+117,"Chile",0.007966791
+118,"Kyrgyzstan",0.0075400565
+119,"Madagascar",0.007204611
+120,"United Arab Emirates",0.0069964794
+121,"Guinea",0.006935414
+122,"Malaysia",0.006718925
+123,"Benin",0.006535948
+124,"Guinea-Bissau",0.0064695007
+125,"Jamaica",0.0064102565
+126,"Lebanon",0.005952381
+127,"Gabon",0.0058848257
+128,"Mozambique",0.0057142857
+129,"Saudi Arabia",0.00564676
+130,"Albania",0.005540166
+131,"Venezuela (Bolivarian Republic)",0.0052750567
+132,"Belarus",0.0051604295
+133,"Sri Lanka",0.0041972715
+134,"Zambia",0.0040816325
+135,"Nepal",0.003995434
+136,"Oman",0.0039893617
+137,"Maldives",0.003736921
+138,"Uzbekistan",0.0037128713
+139,"Jordan",0.0034843206
+140,"Malawi",0.0033444816
+141,"Ghana",0.0031687792
+142,"Central African Republic",0.003009027
+143,"Kazakhstan",0.0020749578
+144,"Paraguay",0.001510574
+145,"Bahrain",0.0012642225
+146,"Qatar",6.315267E-4
+147,"Singapore",4.397779E-4

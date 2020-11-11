@@ -227,13 +227,17 @@ case 2:
 	 * @param dateEnd segunda data
 	 */
 	public void getDadosByDate(String dateStart, String dateEnd) {
-		
+		int count =0;
 		for (String key : this.paises.keySet()) {
 			
 			String strPais = this.paises.get(key).getSlug();
 			Pais pais = this.paises.get(key);
 			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "T00:00:00Z&to=" + dateEnd + "T00:00:00Z";
 			getDadosPais(link,pais,dateStart,dateEnd);
+			count++;
+			if(count == 10) {
+				//break;
+			}
 		}
 	}
 	

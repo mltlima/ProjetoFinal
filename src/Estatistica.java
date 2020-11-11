@@ -243,13 +243,13 @@ public abstract class Estatistica {
 			
 			if (distancia <= raio && !pais.equals(pais2) && !pais2.equals(temp)) {
 				String str = pais2 + " " + distancia;
-				output.add(str);
+				output.add(pais2);
 				temp = pais2;
 				ranking.add(medicao.getPais());
 			}
 		}
 
-		er.exportaLocal(csv, tsv, ranking, output);
+		er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
 		//return output;		
 	}
 	

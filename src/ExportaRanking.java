@@ -308,7 +308,7 @@ public class ExportaRanking {
 	 * @param ranking lista dos países próixmos ao de mais crescimento
 	 * @param output de maior crescimento
 	 */
-	public void exportaLocal(boolean csv, boolean tsv, List<Pais> ranking, List<String> output) {
+	public void exportaLocal(boolean csv, boolean tsv, List<Pais> ranking, Pais output) {
 		
 		String nomePais = output.getNome();
 		float lat = output.getLatitude();
@@ -321,13 +321,12 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 
 				pw.println("País"+"	"+"Próximos"+"	"+"Distância");
-				pw.println("nomePais");
 				for (int i=0; i<ranking.size(); i++) {
 					String paises = ranking.get(i).getNome();
 					float lat2 = ranking.get(i).getLatitude();
 					float lon2 = ranking.get(i).getLongitude();
 					float distancia = haversine(lat,lon,lat2,lon2);
-					pw.println("	"+paises+"	"+distancia);
+					pw.println(nomePais+"	"+paises+"	"+distancia);
 				}
 				pw.close();
 			}
@@ -337,19 +336,18 @@ public class ExportaRanking {
 		}
 		
 		if (csv) {
-			rankingLocal = new File("rankingMortalidade.csv");
+			rankingLocal = new File("rankingLocal.csv");
 			try {
 				FileWriter fw = new FileWriter(rankingLocal);
 				PrintWriter pw = new PrintWriter(fw);
 
 				pw.println("País"+","+"Próximos"+","+"Distância");
-				pw.println("nomePais");
 				for (int i=0; i<ranking.size(); i++) {
 					String paises = ranking.get(i).getNome();
 					float lat2 = ranking.get(i).getLatitude();
 					float lon2 = ranking.get(i).getLongitude();
 					float distancia = haversine(lat,lon,lat2,lon2);
-					pw.println(","+paises+","+distancia);
+					pw.println(nomePais+","+paises+","+distancia);
 				}
 				pw.close();
 			}
