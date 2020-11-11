@@ -306,13 +306,13 @@ public class ExportaRanking {
 	 * @param csv define se será arquivo csv será criado
 	 * @param tsv define se será arquivo tsv será criado
 	 * @param ranking lista dos países próixmos ao de mais crescimento
-	 * @param pais de maior crescimento
+	 * @param output de maior crescimento
 	 */
-	public void exportaLocal(boolean csv, boolean tsv, List<Pais> ranking, Pais pais) {
+	public void exportaLocal(boolean csv, boolean tsv, List<Pais> ranking, List<String> output) {
 		
-		String nomePais = pais.getNome();
-		float lat = pais.getLatitude();
-		float lon = pais.getLongitude();
+		String nomePais = output.getNome();
+		float lat = output.getLatitude();
+		float lon = output.getLongitude();
 		
 		if (tsv){
 			rankingLocal = new File("rankingLocal.tsv");
@@ -365,7 +365,7 @@ public class ExportaRanking {
 			pw.println("<table class=\"table\">");
 			pw.println("  <thead>");
 			pw.println("<tr class=\"table-secondary\">");
-			pw.println(" <td colspan=\"4\">Países próximos a "+pais.getNome()+"</td>");
+			pw.println(" <td colspan=\"4\">Países próximos a "+output.getNome()+"</td>");
 			pw.println("</tr>");
 			pw.println("</tread>");
 			pw.println("<body>");
