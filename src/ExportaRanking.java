@@ -43,10 +43,10 @@ public class ExportaRanking {
 	
 	/**
 	 * Exporta ranking de maiores casos/recuperados/mortos para arquivo csv e tsv
-	 * @param opcoes 
-	 * @param csv
-	 * @param tsv
-	 * @param observacoes
+	 * @param status diz se a medição é de caso, morte ou recuperação
+	 * @param csv define se arquivo csv será exportado
+	 * @param tsv define se arquivo tsv será exportado
+	 * @param observacoes ranking de números
 	 */
 	public void exportaNumeros(StatusCaso status, boolean csv, boolean tsv, List<Medicao> observacoes) {
 		
@@ -131,9 +131,9 @@ public class ExportaRanking {
 	
 	/**
 	 * Exporta ranking de crescimento de casos/recuperados/mortos para arquivo csv e tsv
-	 * @param csv
-	 * @param tsv
-	 * @param output
+	 * @param csv define se arquivo csv será exportado
+	 * @param tsv define se arquivo tsv será exportado
+	 * @param output ranking de crescimento
 	 */
 	public void exportaCrescimentos(StatusCaso status, boolean csv, boolean tsv, List<Medicao> output) {
 		
@@ -217,9 +217,9 @@ public class ExportaRanking {
 	
 	/**
 	 * Exporta ranking de mortalidade para arquivo csv e tsv
-	 * @param csv
-	 * @param tsv
-	 * @param ranking
+	 * @param csv define se será exportado arquivo csv
+	 * @param tsv define se será exportado arquivo tsv
+	 * @param ranking de mortalidade
 	 */
 	public void exportaMortalidade(boolean csv, boolean tsv, List<Medicao> ranking) {
 		
@@ -301,7 +301,13 @@ public class ExportaRanking {
 		
 	}
 	
-	
+	/**
+	 * Exporta a lista de locais próximos ao ponto de maior crescimento para arquivos externos
+	 * @param csv define se será arquivo csv será criado
+	 * @param tsv define se será arquivo tsv será criado
+	 * @param ranking lista dos países próixmos ao de mais crescimento
+	 * @param pais de maior crescimento
+	 */
 	public void exportaLocal(boolean csv, boolean tsv, List<Pais> ranking, Pais pais) {
 		
 		String nomePais = pais.getNome();
@@ -406,6 +412,14 @@ public class ExportaRanking {
 		}
 	}
 	
+	/**
+	 * Calcula da distancia em KM das coordenadas usando a formula de Haversine
+	 * @param latitude1
+	 * @param longitude1
+	 * @param latitude2
+	 * @param longitude2
+	 * @return distancia em km entre os dois pontos
+	 */
 	public float haversine(float latitude1, float longitude1, float latitude2, float longitude2) {
 		//Raio da terra em km
 		double raio = 6372.8;
