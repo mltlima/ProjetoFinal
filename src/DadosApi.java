@@ -14,8 +14,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-
-
 /**
  * 
  * @author Miguel
@@ -34,9 +32,6 @@ public class DadosApi extends Estatistica{
 	 * @param requisicao A requisição de dados que veio do usuário
 	 */
 	public void start(Controller requisicao, View v) {//requição de dados
-		//Miguel, calcule qual pesquise deve ser feita. Mas preste atenção no uso de dados
-		//Não precisamos de todas as datas, apenas o final e o inicio dos rankings
-		//De preferência alguma que não exploda a API
 		String parts[] = requisicao.getDataInicial().split("-");
 		String parts2[] = requisicao.getDataFinal().split("-");
 		String dataInicial = parts[2] + "-" + parts[1] + "-" + parts[0];
@@ -45,11 +40,8 @@ public class DadosApi extends Estatistica{
 		readApi();
 		
 		
-		//exemplo de link para peguar todos os rankings necessários:
-		//https://api.covid19api.com/country/south-africa?from=2020-06-01T00:00:00Z&to=2020-06-01T00:00:01Z
 		
 		getDadosByDate(dataInicial, dataFinal);
-		//getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
 		super.copy(); //Copia medidas realizadas
 		
 		boolean tsv = requisicao.isTsv();
@@ -60,53 +52,53 @@ public class DadosApi extends Estatistica{
 		switch (maiorNumero) {
 		case 1:
 
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
 			break;
 			
 case 2:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 3:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 4:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		
 		case 5:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 6:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 7:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		}
@@ -119,53 +111,53 @@ case 2:
 		switch (maiorCrescimento) {
 		case 1:
 
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 2:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 3:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 4:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		
 		case 5:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 6:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 7:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		}
@@ -177,7 +169,7 @@ case 2:
 		
 		
 		if (mortalidade) {
-			v.printOutput(super.rankingMortalidade(tsv, csv), "Ranking mortalidade");
+			super.rankingMortalidade(tsv, csv);
 			super.restart();
 		}
 		
@@ -186,17 +178,15 @@ case 2:
 		
 		
 		if (raio > 0) {
-			v.printOutput(super.distanciaKm(raio,tsv,csv),"Distancia em km");
+			super.distanciaKm(raio,tsv,csv);
 			super.restart();
 		}
 
 			
 
-		//super.er.close();
+		super.er.close();
 
 	}
-	
-	
 	
 	
 	/**
@@ -229,46 +219,6 @@ case 2:
 			e.printStackTrace();         
 		}
 	}
-	/*
-	public void readApi() {
-
-		
-		HttpClient cliente = HttpClient.newBuilder()
-		        .version(Version.HTTP_2)
-		        .followRedirects(Redirect.ALWAYS)
-		        .build();
-		        
-		HttpRequest requisicao = HttpRequest.newBuilder()
-		        .uri(URI.create("https://api.covid19api.com/summary"))
-		        .build();
-		        
-		        try {
-		        	HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
-
-		            
-		        	JsonObject respostaJson = JsonParser.parseString(resposta.body()).getAsJsonObject() ;
-					JsonArray paises =  respostaJson.get("Countries").getAsJsonArray();
-		      
-					for (Object dados : paises) {
-						
-					    String strDados = dados.toString();
-					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
-					    
-					    String nome = info.get("Country").toString();
-					    String codigo = info.get("CountryCode").toString();
-					    String slug = info.get("Slug").toString();
-					    Pais pais = new Pais(nome,codigo,slug);
-					    this.paises.put(nome, pais);
-					}   
-					
-		        } catch (IOException e) {
-		            System.err.println("Problema com a conexão");
-		            e.printStackTrace();
-		        } catch (InterruptedException e) {
-		            System.err.println("Requisição interrompida");
-		            e.printStackTrace();
-		        }
-	}*/
 	
 
 	/**
@@ -381,20 +331,6 @@ private void getDadosPais(String link, Pais pais, String dateStart, String dateE
 						    medicao3.setMomento(data);
 					    
 					    }
-					    /*
-					    String name = info.get("Country").toString();
-					    String province = info.get("Province").toString().replace("\"", "");
-					    controller.getPais(name);
-					    
-					    if (province.isBlank()) {
-					    	float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
-						    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
-						    controller.setLatitude(latitude);
-						    controller.setLongitude(longitude);
-						}
-					    
-					    */
-					  
 					     
 					}   
 		        } catch (IOException e) {
