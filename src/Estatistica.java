@@ -83,6 +83,13 @@ public abstract class Estatistica {
 			}
 		}
 		
+		for(int i=0;i<10;i++) {
+			System.out.println(observacoes.get(i).getPais().getNome());
+			System.out.println(observacoes.get(i).getMomento());
+			System.out.println("casos: "+observacoes.get(i).getCasos());
+			System.out.println("valor: "+observacoes.get(i).valor());
+		}
+		
 		if (tsv || csv) {
 			ExportaRanking er = new ExportaRanking();
 			er.exportaNumeros(status, csv, tsv, this.observacoes);
@@ -235,7 +242,7 @@ public abstract class Estatistica {
 				ranking.add(medicao.getPais());
 			}
 		}
-		
+
 		er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
 				
 	}

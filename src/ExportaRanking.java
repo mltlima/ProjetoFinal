@@ -1,4 +1,6 @@
+import java.awt.Desktop;
 import java.io.*;
+import java.net.*;
 import java.util.*;
 
 /**
@@ -93,9 +95,11 @@ public class ExportaRanking {
 			
 			pw.println("<table class=\"table\">");
 			pw.println("<tr class=\"table-secondary\">");
-			pw.println(" <td colspan=\"4\">RANKING DO NÚMERO DE "+status+"</td>");
-			pw.println("  <thead>");
+			//pw.println(" <td colspan=\"4\">RANKING DO NÚMERO DE "+status+"</td>");
+			//pw.println("  <thead>");
 			pw.println("    <tr>");
+			pw.println("<tr class=\"table-secondary\">");
+			pw.println(" <td colspan=\"4\">RANKING DO NÚMERO DE "+status+"</td>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
 			pw.println("      <th scope=\"col\">"+status+"</th>");
@@ -120,6 +124,16 @@ public class ExportaRanking {
 		}
 		catch (IOException f) {
 			System.out.println("Erro ao exportar para arquivo");
+		}
+		if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+			try {
+				Desktop.getDesktop().browse(new URI("file:/git/ProjetoFinal/rankingHtml.html"));
+				//Desktop.getDesktop().browse(new URI("rankingHtml.html"));
+			}
+			catch(IOException e) {
+			}
+			catch(URISyntaxException e) {
+			}
 		}
 	}
 
