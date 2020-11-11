@@ -60,53 +60,53 @@ public class DadosApi extends Estatistica{
 		switch (maiorNumero) {
 		case 1:
 
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
 			break;
 			
 case 2:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 3:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 4:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		
 		case 5:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 6:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 7:
 			
-			v.printOutput(super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking casos confirmados");
+			super.rankingNumerico(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.MORTOS,tsv,csv), "Ranking mortos");
+			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv), "Ranking recuperados");
+			super.rankingNumerico(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		}
@@ -119,53 +119,53 @@ case 2:
 		switch (maiorCrescimento) {
 		case 1:
 
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 2:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 3:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 4:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		
 		case 5:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 6:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 			
 		case 7:
 			
-			v.printOutput(super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv), "Ranking crescimento casos confirmados");
+			super.rankingCrescimento(StatusCaso.CONFIRMADOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv), "Ranking crescimento mortos");
+			super.rankingCrescimento(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
-			v.printOutput(super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv), "Ranking crescimento recuperados");
+			super.rankingCrescimento(StatusCaso.RECUPERADOS,tsv,csv);
 			super.restart();
 			break;
 		}
@@ -177,7 +177,7 @@ case 2:
 		
 		
 		if (mortalidade) {
-			v.printOutput(super.rankingMortalidade(tsv, csv), "Ranking mortalidade");
+			super.rankingMortalidade(tsv, csv);
 			super.restart();
 		}
 		
@@ -186,13 +186,13 @@ case 2:
 		
 		
 		if (raio > 0) {
-			v.printOutput(super.distanciaKm(raio,tsv,csv),"Distancia em km");
+			super.distanciaKm(raio,tsv,csv);
 			super.restart();
 		}
 
 			
 
-		//super.er.close();
+		super.er.close();
 
 	}
 	
@@ -229,46 +229,6 @@ case 2:
 			e.printStackTrace();         
 		}
 	}
-	/*
-	public void readApi() {
-
-		
-		HttpClient cliente = HttpClient.newBuilder()
-		        .version(Version.HTTP_2)
-		        .followRedirects(Redirect.ALWAYS)
-		        .build();
-		        
-		HttpRequest requisicao = HttpRequest.newBuilder()
-		        .uri(URI.create("https://api.covid19api.com/summary"))
-		        .build();
-		        
-		        try {
-		        	HttpResponse<String> resposta = cliente.send(requisicao, HttpResponse.BodyHandlers.ofString());
-
-		            
-		        	JsonObject respostaJson = JsonParser.parseString(resposta.body()).getAsJsonObject() ;
-					JsonArray paises =  respostaJson.get("Countries").getAsJsonArray();
-		      
-					for (Object dados : paises) {
-						
-					    String strDados = dados.toString();
-					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
-					    
-					    String nome = info.get("Country").toString();
-					    String codigo = info.get("CountryCode").toString();
-					    String slug = info.get("Slug").toString();
-					    Pais pais = new Pais(nome,codigo,slug);
-					    this.paises.put(nome, pais);
-					}   
-					
-		        } catch (IOException e) {
-		            System.err.println("Problema com a conexão");
-		            e.printStackTrace();
-		        } catch (InterruptedException e) {
-		            System.err.println("Requisição interrompida");
-		            e.printStackTrace();
-		        }
-	}*/
 	
 
 	/**
