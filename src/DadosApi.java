@@ -34,9 +34,6 @@ public class DadosApi extends Estatistica{
 	 * @param requisicao A requisição de dados que veio do usuário
 	 */
 	public void start(Controller requisicao, View v) {//requição de dados
-		//Miguel, calcule qual pesquise deve ser feita. Mas preste atenção no uso de dados
-		//Não precisamos de todas as datas, apenas o final e o inicio dos rankings
-		//De preferência alguma que não exploda a API
 		String parts[] = requisicao.getDataInicial().split("-");
 		String parts2[] = requisicao.getDataFinal().split("-");
 		String dataInicial = parts[2] + "-" + parts[1] + "-" + parts[0];
@@ -45,11 +42,8 @@ public class DadosApi extends Estatistica{
 		readApi();
 		
 		
-		//exemplo de link para peguar todos os rankings necessários:
-		//https://api.covid19api.com/country/south-africa?from=2020-06-01T00:00:00Z&to=2020-06-01T00:00:01Z
 		
 		getDadosByDate(dataInicial, dataFinal);
-		//getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
 		super.copy(); //Copia medidas realizadas
 		
 		boolean tsv = requisicao.isTsv();
@@ -197,8 +191,6 @@ case 2:
 	}
 	
 	
-	
-	
 	/**
      * Leitura inicial do banco de dados da covid 19, pela covid19api.com 
      * Será lida para guardar na memória, de acordo com a UML do enunciado.
@@ -341,20 +333,6 @@ private void getDadosPais(String link, Pais pais, String dateStart, String dateE
 						    medicao3.setMomento(data);
 					    
 					    }
-					    /*
-					    String name = info.get("Country").toString();
-					    String province = info.get("Province").toString().replace("\"", "");
-					    controller.getPais(name);
-					    
-					    if (province.isBlank()) {
-					    	float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
-						    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
-						    controller.setLatitude(latitude);
-						    controller.setLongitude(longitude);
-						}
-					    
-					    */
-					  
 					     
 					}   
 		        } catch (IOException e) {
