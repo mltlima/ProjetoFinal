@@ -332,7 +332,7 @@ private void getDadosPais(String link, Pais pais, String dateStart, String dateE
 					    
 					    
 					    //Pula dados se nao for dado geral do pais
-					    if (province.isBlank() && (strData.equals(dateStart + "T00:00:00Z") || strData.equals(dateEnd + "T00:00:00Z"))) {
+					    if (province.isBlank()) {//&& (strData.equals(dateStart + "T00:00:00Z") || strData.equals(dateEnd + "T00:00:00Z"))) {
 							
 						
 					    

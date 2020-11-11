@@ -239,13 +239,12 @@ public abstract class Estatistica {
 		List<Pais> ranking = new ArrayList<Pais>();
 		List<String> output = new ArrayList<>();
 		
-		for (Medicao medicao : copiaObservacoes) {
+		for (Medicao medicao : this.copiaObservacoes) {
 			
 			float lat2 = medicao.getPais().getLatitude();
 			float lon2 = medicao.getPais().getLongitude();
 			
 			float distancia = haversine(lat,lon,lat2,lon2);
-			
 			String pais2 = medicao.getPais().getNome();
 			
 			if (distancia <= raio && !pais.equals(pais2) && !pais2.equals(temp)) {
