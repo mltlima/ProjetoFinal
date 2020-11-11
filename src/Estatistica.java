@@ -11,6 +11,8 @@ public abstract class Estatistica {
 	private List<Medicao> observacoes  = new ArrayList<Medicao>();
 	private float valor;
 	private List<Medicao> copiaObservacoes;
+	private LocalDateTime dataInicio;
+	private LocalDateTime dataFim;
 	ExportaRanking er = new ExportaRanking();
 	
 	/**
@@ -25,16 +27,16 @@ public abstract class Estatistica {
 	 * @return data do inico da medicao
 	 */
 	public LocalDateTime dataInicio() {
-		LocalDateTime data = this.copiaObservacoes.get(0).getMomento();
-		return data;
+		//LocalDateTime data = this.copiaObservacoes.get(0).getMomento();
+		return this.dataInicio;
 	}
 	/**
 	 * 
 	 * @return data do fim da medicao
 	 */
 	public LocalDateTime dataFim() {
-		LocalDateTime data = this.copiaObservacoes.get(this.copiaObservacoes.size() - 1).getMomento();
-		return data;
+		//LocalDateTime data = this.copiaObservacoes.get(this.copiaObservacoes.size() - 1).getMomento();
+		return this.dataFim;
 	}
 	/**
 	 * Valor da taxa de mortalidade e crescimento adicionada ao ultimo medicao do pais
@@ -55,6 +57,8 @@ public abstract class Estatistica {
 	 */
 	public void copy() {
 		this.copiaObservacoes = new ArrayList<>(observacoes);
+		this.dataInicio = this.copiaObservacoes.get(0).getMomento();
+		this.dataFim = this.copiaObservacoes.get(this.copiaObservacoes.size() - 1).getMomento();
 	}
 	/**
 	 * Copia de volta a lista de medicoes originais
@@ -77,7 +81,7 @@ public abstract class Estatistica {
 		
 		for (Medicao medicao : observacoes) {
 			
-			if (medicao.getStatus().equals(status)) {
+			if (medicao.getStatus().equals(status) && medicao.getMomento().equals(dataFim())) {
 				String str = medicao.getPais().getSlug() + " " + medicao.getCasos();
 				output.add(str);
 			}
@@ -101,7 +105,7 @@ public abstract class Estatistica {
 	 * @param status tipo de medicao confirmados, recuperados ou mortos
 	 */
 
-	public void rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
+	public List<String> rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
 
 		
 		float temp = 0;
@@ -112,7 +116,7 @@ public abstract class Estatistica {
 				
 				if (medicao.getMomento().equals(dataInicio())) {
 					temp = medicao.getCasos();
-					//System.out.println(temp);
+					
 				}
 				if (medicao.getMomento().equals(dataFim())) {
 					//Passa o valor da taxa para a ultima data
@@ -120,21 +124,31 @@ public abstract class Estatistica {
 						//Divide numero diferente de zero
 						medicao.setValor((medicao.getCasos() - temp) * 1.0f / temp);
 						temp = 0;
-					} else if((medicao.getCasos() >= 1 )) {
+					} else {
 						medicao.setValor((medicao.getCasos() - 1) * 1.0f);
-					}else {
-						medicao.setValor(0);
 					}
 				
-				}
+				}			
 			}
 		}
 		
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
 		
+		List<String> output = new ArrayList<>();
+		
+		
+		for (Medicao medicao : observacoes) {
+			//Printa taxa maior que 0
+			if (medicao.valor() > 0 && medicao.getMomento().equals(dataFim())) {
+				String str = medicao.getPais().getSlug() + " " + medicao.valor();
+				output.add(str);
+			}
+		}
+		
 		
 		er.exportaCrescimentos(status, csv, tsv, this.observacoes);
+		return output;
 	}
 	
 	
@@ -144,7 +158,7 @@ public abstract class Estatistica {
 	/**
 	 * Organiza paises pela maior taxa de mortalidade
 	 */
-	public void rankingMortalidade(boolean tsv, boolean csv) {
+	public List<String> rankingMortalidade(boolean tsv, boolean csv) {
 		
 		float temp = 0;
 		int casosInicio = 0;
@@ -174,7 +188,6 @@ public abstract class Estatistica {
 					} else {
 						if (temp != 0) {
 							medicao.setValor((medicao.getCasos() - temp) * 1.0f / (casosFim - casosInicio));	
-							System.out.println(medicao.valor());
 						} else {
 							medicao.setValor((medicao.getCasos() - 1) * 1.0f / (casosFim - casosInicio));
 						}
@@ -187,16 +200,18 @@ public abstract class Estatistica {
 		}
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
-		//teste taxa
+		List<String> output = new ArrayList<>();
+		
 		for (Medicao medicao : observacoes) {
 			//Printa taxa maior que 0
-			if (medicao.valor() > 0) {
-				System.out.println(medicao.valor());
-				System.out.println(medicao.getPais().getSlug());
+			if (medicao.valor() > 0 && medicao.getMomento().equals(dataFim())) {
+				String str = medicao.getPais().getSlug() + " " + medicao.valor();
+				output.add(str);
 			}
 		}
 		
 		er.exportaMortalidade(csv, tsv, this.observacoes);
+		return output;
 	}
 	
 	
@@ -205,7 +220,7 @@ public abstract class Estatistica {
 	 * Compara distancia em km
 	 * @param raio de pesquisa
 	 */
-	public void distanciaKm(float raio, boolean tsv, boolean csv) {
+	public List<String> distanciaKm(float raio, boolean tsv, boolean csv) {
 		
 		//organiza lista por casos confirmados
 		rankingCrescimento(StatusCaso.CONFIRMADOS,false,false);
@@ -216,9 +231,10 @@ public abstract class Estatistica {
 		
 		String pais = this.observacoes.get(0).getPais().getNome();
 		String temp = null;
-		System.out.println("\n\n" + pais + "\n\n");
 		
 		List<Pais> ranking = new ArrayList<Pais>();
+		List<String> output = new ArrayList<>();
+		
 		for (Medicao medicao : copiaObservacoes) {
 			
 			float lat2 = medicao.getPais().getLatitude();
@@ -229,15 +245,15 @@ public abstract class Estatistica {
 			String pais2 = medicao.getPais().getNome();
 			
 			if (distancia <= raio && !pais.equals(pais2) && !pais2.equals(temp)) {
-				System.out.println(pais2);
-				System.out.println(distancia);
+				String str = pais2 + " " + distancia;
+				output.add(str);
 				temp = pais2;
 				ranking.add(medicao.getPais());
 			}
 		}
 		
 		er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
-				
+		return output;		
 	}
 	
 	

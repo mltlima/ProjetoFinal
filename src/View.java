@@ -432,7 +432,7 @@ public class View{
 	}
 	
 	//Resultado pesquisa
-	public void printOutput(List<String> output) {
+	public void printOutput(List<String> output, String mensagem) {
 		
 		
 		   JScrollPane scrollpane = new JScrollPane(); 
@@ -445,7 +445,7 @@ public class View{
 		   panel.add(scrollpane);
 		   
 		   scrollpane.getViewport().add(lista);
-		   JOptionPane.showMessageDialog(null, scrollpane, "Output",  
+		   JOptionPane.showMessageDialog(null, scrollpane, mensagem,  
 		   JOptionPane.PLAIN_MESSAGE);
 		}
 	
