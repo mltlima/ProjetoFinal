@@ -70,27 +70,25 @@ public abstract class Estatistica {
 	/**
 	 * Organiza lista com medicoes do maior numero de casos ao menor
 	 * @param status
+	 * @return 
 	 */
-	public List<String> rankingNumerico(StatusCaso status, boolean tsv, boolean csv) {
+	public  void rankingNumerico(StatusCaso status, boolean tsv, boolean csv) {
 		
 		// organiza do menor ao maior
 		Collections.sort(this.observacoes, new medicaoComparator());
 		// inverte a ordem
 		Collections.reverse(this.observacoes);
-		List<Medicao> trocar = new ArrayList<>();
-		List<String> output = new ArrayList<>();
+		List<Medicao> output = new ArrayList<>();
 		for (Medicao medicao : observacoes) {
 			
 
 			if (medicao.getStatus().equals(status) && medicao.getMomento().equals(dataFim())) {
-				String str = medicao.getPais().getSlug() + " " + medicao.getCasos();
-				output.add(str);
+				output.add(medicao);
 
 			}
 		}
 		
-		er.exportaNumeros(status, csv, tsv, trocar);
-		return output;
+		er.exportaNumeros(status, csv, tsv, output);
 	}
 	
 	
@@ -103,7 +101,7 @@ public abstract class Estatistica {
 	 * @param status tipo de medicao confirmados, recuperados ou mortos
 	 */
 
-	public List<String> rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
+	public void rankingCrescimento(StatusCaso status, boolean tsv, boolean csv) {
 
 		
 		float temp = 0;
@@ -135,7 +133,7 @@ public abstract class Estatistica {
 		Collections.reverse(this.observacoes);
 		
 
-		List<String> output = new ArrayList<>();
+		List<Medicao> output = new ArrayList<>();
 
 		
 		
@@ -143,14 +141,12 @@ public abstract class Estatistica {
 			//Printa taxa maior que 0
 
 			if (medicao.valor() > 0 && medicao.getMomento().equals(dataFim())) {
-				String str = medicao.getPais().getSlug() + " " + medicao.valor();
-				output.add(str);
+				output.add(medicao);
 			}
 		}
 		
 		
-		er.exportaCrescimentos(status, csv, tsv, this.observacoes);
-		return output;
+		er.exportaCrescimentos(status, csv, tsv, output);
 
 	}
 	
@@ -161,7 +157,7 @@ public abstract class Estatistica {
 	/**
 	 * Organiza paises pela maior taxa de mortalidade
 	 */
-	public List<String> rankingMortalidade(boolean tsv, boolean csv) {
+	public void rankingMortalidade(boolean tsv, boolean csv) {
 		
 		float temp = 0;
 		int casosInicio = 0;
@@ -203,19 +199,17 @@ public abstract class Estatistica {
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
 
-		List<String> output = new ArrayList<>();
+		List<Medicao> output = new ArrayList<>();
 		
 		for (Medicao medicao : observacoes) {
 			//Printa taxa maior que 0
 			if (medicao.valor() > 0 && medicao.getMomento().equals(dataFim())) {
-				String str = medicao.getPais().getSlug() + " " + medicao.valor();
-				output.add(str);
+				output.add(medicao);
 			}
 		}
 
 		
-		er.exportaMortalidade(csv, tsv, this.observacoes);
-		return output;
+		er.exportaMortalidade(csv, tsv, output);
 	}
 	
 	
@@ -224,7 +218,7 @@ public abstract class Estatistica {
 	 * Compara distancia em km
 	 * @param raio de pesquisa
 	 */
-	public List<String> distanciaKm(float raio, boolean tsv, boolean csv) {
+	public void distanciaKm(float raio, boolean tsv, boolean csv) {
 		
 		//organiza lista por casos confirmados
 		rankingCrescimento(StatusCaso.CONFIRMADOS,false,false);
@@ -255,8 +249,8 @@ public abstract class Estatistica {
 			}
 		}
 
-		er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
-		return output;		
+		er.exportaLocal(csv, tsv, ranking, output);
+		//return output;		
 	}
 	
 	

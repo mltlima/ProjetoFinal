@@ -98,13 +98,13 @@ public class ExportaRanking {
 			pw.println(" <td colspan=\"4\">RANKING DO NÚMERO DE "+status+"</td>");
 			pw.println("</tr>");
 			pw.println("</tread>");
-			pw.println("<thead>");
+			pw.println("<body>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
 			pw.println("      <th scope=\"col\">"+status+"</th>");
 			pw.println("    </tr>");
-			pw.println("  </thead>");
+			pw.println("  </body>");
 			pw.println("  <tbody>");
 			
 			for (int i=0; i<observacoes.size(); i++) {
@@ -185,13 +185,13 @@ public class ExportaRanking {
 			pw.println(" <td colspan=\"4\">RANKING DO CRESCIMENTO DE "+status+"</td>");
 			pw.println("</tr>");
 			pw.println("</tread>");
-			pw.println("  <thead>");
+			pw.println("  <body>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
 			pw.println("      <th scope=\"col\">"+status+"</th>");
 			pw.println("    </tr>");
-			pw.println("  </thead>");
+			pw.println("  </body>");
 			pw.println("  <tbody>");
 			
 			for (int i=0; i<output.size(); i++) {
@@ -271,13 +271,13 @@ public class ExportaRanking {
 			pw.println(" <td colspan=\"4\">RANKING DE MORTALIDADE</td>");
 			pw.println("    </tr>");
 			pw.println("  </thead>");
-			pw.println("  <thead>");
+			pw.println("  <body>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
 			pw.println("      <th scope=\"col\">MORTALIDADE</th>");
 			pw.println("    </tr>");
-			pw.println("  </thead>");
+			pw.println("  </body>");
 			pw.println("  <tbody>");
 			
 			for (int i=0; i<ranking.size(); i++) {
@@ -368,12 +368,12 @@ public class ExportaRanking {
 			pw.println(" <td colspan=\"4\">Países próximos a "+pais.getNome()+"</td>");
 			pw.println("</tr>");
 			pw.println("</tread>");
-			pw.println("<thead>");
+			pw.println("<body>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
 			pw.println("      <th scope=\"col\">DISTÂNCIA(km)</th>");
 			pw.println("    </tr>");
-			pw.println("  </thead>");
+			pw.println("  </body>");
 			pw.println("  <tbody>");
 			
 			for (int i=0; i<ranking.size(); i++) {
