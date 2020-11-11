@@ -49,18 +49,6 @@ public class App {
 			}
 		});
         
-     /*
-    DadosApi teste = new DadosApi();
-    teste.start();
-    teste.copy();
-    //teste.test();
-    teste.distanciaKm(500f);
-    /*try {
-		TimeUnit.SECONDS.sleep(60);
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}*/
         
     }
 

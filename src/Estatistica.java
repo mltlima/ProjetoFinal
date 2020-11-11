@@ -77,21 +77,19 @@ public abstract class Estatistica {
 		Collections.sort(this.observacoes, new medicaoComparator());
 		// inverte a ordem
 		Collections.reverse(this.observacoes);
+		List<Medicao> trocar = new ArrayList<>();
 		List<String> output = new ArrayList<>();
-		
 		for (Medicao medicao : observacoes) {
 			
+
 			if (medicao.getStatus().equals(status) && medicao.getMomento().equals(dataFim())) {
 				String str = medicao.getPais().getSlug() + " " + medicao.getCasos();
 				output.add(str);
+
 			}
 		}
 		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaNumeros(status, csv, tsv, this.observacoes);
-		}
-		
+		er.exportaNumeros(status, csv, tsv, trocar);
 		return output;
 	}
 	
@@ -124,6 +122,7 @@ public abstract class Estatistica {
 						//Divide numero diferente de zero
 						medicao.setValor((medicao.getCasos() - temp) * 1.0f / temp);
 						temp = 0;
+
 					} else {
 						medicao.setValor((medicao.getCasos() - 1) * 1.0f);
 					}
@@ -135,11 +134,14 @@ public abstract class Estatistica {
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
 		
+
 		List<String> output = new ArrayList<>();
+
 		
 		
 		for (Medicao medicao : observacoes) {
 			//Printa taxa maior que 0
+
 			if (medicao.valor() > 0 && medicao.getMomento().equals(dataFim())) {
 				String str = medicao.getPais().getSlug() + " " + medicao.valor();
 				output.add(str);
@@ -149,6 +151,7 @@ public abstract class Estatistica {
 		
 		er.exportaCrescimentos(status, csv, tsv, this.observacoes);
 		return output;
+
 	}
 	
 	
@@ -195,11 +198,11 @@ public abstract class Estatistica {
 					}
 				
 				}
-			
 			}
 		}
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
+
 		List<String> output = new ArrayList<>();
 		
 		for (Medicao medicao : observacoes) {
@@ -209,6 +212,7 @@ public abstract class Estatistica {
 				output.add(str);
 			}
 		}
+
 		
 		er.exportaMortalidade(csv, tsv, this.observacoes);
 		return output;
@@ -251,7 +255,7 @@ public abstract class Estatistica {
 				ranking.add(medicao.getPais());
 			}
 		}
-		
+
 		er.exportaLocal(csv, tsv, ranking, this.observacoes.get(0).getPais());
 		return output;		
 	}

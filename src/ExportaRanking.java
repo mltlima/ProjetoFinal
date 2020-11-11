@@ -1,3 +1,4 @@
+import java.awt.Desktop;
 import java.io.*;
 import java.util.*;
 
@@ -17,7 +18,7 @@ public class ExportaRanking {
 	/**
 	 * Construtor
 	 */
-	public void ExportaRanking() {
+	public ExportaRanking() {
 		try {
 			FileWriter fw = new FileWriter(rankingHtml);
 			PrintWriter pw = new PrintWriter(fw);
@@ -33,7 +34,7 @@ public class ExportaRanking {
 			pw.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">");
 			pw.println("<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js\" integrity=\"sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy\" crossorigin=\"anonymous\"></script>");
 			pw.println("</head>");
-			
+			pw.close();
 		}
 		catch (IOException f) {
 			System.out.println("Erro ao exportar para arquivo");
@@ -45,9 +46,9 @@ public class ExportaRanking {
 	 * @param opcoes 
 	 * @param csv
 	 * @param tsv
-	 * @param ranking
+	 * @param observacoes
 	 */
-	public void exportaNumeros(StatusCaso status, boolean csv, boolean tsv, List<Medicao> ranking) {
+	public void exportaNumeros(StatusCaso status, boolean csv, boolean tsv, List<Medicao> observacoes) {
 		
 		if (tsv){
 			rankingNumeros = new File("rankingNumeros.tsv");
@@ -56,9 +57,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 
 				pw.println("Posição"+"	"+"País"+"	"+status);
-				for (int i=0; i<ranking.size(); i++) {
-					String nomePais = ranking.get(i).getPais().getNome();
-					String dado = Integer.toString(ranking.get(i).getCasos());
+				for (int i=0; i<observacoes.size(); i++) {
+					String nomePais = observacoes.get(i).getPais().getNome();
+					String dado = Integer.toString(observacoes.get(i).getCasos());
 					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();
@@ -75,9 +76,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 
 				pw.println("Posição"+","+"País"+","+status);
-				for (int i=0; i<ranking.size(); i++) {
-					String nomePais = ranking.get(i).getPais().getNome();
-					String dado = Integer.toString(ranking.get(i).getCasos());
+				for (int i=0; i<observacoes.size(); i++) {
+					String nomePais = observacoes.get(i).getPais().getNome();
+					String dado = Integer.toString(observacoes.get(i).getCasos());
 					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
 				}
 				pw.close();
@@ -92,9 +93,12 @@ public class ExportaRanking {
 			PrintWriter pw = new PrintWriter(fw);
 			
 			pw.println("<table class=\"table\">");
+			pw.println("<thead>");
 			pw.println("<tr class=\"table-secondary\">");
 			pw.println(" <td colspan=\"4\">RANKING DO NÚMERO DE "+status+"</td>");
-			pw.println("  <thead>");
+			pw.println("</tr>");
+			pw.println("</tread>");
+			pw.println("<thead>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
@@ -103,10 +107,10 @@ public class ExportaRanking {
 			pw.println("  </thead>");
 			pw.println("  <tbody>");
 			
-			for (int i=0; i<ranking.size(); i++) {
+			for (int i=0; i<observacoes.size(); i++) {
 				String posicao = Integer.toString(i+1);
-				String nomePais = ranking.get(i).getPais().getNome();
-				String dado = Integer.toString(ranking.get(i).getCasos());
+				String nomePais = observacoes.get(i).getPais().getNome();
+				String dado = Integer.toString(observacoes.get(i).getCasos());
 				pw.println("    <tr>");
 				pw.println("      <th scope=\"row\">"+posicao+"</th>");
 				pw.println("      <td>"+ nomePais +"</td>");
@@ -121,6 +125,7 @@ public class ExportaRanking {
 		catch (IOException f) {
 			System.out.println("Erro ao exportar para arquivo");
 		}
+		
 	}
 
 	
@@ -128,9 +133,9 @@ public class ExportaRanking {
 	 * Exporta ranking de crescimento de casos/recuperados/mortos para arquivo csv e tsv
 	 * @param csv
 	 * @param tsv
-	 * @param ranking
+	 * @param output
 	 */
-	public void exportaCrescimentos(StatusCaso status, boolean csv, boolean tsv, List<Medicao> ranking) {
+	public void exportaCrescimentos(StatusCaso status, boolean csv, boolean tsv, List<Medicao> output) {
 		
 		if (tsv){
 			rankingCrescimentos = new File("rankingCrescimentos.tsv");
@@ -139,9 +144,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 
 				pw.println("Posição"+"	"+"País"+"	"+status);
-				for (int i=0; i<ranking.size(); i++) {
-					String nomePais = ranking.get(i).getPais().getNome();
-					String dado = Float.toString(ranking.get(i).valor());
+				for (int i=0; i<output.size(); i++) {
+					String nomePais = output.get(i).getPais().getNome();
+					String dado = Float.toString(output.get(i).valor());
 					pw.println(Integer.toString(i+1)+"	"+nomePais+"	"+dado);
 				}
 				pw.close();
@@ -158,9 +163,9 @@ public class ExportaRanking {
 				PrintWriter pw = new PrintWriter(fw);
 
 				pw.println("Posição"+","+"País"+","+status);
-				for (int i=0; i<ranking.size(); i++) {
-					String nomePais = ranking.get(i).getPais().getNome();
-					String dado = Float.toString(ranking.get(i).valor());
+				for (int i=0; i<output.size(); i++) {
+					String nomePais = output.get(i).getPais().getNome();
+					String dado = Float.toString(output.get(i).valor());
 					pw.println(Integer.toString(i+1)+","+nomePais+","+dado);
 				}
 				pw.close();
@@ -175,8 +180,11 @@ public class ExportaRanking {
 			PrintWriter pw = new PrintWriter(fw);
 			
 			pw.println("<table class=\"table\">");
+			pw.println("<tread>");
 			pw.println("<tr class=\"table-secondary\">");
 			pw.println(" <td colspan=\"4\">RANKING DO CRESCIMENTO DE "+status+"</td>");
+			pw.println("</tr>");
+			pw.println("</tread>");
 			pw.println("  <thead>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
@@ -186,10 +194,10 @@ public class ExportaRanking {
 			pw.println("  </thead>");
 			pw.println("  <tbody>");
 			
-			for (int i=0; i<ranking.size(); i++) {
+			for (int i=0; i<output.size(); i++) {
 				String posicao = Integer.toString(i+1);
-				String nomePais = ranking.get(i).getPais().getNome();
-				String dado = Float.toString(ranking.get(i).valor());
+				String nomePais = output.get(i).getPais().getNome();
+				String dado = Float.toString(output.get(i).valor());
 				pw.println("    <tr>");
 				pw.println("      <th scope=\"row\">"+posicao+"</th>");
 				pw.println("      <td>"+ nomePais +"</td>");
@@ -258,8 +266,11 @@ public class ExportaRanking {
 			PrintWriter pw = new PrintWriter(fw);
 			
 			pw.println("<table class=\"table\">");
+			pw.println("<tread>");
 			pw.println("<tr class=\"table-secondary\">");
 			pw.println(" <td colspan=\"4\">RANKING DE MORTALIDADE</td>");
+			pw.println("    </tr>");
+			pw.println("  </thead>");
 			pw.println("  <thead>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">POSIÇÃO</th>");
@@ -342,13 +353,16 @@ public class ExportaRanking {
 		}
 		
 		try {
-			FileWriter fw = new FileWriter(rankingHtml);
+			FileWriter fw = new FileWriter(rankingHtml,true);
 			PrintWriter pw = new PrintWriter(fw);
 			
 			pw.println("<table class=\"table\">");
+			pw.println("  <thead>");
 			pw.println("<tr class=\"table-secondary\">");
 			pw.println(" <td colspan=\"4\">Países próximos a "+pais.getNome()+"</td>");
-			pw.println("  <thead>");
+			pw.println("</tr>");
+			pw.println("</tread>");
+			pw.println("<thead>");
 			pw.println("    <tr>");
 			pw.println("      <th scope=\"col\">PAÍS</th>");
 			pw.println("      <th scope=\"col\">DISTÂNCIA(km)</th>");
@@ -375,6 +389,21 @@ public class ExportaRanking {
 			System.out.println("Erro ao exportar para arquivo");
 		}
 		
+	}
+	/**
+	 * Encerra o programa e inicia o navegado, 
+	 * para o usuário visualizar a interface
+	 */
+	public void close() {
+		if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+			try {
+				File htmlFile = new File("rankingHtml.html").getCanonicalFile();
+				Desktop.getDesktop().browse(htmlFile.toURI());
+				//Desktop.getDesktop().browse(new URI("rankingHtml.html"));
+			}
+			catch(IOException e) {
+			}
+		}
 	}
 	
 	public float haversine(float latitude1, float longitude1, float latitude2, float longitude2) {

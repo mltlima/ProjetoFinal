@@ -62,7 +62,7 @@ public class Controller {
 		
 		this.tsv = v.getCheckTSV();
 		this.csv = v.getCheckCSV();
-		this.maiorMortalidade = v.getCheckCSV();
+		this.maiorMortalidade = v.getCheckMortality();
 		this.opcoesListaNumeros = v.getOpcoesListNumbers();
 		this.opcoesListaCrescimento = v.getOpcoesListGrowth();
 		if(isValid) {

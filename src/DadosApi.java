@@ -169,6 +169,7 @@ case 2:
 			super.restart();
 			break;
 		}
+
 		
 		
 		
@@ -190,6 +191,9 @@ case 2:
 		}
 
 			
+
+		//super.er.close();
+
 	}
 	
 	
@@ -200,6 +204,32 @@ case 2:
      * Será lida para guardar na memória, de acordo com a UML do enunciado.
      * @param controller
      */
+	public void readApi() {
+		HttpClient cliente = HttpClient.newBuilder().version(Version.HTTP_2).followRedirects(Redirect.ALWAYS).build();
+		HttpRequest hRequest = HttpRequest.newBuilder().uri(URI.create("https://api.covid19api.com/summary")).build();
+		try {         
+			HttpResponse<String> resposta = cliente.send(hRequest, HttpResponse.BodyHandlers.ofString()); 
+			JsonObject respostaJson = JsonParser.parseString(resposta.body()).getAsJsonObject() ;     
+			JsonArray paises = respostaJson.get("Countries").getAsJsonArray();               
+			for (Object dados : paises) {                                
+				String strDados = dados.toString();                    
+				JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();      
+				String nome = info.get("Country").toString();                
+				String codigo = info.get("CountryCode").toString();   
+				String slug = info.get("Slug").toString();            
+				Pais pais = new Pais(nome,codigo,slug);                 
+				this.paises.put(nome, pais);                     
+			} 
+		}
+		catch (IOException e) {    
+			System.err.println("Problema com a conexão");     
+			e.printStackTrace();        
+		} catch (InterruptedException e) {   
+			System.err.println("Requisição interrompida");     
+			e.printStackTrace();         
+		}
+	}
+	/*
 	public void readApi() {
 
 		
@@ -238,7 +268,7 @@ case 2:
 		            System.err.println("Requisição interrompida");
 		            e.printStackTrace();
 		        }
-	}
+	}*/
 	
 
 	/**
