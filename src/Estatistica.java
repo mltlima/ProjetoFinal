@@ -82,7 +82,7 @@ public abstract class Estatistica {
 			}
 		}
 		
-		er.exportaNumeros(status, csv, tsv, this.observacoes);
+		er.exportaNumeros(status, csv, tsv, output);
 	}
 	
 	
