@@ -67,35 +67,22 @@ public abstract class Estatistica {
 	 * Organiza lista com medicoes do maior numero de casos ao menor
 	 * @param status
 	 */
-	public List<String> rankingNumerico(StatusCaso status, boolean tsv, boolean csv) {
+	public void rankingNumerico(StatusCaso status, boolean tsv, boolean csv) {
 		
 		// organiza do menor ao maior
 		Collections.sort(this.observacoes, new medicaoComparator());
 		// inverte a ordem
 		Collections.reverse(this.observacoes);
-		List<String> output = new ArrayList<>();
+		List<Medicao> output = new ArrayList<>();
 		
 		for (Medicao medicao : observacoes) {
 			
 			if (medicao.getStatus().equals(status)) {
-				String str = medicao.getPais().getSlug() + " " + medicao.getCasos();
-				output.add(str);
+				output.add(medicao);
 			}
 		}
 		
-		for(int i=0;i<10;i++) {
-			System.out.println(observacoes.get(i).getPais().getNome());
-			System.out.println(observacoes.get(i).getMomento());
-			System.out.println("casos: "+observacoes.get(i).getCasos());
-			System.out.println("valor: "+observacoes.get(i).valor());
-		}
-		
-		if (tsv || csv) {
-			ExportaRanking er = new ExportaRanking();
-			er.exportaNumeros(status, csv, tsv, this.observacoes);
-		}
-		
-		return output;
+		er.exportaNumeros(status, csv, tsv, this.observacoes);
 	}
 	
 	
@@ -127,12 +114,9 @@ public abstract class Estatistica {
 						//Divide numero diferente de zero
 						medicao.setValor((medicao.getCasos() - temp) * 1.0f / temp);
 						temp = 0;
-					} else if((medicao.getCasos() >= 1 )) {
+					} else if((medicao.getCasos() > 1 )) {//ignora ranking de 0
 						medicao.setValor((medicao.getCasos() - 1) * 1.0f);
-					}else {
-						medicao.setValor(0);
 					}
-				
 				}
 			}
 		}
@@ -140,8 +124,19 @@ public abstract class Estatistica {
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
 		
+		List<Medicao> output = new ArrayList<>();
 		
-		er.exportaCrescimentos(status, csv, tsv, this.observacoes);
+		
+		for (Medicao medicao : observacoes) {
+			//Printa taxa maior que 0
+			if (medicao.valor() > 0) {
+				output.add(medicao);
+			}
+		}
+		
+		
+		
+		er.exportaCrescimentos(status, csv, tsv, output);
 	}
 	
 	
@@ -189,19 +184,10 @@ public abstract class Estatistica {
 					}
 				
 				}
-			
 			}
 		}
 		Collections.sort(this.observacoes, new comparatorCrescimento());
 		Collections.reverse(this.observacoes);
-		//teste taxa
-		for (Medicao medicao : observacoes) {
-			//Printa taxa maior que 0
-			if (medicao.valor() > 0) {
-				System.out.println(medicao.valor());
-				System.out.println(medicao.getPais().getSlug());
-			}
-		}
 		
 		er.exportaMortalidade(csv, tsv, this.observacoes);
 	}

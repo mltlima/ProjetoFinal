@@ -1,1675 +1,865 @@
-Posição,País,RECUPERADOS
-1,"Argentina",25987
-2,"Argentina",24761
-3,"Argentina",23620
-4,"Argentina",22794
-5,"Afghanistan",22142
-6,"Argentina",22020
-7,"Afghanistan",21459
-8,"Argentina",21037
-9,"Afghanistan",20917
-10,"Afghanistan",20342
-11,"Argentina",20197
-12,"Afghanistan",19551
-13,"Argentina",19268
-14,"Afghanistan",18969
-15,"Argentina",18319
-16,"Afghanistan",18054
-17,"Argentina",17415
-18,"Afghanistan",17267
-19,"Austria",17005
-20,"Austria",16979
-21,"Austria",16968
-22,"Austria",16902
-23,"Austria",16898
-24,"Argentina",16851
-25,"Austria",16843
-26,"Austria",16805
-27,"Austria",16771
-28,"Austria",16759
-29,"Austria",16733
-30,"Austria",16731
-31,"Austria",16685
-32,"Austria",16655
-33,"Austria",16628
-34,"Austria",16591
-35,"Austria",16557
-36,"Austria",16539
-37,"Afghanistan",16509
-38,"Austria",16503
-39,"Austria",16486
-40,"Austria",16436
-41,"Austria",16404
-42,"Austria",16353
-43,"Austria",16321
-44,"Austria",16269
-45,"Austria",16242
-46,"Argentina",16214
-47,"Austria",16201
-48,"Austria",16109
-49,"Austria",16058
-50,"Austria",15997
-51,"Austria",15961
-52,"Austria",15910
-53,"Austria",15882
-54,"Austria",15875
-55,"Austria",15871
-56,"Austria",15839
-57,"Austria",15833
-58,"Austria",15793
-59,"Austria",15789
-60,"Austria",15774
-61,"Austria",15752
-62,"Afghanistan",15750
-63,"Austria",15742
-64,"Austria",15717
-65,"Austria",15684
-66,"Austria",15672
-67,"Austria",15650
-68,"Austria",15629
-69,"Austria",15621
-70,"Austria",15597
-71,"Austria",15596
-72,"Austria",15593
-73,"Austria",15558
-74,"Austria",15531
-75,"Austria",15520
-76,"Austria",15452
-77,"Argentina",15419
-78,"Austria",15402
-79,"Austria",15357
-80,"Austria",15347
-81,"Austria",15286
-82,"Austria",15274
-83,"Austria",15228
-84,"Austria",15225
-85,"Afghanistan",15205
-86,"Austria",15182
-87,"Austria",15148
-88,"Austria",15138
-89,"Austria",15071
-90,"Austria",15063
-91,"Austria",15037
-92,"Austria",15005
-93,"Austria",15002
-94,"Austria",14951
-95,"Austria",14925
-96,"Austria",14882
-97,"Austria",14873
-98,"Austria",14795
-99,"Austria",14749
-100,"Argentina",14702
-101,"Austria",14678
-102,"Austria",14671
-103,"Austria",14614
-104,"Austria",14595
-105,"Austria",14563
-106,"Afghanistan",14525
-107,"Austria",14524
-108,"Austria",14476
-109,"Austria",14471
-110,"Austria",14405
-111,"Austria",14336
-112,"Austria",14304
-113,"Austria",14226
-114,"Austria",14148
-115,"Armenia",14103
-116,"Austria",14061
-117,"Austria",14041
-118,"Austria",13991
-119,"Austria",13945
-120,"Argentina",13933
-121,"Austria",13928
-122,"Austria",13836
-123,"Austria",13806
-124,"Austria",13698
-125,"Armenia",13675
-126,"Afghanistan",13659
-127,"Austria",13639
-128,"Austria",13555
-129,"Austria",13462
-130,"Armenia",13325
-131,"Austria",13316
-132,"Austria",13228
-133,"Argentina",13228
-134,"Austria",13180
-135,"Armenia",13130
-136,"Austria",13110
-137,"Afghanistan",13036
-138,"Austria",12907
-139,"Austria",12779
-140,"Argentina",12628
-141,"Austria",12580
-142,"Afghanistan",12456
-143,"Armenia",12364
-144,"Austria",12362
-145,"Austria",12282
-146,"Austria",12103
-147,"Argentina",12076
-148,"Austria",11872
-149,"Afghanistan",11831
-150,"Armenia",11817
-151,"Austria",11694
-152,"Argentina",11353
-153,"Austria",11328
-154,"Armenia",11221
-155,"Afghanistan",11173
-156,"Austria",10971
-157,"Argentina",10649
-158,"Austria",10631
-159,"Afghanistan",10582
-160,"Armenia",10524
-161,"Austria",10501
-162,"Algeria",10484
-163,"Algeria",10382
-164,"Algeria",10265
-165,"Austria",10214
-166,"Algeria",10154
-167,"Algeria",10050
-168,"Armenia",10009
-169,"Afghanistan",9998
-170,"Algeria",9935
-171,"Argentina",9931
-172,"Algeria",9831
-173,"Algeria",9733
-174,"Austria",9704
-175,"Algeria",9626
-176,"Algeria",9513
-177,"Armenia",9492
-178,"Algeria",9394
-179,"Argentina",9283
-180,"Armenia",9282
-181,"Algeria",9267
-182,"Afghanistan",9216
-183,"Algeria",9134
-184,"Algeria",8997
-185,"Austria",8986
-186,"Armenia",8927
-187,"Algeria",8857
-188,"Argentina",8809
-189,"Algeria",8697
-190,"Armenia",8676
-191,"Afghanistan",8676
-192,"Algeria",8503
-193,"Argentina",8371
-194,"Algeria",8306
-195,"Armenia",8216
-196,"Afghanistan",8145
-197,"Algeria",8113
-198,"Austria",8098
-199,"Argentina",8068
-200,"Argentina",7991
-201,"Algeria",7918
-202,"Argentina",7805
-203,"Armenia",7774
-204,"Algeria",7728
-205,"Afghanistan",7653
-206,"Austria",7633
-207,"Argentina",7568
-208,"Algeria",7542
-209,"Argentina",7479
-210,"Armenia",7402
-211,"Algeria",7377
-212,"Austria",7343
-213,"Argentina",7305
-214,"Algeria",7201
-215,"Argentina",7134
-216,"Armenia",7113
-217,"Algeria",7074
-218,"Afghanistan",7072
-219,"Algeria",7019
-220,"Austria",6987
-221,"Algeria",6951
-222,"Argentina",6909
-223,"Argentina",6879
-224,"Algeria",6821
-225,"Algeria",6799
-226,"Algeria",6717
-227,"Afghanistan",6664
-228,"Armenia",6661
-229,"Algeria",6631
-230,"Algeria",6629
-231,"Austria",6604
-232,"Argentina",6563
-233,"Algeria",6453
-234,"Algeria",6442
-235,"Afghanistan",6402
-236,"Armenia",6302
-237,"Algeria",6297
-238,"Argentina",6278
-239,"Algeria",6253
-240,"Algeria",6218
-241,"Argentina",6180
-242,"Argentina",6088
-243,"Algeria",6067
-244,"Algeria",6067
-245,"Austria",6064
-246,"Afghanistan",6053
-247,"Argentina",6034
-248,"Argentina",5993
-249,"Armenia",5928
-250,"Argentina",5896
-251,"Algeria",5894
-252,"Algeria",5891
-253,"Argentina",5776
-254,"Algeria",5748
-255,"Algeria",5723
-256,"Argentina",5709
-257,"Afghanistan",5639
-258,"Argentina",5611
-259,"Armenia",5606
-260,"Algeria",5558
-261,"Algeria",5549
-262,"Argentina",5521
-263,"Algeria",5422
-264,"Argentina",5371
-265,"Algeria",5369
-266,"Argentina",5336
-267,"Algeria",5277
-268,"Armenia",5271
-269,"Armenia",5226
-270,"Afghanistan",5226
-271,"Argentina",5208
-272,"Algeria",5182
-273,"Algeria",5129
-274,"Armenia",5041
-275,"Argentina",5020
-276,"Algeria",4997
-277,"Afghanistan",4963
-278,"Algeria",4918
-279,"Argentina",4887
-280,"Algeria",4838
-281,"Armenia",4823
-282,"Argentina",4788
-283,"Argentina",4788
-284,"Algeria",4784
-285,"Argentina",4783
-286,"Algeria",4747
-287,"Afghanistan",4687
-288,"Argentina",4681
-289,"Algeria",4648
-290,"Argentina",4617
-291,"Argentina",4532
-292,"Algeria",4474
-293,"Armenia",4472
-294,"Armenia",4451
-295,"Argentina",4428
-296,"Algeria",4426
-297,"Afghanistan",4402
-298,"Argentina",4349
-299,"Algeria",4295
-300,"Argentina",4285
-301,"Armenia",4283
-302,"Algeria",4256
-303,"Argentina",4167
-304,"Algeria",4154
-305,"Argentina",4127
-306,"Armenia",4099
-307,"Algeria",4062
-308,"Armenia",4044
-309,"Afghanistan",4033
-310,"Armenia",4014
-311,"Algeria",4006
-312,"Argentina",4003
-313,"Argentina",3999
-314,"Algeria",3968
-315,"Argentina",3892
-316,"Armenia",3860
-317,"Algeria",3848
-318,"Argentina",3780
-319,"Afghanistan",3778
-320,"Algeria",3746
-321,"Argentina",3732
-322,"Armenia",3720
-323,"Armenia",3718
-324,"Algeria",3649
-325,"Algeria",3625
-326,"Argentina",3607
-327,"Afghanistan",3563
-328,"Armenia",3538
-329,"Argentina",3530
-330,"Algeria",3517
-331,"Armenia",3513
-332,"Algeria",3507
-333,"Armenia",3468
-334,"Armenia",3454
-335,"Argentina",3435
-336,"Armenia",3427
-337,"Algeria",3409
-338,"Armenia",3402
-339,"Armenia",3392
-340,"Afghanistan",3392
-341,"Armenia",3386
-342,"Algeria",3382
-343,"Armenia",3317
-344,"Armenia",3313
-345,"Armenia",3297
-346,"Armenia",3287
-347,"Algeria",3271
-348,"Algeria",3256
-349,"Armenia",3255
-350,"Afghanistan",3224
-351,"Armenia",3220
-352,"Armenia",3175
-353,"Algeria",3158
-354,"Armenia",3145
-355,"Argentina",3144
-356,"Algeria",3127
-357,"Armenia",3064
-358,"Argentina",3062
-359,"Algeria",3058
-360,"Argentina",3032
-361,"Argentina",3031
-362,"Armenia",3029
-363,"Afghanistan",3013
-364,"Algeria",3007
-365,"Algeria",2998
-366,"Argentina",2941
-367,"Armenia",2936
-368,"Argentina",2933
-369,"Algeria",2910
-370,"Afghanistan",2894
-371,"Armenia",2884
-372,"Armenia",2874
-373,"Argentina",2872
-374,"Algeria",2841
-375,"Argentina",2839
-376,"Algeria",2811
-377,"Armenia",2782
-378,"Argentina",2758
-379,"Algeria",2718
-380,"Afghanistan",2704
-381,"Algeria",2678
-382,"Argentina",2669
-383,"Afghanistan",2651
-384,"Algeria",2629
-385,"Argentina",2625
-386,"Armenia",2619
-387,"Armenia",2581
-388,"Argentina",2571
-389,"Argentina",2569
-390,"Algeria",2546
-391,"Argentina",2534
-392,"Algeria",2534
-393,"Armenia",2507
-394,"Argentina",2497
-395,"Afghanistan",2469
-396,"Algeria",2467
-397,"Argentina",2443
-398,"Armenia",2419
-399,"Algeria",2418
-400,"Armenia",2386
-401,"Argentina",2385
-402,"Afghanistan",2335
-403,"Algeria",2323
-404,"Argentina",2277
-405,"Armenia",2273
-406,"Algeria",2268
-407,"Argentina",2266
-408,"Argentina",2208
-409,"Algeria",2197
-410,"Afghanistan",2171
-411,"Afghanistan",2171
-412,"Armenia",2164
-413,"Algeria",2160
-414,"Armenia",2148
-415,"Argentina",2142
-416,"Algeria",2070
-417,"Algeria",2067
-418,"Armenia",2066
-419,"Armenia",2019
-420,"Algeria",1998
-421,"Algeria",1983
-422,"Argentina",1975
-423,"Argentina",1975
-424,"Afghanistan",1939
-425,"Algeria",1936
-426,"Armenia",1932
-427,"Armenia",1925
-428,"Algeria",1914
-429,"Afghanistan",1875
-430,"Algeria",1872
-431,"Armenia",1867
-432,"Argentina",1862
-433,"Argentina",1837
-434,"Afghanistan",1830
-435,"Afghanistan",1828
-436,"Algeria",1825
-437,"Algeria",1821
-438,"Armenia",1808
-439,"Armenia",1791
-440,"Algeria",1779
-441,"Afghanistan",1762
-442,"Algeria",1761
-443,"Argentina",1757
-444,"Armenia",1746
-445,"Argentina",1728
-446,"Afghanistan",1703
-447,"Algeria",1702
-448,"Armenia",1677
-449,"Armenia",1666
-450,"Argentina",1659
-451,"Algeria",1651
-452,"Argentina",1601
-453,"Armenia",1596
-454,"Afghanistan",1585
-455,"Armenia",1572
-456,"Algeria",1558
-457,"Afghanistan",1531
-458,"Argentina",1524
-459,"Armenia",1523
-460,"Afghanistan",1522
-461,"Algeria",1508
-462,"Armenia",1500
-463,"Algeria",1479
-464,"Armenia",1473
-465,"Argentina",1472
-466,"Afghanistan",1463
-467,"Afghanistan",1450
-468,"Argentina",1442
-469,"Armenia",1430
-470,"Afghanistan",1428
-471,"Algeria",1408
-472,"Armenia",1401
-473,"Armenia",1359
-474,"Algeria",1355
-475,"Argentina",1354
-476,"Afghanistan",1351
-477,"Albania",1341
-478,"Armenia",1339
-479,"Afghanistan",1328
-480,"Armenia",1325
-481,"Argentina",1320
-482,"Afghanistan",1303
-483,"Albania",1299
-484,"Argentina",1292
-485,"Armenia",1291
-486,"Afghanistan",1279
-487,"Armenia",1267
-488,"Albania",1263
-489,"Afghanistan",1259
-490,"Argentina",1256
-491,"Armenia",1248
-492,"Albania",1246
-493,"Albania",1232
-494,"Armenia",1218
-495,"Albania",1212
-496,"Afghanistan",1209
-497,"Algeria",1204
-498,"Armenia",1201
-499,"Albania",1197
-500,"Argentina",1192
-501,"Armenia",1185
-502,"Albania",1184
-503,"Afghanistan",1176
-504,"Albania",1164
-505,"Argentina",1162
-506,"Armenia",1159
-507,"Algeria",1152
-508,"Albania",1143
-509,"Argentina",1140
-510,"Afghanistan",1138
-511,"Albania",1137
-512,"Armenia",1135
-513,"Afghanistan",1128
-514,"Albania",1122
-515,"Armenia",1111
-516,"Armenia",1111
-517,"Argentina",1107
-518,"Algeria",1099
-519,"Albania",1099
-520,"Afghanistan",1097
-521,"Afghanistan",1092
-522,"Albania",1076
-523,"Afghanistan",1075
-524,"Armenia",1071
-525,"Armenia",1067
-526,"Albania",1050
-527,"Algeria",1047
-528,"Afghanistan",1040
-529,"Armenia",1039
-530,"Armenia",1035
-531,"Argentina",1030
-532,"Albania",1029
-533,"Afghanistan",1026
-534,"Armenia",1013
-535,"Armenia",1010
-536,"Albania",1004
-537,"Albania",998
-538,"Afghanistan",996
-539,"Afghanistan",996
-540,"Albania",989
-541,"Albania",981
-542,"Albania",980
-543,"Armenia",977
-544,"Argentina",976
-545,"Albania",969
-546,"Armenia",967
-547,"Albania",964
-548,"Albania",960
-549,"Albania",949
-550,"Albania",948
-551,"Albania",946
-552,"Albania",945
-553,"Albania",938
-554,"Afghanistan",938
-555,"Armenia",937
-556,"Albania",933
-557,"Afghanistan",933
-558,"Afghanistan",930
-559,"Armenia",929
-560,"Albania",925
-561,"Argentina",919
-562,"Albania",916
-563,"Albania",910
-564,"Afghanistan",906
-565,"Armenia",900
-566,"Albania",898
-567,"Albania",898
-568,"Albania",898
-569,"Algeria",894
-570,"Albania",891
-571,"Albania",880
-572,"Albania",877
-573,"Albania",876
-574,"Argentina",872
-575,"Albania",872
-576,"Albania",872
-577,"Albania",868
-578,"Armenia",866
-579,"Albania",857
-580,"Albania",856
-581,"Andorra",852
-582,"Andorra",852
-583,"Andorra",852
-584,"Andorra",852
-585,"Andorra",852
-586,"Andorra",852
-587,"Andorra",852
-588,"Andorra",851
-589,"Albania",851
-590,"Albania",850
-591,"Afghanistan",850
-592,"Armenia",848
-593,"Algeria",846
-594,"Andorra",844
-595,"Albania",842
-596,"Argentina",840
-597,"Afghanistan",840
-598,"Armenia",833
-599,"Albania",832
-600,"Albania",823
-601,"Albania",820
-602,"Albania",812
-603,"Armenia",803
-604,"Albania",803
-605,"Albania",803
-606,"Afghanistan",801
-607,"Albania",795
-608,"Albania",795
-609,"Albania",789
-610,"Albania",789
-611,"Afghanistan",784
-612,"Algeria",783
-613,"Albania",783
-614,"Albania",782
-615,"Afghanistan",778
-616,"Albania",777
-617,"Albania",773
-618,"Albania",771
-619,"Albania",766
-620,"Andorra",765
-621,"Andorra",764
-622,"Andorra",764
-623,"Andorra",764
-624,"Andorra",763
-625,"Andorra",763
-626,"Andorra",763
-627,"Andorra",763
-628,"Andorra",762
-629,"Andorra",762
-630,"Andorra",762
-631,"Andorra",762
-632,"Andorra",762
-633,"Andorra",761
-634,"Andorra",761
-635,"Andorra",761
-636,"Andorra",761
-637,"Andorra",761
-638,"Andorra",761
-639,"Andorra",760
-640,"Andorra",759
-641,"Andorra",758
-642,"Albania",758
-643,"Andorra",757
-644,"Andorra",755
-645,"Andorra",755
-646,"Andorra",754
-647,"Andorra",752
-648,"Andorra",752
-649,"Andorra",751
-650,"Andorra",751
-651,"Andorra",751
-652,"Andorra",750
-653,"Albania",750
-654,"Andorra",748
-655,"Andorra",747
-656,"Andorra",745
-657,"Andorra",745
-658,"Afghanistan",745
-659,"Afghanistan",745
-660,"Andorra",744
-661,"Andorra",743
-662,"Andorra",743
-663,"Andorra",743
-664,"Albania",742
-665,"Andorra",741
-666,"Andorra",741
-667,"Andorra",738
-668,"Andorra",738
-669,"Andorra",738
-670,"Argentina",737
-671,"Albania",736
-672,"Argentina",735
-673,"Andorra",735
-674,"Andorra",733
-675,"Algeria",732
-676,"Andorra",731
-677,"Armenia",728
-678,"Albania",727
-679,"Albania",726
-680,"Algeria",724
-681,"Andorra",723
-682,"Andorra",723
-683,"Argentina",717
-684,"Andorra",717
-685,"Andorra",717
-686,"Algeria",715
-687,"Albania",715
-688,"Albania",714
-689,"Afghanistan",714
-690,"Andorra",713
-691,"Albania",712
-692,"Argentina",709
-693,"Algeria",708
-694,"Algeria",707
-695,"Albania",705
-696,"Andorra",704
-697,"Andorra",698
-698,"Algeria",698
-699,"Andorra",696
-700,"Andorra",694
-701,"Albania",694
-702,"Argentina",693
-703,"Andorra",692
-704,"Algeria",691
-705,"Afghanistan",691
-706,"Algeria",690
-707,"Albania",688
-708,"Argentina",685
-709,"Andorra",684
-710,"Albania",682
-711,"Andorra",681
-712,"Algeria",681
-713,"Albania",678
-714,"Andorra",676
-715,"Andorra",676
-716,"Austria",673
-717,"Andorra",673
-718,"Andorra",673
-719,"Algeria",673
-720,"Austria",672
-721,"Austria",672
-722,"Austria",672
-723,"Austria",672
-724,"Austria",672
-725,"Austria",670
-726,"Austria",670
-727,"Austria",669
-728,"Austria",668
-729,"Austria",668
-730,"Austria",668
-731,"Austria",668
-732,"Austria",668
-733,"Algeria",667
-734,"Argentina",666
-735,"Afghanistan",665
-736,"Argentina",664
-737,"Andorra",663
-738,"Albania",663
-739,"Algeria",661
-740,"Armenia",659
-741,"Andorra",659
-742,"Albania",654
-743,"Andorra",653
-744,"Andorra",653
-745,"Algeria",653
-746,"Andorra",652
-747,"Albania",650
-748,"Argentina",648
-749,"Afghanistan",648
-750,"Andorra",646
-751,"Algeria",646
-752,"Austria",645
-753,"Austria",643
-754,"Austria",641
-755,"Austria",640
-756,"Austria",639
-757,"Andorra",639
-758,"Andorra",639
-759,"Andorra",638
-760,"Algeria",638
-761,"Austria",635
-762,"Albania",634
-763,"Austria",633
-764,"Austria",633
-765,"Armenia",633
-766,"Austria",632
-767,"Argentina",632
-768,"Argentina",631
-769,"Algeria",630
-770,"Austria",629
-771,"Austria",629
-772,"Austria",629
-773,"Austria",628
-774,"Andorra",628
-775,"Albania",627
-776,"Austria",626
-777,"Austria",624
-778,"Andorra",624
-779,"Austria",623
-780,"Algeria",623
-781,"Austria",620
-782,"Albania",620
-783,"Austria",618
-784,"Andorra",617
-785,"Algeria",617
-786,"Austria",615
-787,"Andorra",615
-788,"Austria",614
-789,"Afghanistan",610
-790,"Austria",609
-791,"Armenia",609
-792,"Algeria",609
-793,"Albania",609
-794,"Austria",608
-795,"Argentina",608
-796,"Afghanistan",607
-797,"Austria",606
-798,"Albania",605
-799,"Andorra",604
-800,"Andorra",601
-801,"Andorra",601
-802,"Algeria",601
-803,"Austria",600
-804,"Algeria",600
-805,"Austria",598
-806,"Austria",596
-807,"Argentina",596
-808,"Andorra",596
-809,"Albania",595
-810,"Algeria",592
-811,"Algeria",591
-812,"Austria",589
-813,"Austria",584
-814,"Albania",584
-815,"Argentina",583
-816,"Algeria",582
-817,"Austria",580
-818,"Armenia",580
-819,"Andorra",576
-820,"Algeria",575
-821,"Albania",570
-822,"Austria",569
-823,"Argentina",569
-824,"Andorra",568
-825,"Algeria",568
-826,"Albania",562
-827,"Algeria",561
-828,"Argentina",559
-829,"Afghanistan",558
-830,"Afghanistan",558
-831,"Argentina",556
-832,"Algeria",555
-833,"Afghanistan",555
-834,"Andorra",550
-835,"Andorra",550
-836,"Austria",549
-837,"Algeria",548
-838,"Albania",548
-839,"Armenia",545
-840,"Andorra",545
-841,"Albania",543
-842,"Austria",542
-843,"Algeria",542
-844,"Argentina",539
-845,"Albania",539
-846,"Andorra",537
-847,"Austria",536
-848,"Algeria",536
-849,"Albania",531
-850,"Austria",530
-851,"Algeria",529
-852,"Argentina",528
-853,"Andorra",526
-854,"Armenia",523
-855,"Austria",522
-856,"Algeria",522
-857,"Andorra",521
-858,"Afghanistan",521
-859,"Argentina",520
-860,"Albania",519
-861,"Albania",518
-862,"Argentina",515
-863,"Algeria",515
-864,"Andorra",514
-865,"Austria",510
-866,"Argentina",508
-867,"Algeria",507
-868,"Algeria",502
-869,"Afghanistan",502
-870,"Argentina",500
-871,"Andorra",499
-872,"Algeria",494
-873,"Albania",494
-874,"Andorra",493
-875,"Austria",491
-876,"Algeria",488
-877,"Albania",488
-878,"Argentina",484
-879,"Algeria",483
-880,"Algeria",476
-881,"Albania",475
-882,"Andorra",472
-883,"Afghanistan",472
-884,"Austria",470
-885,"Algeria",470
-886,"Albania",470
-887,"Argentina",468
-888,"Andorra",468
-889,"Andorra",468
-890,"Afghanistan",468
-891,"Argentina",467
-892,"Albania",467
-893,"Algeria",465
-894,"Algeria",463
-895,"Algeria",460
-896,"Algeria",459
-897,"Afghanistan",458
-898,"Albania",455
-899,"Algeria",453
-900,"Austria",452
-901,"Argentina",452
-902,"Algeria",450
-903,"Albania",446
-904,"Argentina",445
-905,"Algeria",444
-906,"Austria",443
-907,"Argentina",440
-908,"Algeria",437
-909,"Argentina",433
-910,"Albania",433
-911,"Algeria",432
-912,"Austria",431
-913,"Albania",431
-914,"Algeria",425
-915,"Andorra",423
-916,"Albania",422
-917,"Afghanistan",421
-918,"Algeria",419
-919,"Argentina",416
-920,"Albania",416
-921,"Algeria",415
-922,"Austria",410
-923,"Albania",410
-924,"Algeria",407
-925,"Algeria",405
-926,"Afghanistan",405
-927,"Argentina",403
-928,"Albania",403
-929,"Armenia",402
-930,"Algeria",402
-931,"Andorra",398
-932,"Afghanistan",397
-933,"Albania",394
-934,"Austria",393
-935,"Argentina",393
-936,"Algeria",392
-937,"Andorra",385
-938,"Albania",385
-939,"Austria",384
-940,"Algeria",384
-941,"Afghanistan",384
-942,"Argentina",382
-943,"Argentina",375
-944,"Algeria",375
-945,"Argentina",373
-946,"Afghanistan",369
-947,"Austria",368
-948,"Algeria",367
-949,"Algeria",364
-950,"Argentina",363
-951,"Armenia",358
-952,"Afghanistan",357
-953,"Argentina",356
-954,"Albania",356
-955,"Argentina",353
-956,"Austria",350
-957,"Algeria",348
-958,"Albania",345
-959,"Afghanistan",345
-960,"Andorra",344
-961,"Andorra",344
-962,"Andorra",344
-963,"Austria",337
-964,"Algeria",336
-965,"Andorra",333
-966,"Afghanistan",331
-967,"Argentina",329
-968,"Albania",327
-969,"Afghanistan",327
-970,"Algeria",326
-971,"Austria",319
-972,"Argentina",319
-973,"Argentina",314
-974,"Albania",314
-975,"Algeria",313
-976,"Afghanistan",310
-977,"Andorra",309
-978,"Afghanistan",309
-979,"Argentina",305
-980,"Albania",302
-981,"Argentina",300
-982,"Afghanistan",300
-983,"Armenia",297
-984,"Afghanistan",294
-985,"Argentina",293
-986,"Algeria",293
-987,"Albania",283
-988,"Argentina",282
-989,"Andorra",282
-990,"Albania",277
-991,"Algeria",275
-992,"Argentina",273
-993,"Afghanistan",270
-994,"Armenia",265
-995,"Afghanistan",265
-996,"Argentina",264
-997,"Argentina",260
-998,"Afghanistan",260
-999,"Afghanistan",257
-1000,"Algeria",256
-1001,"Afghanistan",252
-1002,"Albania",251
-1003,"Afghanistan",249
-1004,"Andorra",248
-1005,"Albania",248
-1006,"Argentina",246
-1007,"Afghanistan",246
-1008,"Argentina",237
-1009,"Andorra",235
-1010,"Afghanistan",235
-1011,"Albania",232
-1012,"Afghanistan",228
-1013,"Armenia",227
-1014,"Afghanistan",227
-1015,"Argentina",225
-1016,"Afghanistan",220
-1017,"Afghanistan",220
-1018,"Afghanistan",219
-1019,"Argentina",218
-1020,"Afghanistan",218
-1021,"Armenia",217
-1022,"Albania",217
-1023,"Afghanistan",216
-1024,"Argentina",214
-1025,"Armenia",211
-1026,"Armenia",211
-1027,"Argentina",207
-1028,"Afghanistan",207
-1029,"Andorra",205
-1030,"Afghanistan",205
-1031,"Armenia",200
-1032,"Armenia",197
-1033,"Argentina",197
-1034,"Albania",197
-1035,"Afghanistan",193
-1036,"Argentina",192
-1037,"Andorra",191
-1038,"Armenia",190
-1039,"Afghanistan",188
-1040,"Afghanistan",188
-1041,"Afghanistan",187
-1042,"Argentina",185
-1043,"Armenia",183
-1044,"Albania",182
-1045,"Afghanistan",179
-1046,"Afghanistan",178
-1047,"Armenia",176
-1048,"Argentina",176
-1049,"Armenia",173
-1050,"Afghanistan",173
-1051,"Armenia",170
-1052,"Andorra",169
-1053,"Andorra",169
-1054,"Afghanistan",169
-1055,"Afghanistan",168
-1056,"Afghanistan",166
-1057,"Argentina",165
-1058,"Armenia",158
-1059,"Afghanistan",153
-1060,"Argentina",152
-1061,"Afghanistan",150
-1062,"Armenia",149
-1063,"Argentina",147
-1064,"Armenia",139
-1065,"Argentina",136
-1066,"Afghanistan",136
-1067,"Afghanistan",135
-1068,"Argentina",132
-1069,"Afghanistan",132
-1070,"Armenia",131
-1071,"Afghanistan",131
-1072,"Argentina",129
-1073,"Andorra",128
-1074,"Andorra",128
-1075,"Andorra",128
-1076,"Armenia",127
-1077,"Afghanistan",127
-1078,"Argentina",123
-1079,"Afghanistan",122
-1080,"Armenia",120
-1081,"Afghanistan",120
-1082,"Argentina",115
-1083,"Afghanistan",115
-1084,"Armenia",113
-1085,"Angola",113
-1086,"Afghanistan",112
-1087,"Argentina",111
-1088,"Afghanistan",109
-1089,"Afghanistan",106
-1090,"Afghanistan",104
-1091,"Argentina",102
-1092,"Afghanistan",99
-1093,"Armenia",98
-1094,"Argentina",97
-1095,"Angola",96
-1096,"Afghanistan",95
-1097,"Angola",92
-1098,"Armenia",91
-1099,"Angola",91
-1100,"Argentina",90
-1101,"Afghanistan",90
-1102,"Angola",88
-1103,"Armenia",87
-1104,"Angola",86
-1105,"Angola",86
-1106,"Angola",86
-1107,"Angola",86
-1108,"Angola",86
-1109,"Angola",86
-1110,"Afghanistan",85
-1111,"Angola",84
-1112,"Argentina",83
-1113,"Argentina",82
-1114,"Armenia",81
-1115,"Angola",81
-1116,"Armenia",77
-1117,"Armenia",74
-1118,"Angola",74
-1119,"Afghanistan",72
-1120,"Angola",71
-1121,"Andorra",71
-1122,"Andorra",71
-1123,"Armenia",70
-1124,"Angola",70
-1125,"Angola",70
-1126,"Angola",69
-1127,"Afghanistan",68
-1128,"Armenia",67
-1129,"Armenia",64
-1130,"Afghanistan",64
-1131,"Armenia",61
-1132,"Angola",61
-1133,"Armenia",60
-1134,"Angola",60
-1135,"Afghanistan",60
-1136,"Angola",58
-1137,"Afghanistan",58
-1138,"Afghanistan",57
-1139,"Armenia",55
-1140,"Afghanistan",54
-1141,"Armenia",52
-1142,"Angola",52
-1143,"Angola",52
-1144,"Andorra",51
-1145,"Andorra",51
-1146,"Andorra",51
-1147,"Andorra",51
-1148,"Andorra",51
-1149,"Andorra",51
-1150,"Andorra",51
-1151,"Andorra",51
-1152,"Andorra",51
-1153,"Andorra",51
-1154,"Andorra",51
-1155,"Andorra",51
-1156,"Andorra",51
-1157,"Andorra",51
-1158,"Andorra",51
-1159,"Andorra",51
-1160,"Andorra",51
-1161,"Andorra",51
-1162,"Andorra",51
-1163,"Andorra",51
-1164,"Andorra",51
-1165,"Andorra",51
-1166,"Andorra",51
-1167,"Andorra",51
-1168,"Andorra",51
-1169,"Andorra",51
-1170,"Angola",50
-1171,"Afghanistan",50
-1172,"Armenia",49
-1173,"Andorra",49
-1174,"Andorra",49
-1175,"Andorra",49
-1176,"Armenia",48
-1177,"Angola",48
-1178,"Angola",48
-1179,"Angola",48
-1180,"Angola",48
-1181,"Andorra",48
-1182,"Andorra",48
-1183,"Andorra",48
-1184,"Andorra",48
-1185,"Armenia",47
-1186,"Andorra",47
-1187,"Andorra",47
-1188,"Afghanistan",47
-1189,"Armenia",46
-1190,"Andorra",46
-1191,"Andorra",46
-1192,"Armenia",45
-1193,"Angola",45
-1194,"Angola",45
-1195,"Angola",45
-1196,"Angola",45
-1197,"Andorra",45
-1198,"Andorra",45
-1199,"Armenia",44
-1200,"Andorra",44
-1201,"Armenia",43
-1202,"Angola",43
-1203,"Angola",43
-1204,"Andorra",43
-1205,"Afghanistan",43
-1206,"Afghanistan",43
-1207,"Armenia",42
-1208,"Andorra",42
-1209,"Andorra",42
-1210,"Afghanistan",42
-1211,"Andorra",41
-1212,"Armenia",40
-1213,"Armenia",40
-1214,"Angola",40
-1215,"Andorra",40
-1216,"Andorra",40
-1217,"Andorra",40
-1218,"Andorra",40
-1219,"Afghanistan",40
-1220,"Afghanistan",40
-1221,"Armenia",39
-1222,"Angola",38
-1223,"Angola",38
-1224,"Andorra",37
-1225,"Andorra",37
-1226,"Andorra",37
-1227,"Andorra",37
-1228,"Angola",36
-1229,"Angola",36
-1230,"Angola",36
-1231,"Andorra",36
-1232,"Afghanistan",36
-1233,"Afghanistan",36
-1234,"Armenia",35
-1235,"Angola",35
-1236,"Angola",35
-1237,"Angola",35
-1238,"Andorra",35
-1239,"Andorra",35
-1240,"Albania",34
-1241,"Albania",34
-1242,"Albania",34
-1243,"Albania",34
-1244,"Albania",34
-1245,"Armenia",33
-1246,"Armenia",33
-1247,"Andorra",33
-1248,"Andorra",33
-1249,"Albania",33
-1250,"Albania",33
-1251,"Albania",33
-1252,"Albania",33
-1253,"Albania",33
-1254,"Albania",33
-1255,"Albania",33
-1256,"Albania",33
-1257,"Albania",33
-1258,"Albania",33
-1259,"Albania",33
-1260,"Afghanistan",33
-1261,"Armenia",32
-1262,"Albania",32
-1263,"Albania",32
-1264,"Afghanistan",32
-1265,"Afghanistan",32
-1266,"Afghanistan",32
-1267,"Afghanistan",32
-1268,"Andorra",31
-1269,"Albania",31
-1270,"Albania",31
-1271,"Albania",31
-1272,"Albania",31
-1273,"Albania",31
-1274,"Albania",31
-1275,"Albania",31
-1276,"Albania",31
-1277,"Albania",31
-1278,"Albania",31
-1279,"Albania",31
-1280,"Albania",31
-1281,"Albania",31
-1282,"Albania",31
-1283,"Albania",31
-1284,"Albania",31
-1285,"Albania",31
-1286,"Albania",31
-1287,"Albania",31
-1288,"Albania",31
-1289,"Albania",31
-1290,"Albania",31
-1291,"Albania",31
-1292,"Albania",31
-1293,"Armenia",30
-1294,"Armenia",30
-1295,"Angola",30
-1296,"Albania",30
-1297,"Albania",30
-1298,"Afghanistan",30
-1299,"Afghanistan",30
-1300,"Afghanistan",30
-1301,"Armenia",29
-1302,"Andorra",29
-1303,"Andorra",29
-1304,"Armenia",28
-1305,"Armenia",28
-1306,"Albania",28
-1307,"Albania",28
-1308,"Armenia",27
-1309,"Angola",27
-1310,"Angola",27
-1311,"Angola",27
-1312,"Angola",27
-1313,"Albania",27
-1314,"Albania",27
-1315,"Albania",27
-1316,"Albania",27
-1317,"Antigua and Barbuda",26
-1318,"Antigua and Barbuda",26
-1319,"Antigua and Barbuda",26
-1320,"Antigua and Barbuda",26
-1321,"Antigua and Barbuda",26
-1322,"Antigua and Barbuda",26
-1323,"Antigua and Barbuda",26
-1324,"Antigua and Barbuda",26
-1325,"Antigua and Barbuda",26
-1326,"Antigua and Barbuda",26
-1327,"Antigua and Barbuda",26
-1328,"Angola",26
-1329,"Andorra",26
-1330,"Andorra",26
-1331,"Albania",26
-1332,"Albania",26
-1333,"Albania",26
-1334,"Albania",26
-1335,"Albania",26
-1336,"Albania",26
-1337,"Antigua and Barbuda",25
-1338,"Antigua and Barbuda",25
-1339,"Antigua and Barbuda",25
-1340,"Antigua and Barbuda",25
-1341,"Antigua and Barbuda",25
-1342,"Antigua and Barbuda",25
-1343,"Antigua and Barbuda",25
-1344,"Antigua and Barbuda",25
-1345,"Antigua and Barbuda",25
-1346,"Antigua and Barbuda",25
-1347,"Antigua and Barbuda",25
-1348,"Antigua and Barbuda",25
-1349,"Antigua and Barbuda",25
-1350,"Antigua and Barbuda",25
-1351,"Antigua and Barbuda",25
-1352,"Antigua and Barbuda",25
-1353,"Antigua and Barbuda",25
-1354,"Antigua and Barbuda",25
-1355,"Antigua and Barbuda",25
-1356,"Antigua and Barbuda",25
-1357,"Antigua and Barbuda",25
-1358,"Antigua and Barbuda",25
-1359,"Antigua and Barbuda",25
-1360,"Antigua and Barbuda",25
-1361,"Antigua and Barbuda",25
-1362,"Antigua and Barbuda",25
-1363,"Antigua and Barbuda",25
-1364,"Antigua and Barbuda",25
-1365,"Antigua and Barbuda",25
-1366,"Antigua and Barbuda",25
-1367,"Angola",25
-1368,"Angola",25
-1369,"Angola",25
-1370,"Angola",25
-1371,"Albania",25
-1372,"Afghanistan",25
-1373,"Armenia",24
-1374,"Armenia",24
-1375,"Armenia",24
-1376,"Antigua and Barbuda",24
-1377,"Antigua and Barbuda",24
-1378,"Antigua and Barbuda",24
-1379,"Antigua and Barbuda",24
-1380,"Antigua and Barbuda",24
-1381,"Antigua and Barbuda",24
-1382,"Antigua and Barbuda",24
-1383,"Antigua and Barbuda",24
-1384,"Antigua and Barbuda",24
-1385,"Angola",24
-1386,"Angola",24
-1387,"Angola",24
-1388,"Angola",24
-1389,"Angola",24
-1390,"Angola",24
-1391,"Albania",24
-1392,"Antigua and Barbuda",23
-1393,"Antigua and Barbuda",23
-1394,"Antigua and Barbuda",23
-1395,"Antigua and Barbuda",23
-1396,"Antigua and Barbuda",23
-1397,"Antigua and Barbuda",23
-1398,"Antigua and Barbuda",23
-1399,"Antigua and Barbuda",23
-1400,"Antigua and Barbuda",23
-1401,"Albania",23
-1402,"Albania",23
-1403,"Albania",23
-1404,"Albania",23
-1405,"Afghanistan",23
-1406,"Armenia",22
-1407,"Antigua and Barbuda",21
-1408,"Antigua and Barbuda",21
-1409,"Angola",21
-1410,"Afghanistan",21
-1411,"Armenia",20
-1412,"Armenia",20
-1413,"Antigua and Barbuda",20
-1414,"Antigua and Barbuda",20
-1415,"Antigua and Barbuda",20
-1416,"Antigua and Barbuda",20
-1417,"Antigua and Barbuda",20
-1418,"Antigua and Barbuda",20
-1419,"Antigua and Barbuda",20
-1420,"Antigua and Barbuda",20
-1421,"Antigua and Barbuda",20
-1422,"Armenia",19
-1423,"Antigua and Barbuda",19
-1424,"Antigua and Barbuda",19
-1425,"Antigua and Barbuda",19
-1426,"Antigua and Barbuda",19
-1427,"Antigua and Barbuda",19
-1428,"Antigua and Barbuda",19
-1429,"Antigua and Barbuda",19
-1430,"Antigua and Barbuda",19
-1431,"Antigua and Barbuda",19
-1432,"Antigua and Barbuda",19
-1433,"Antigua and Barbuda",19
-1434,"Antigua and Barbuda",19
-1435,"Antigua and Barbuda",19
-1436,"Antigua and Barbuda",19
-1437,"Antigua and Barbuda",19
-1438,"Antigua and Barbuda",19
-1439,"Antigua and Barbuda",19
-1440,"Antigua and Barbuda",19
-1441,"Antigua and Barbuda",19
-1442,"Antigua and Barbuda",19
-1443,"Antigua and Barbuda",19
-1444,"Antigua and Barbuda",19
-1445,"Antigua and Barbuda",19
-1446,"Antigua and Barbuda",19
-1447,"Antigua and Barbuda",19
-1448,"Angola",19
-1449,"Angola",19
-1450,"Angola",19
-1451,"Angola",19
-1452,"Angola",19
-1453,"Angola",19
-1454,"Angola",19
-1455,"Angola",19
-1456,"Armenia",18
-1457,"Angola",18
-1458,"Angola",18
-1459,"Angola",18
-1460,"Angola",18
-1461,"Angola",18
-1462,"Angola",18
-1463,"Angola",18
-1464,"Angola",18
-1465,"Angola",18
-1466,"Angola",18
-1467,"Angola",18
-1468,"Angola",18
-1469,"Angola",18
-1470,"Afghanistan",18
-1471,"Afghanistan",18
-1472,"Armenia",17
-1473,"Angola",17
-1474,"Angola",17
-1475,"Angola",17
-1476,"Angola",17
-1477,"Angola",17
-1478,"Angola",17
-1479,"Angola",17
-1480,"Angola",17
-1481,"Armenia",16
-1482,"Antigua and Barbuda",16
-1483,"Antigua and Barbuda",16
-1484,"Antigua and Barbuda",16
-1485,"Antigua and Barbuda",16
-1486,"Antigua and Barbuda",15
-1487,"Antigua and Barbuda",15
-1488,"Antigua and Barbuda",15
-1489,"Antigua and Barbuda",15
-1490,"Afghanistan",15
-1491,"Armenia",14
-1492,"Angola",14
-1493,"Angola",14
-1494,"Armenia",13
-1495,"Armenia",13
-1496,"Angola",13
-1497,"Angola",13
-1498,"Angola",13
-1499,"Angola",13
-1500,"Armenia",12
-1501,"Antigua and Barbuda",11
-1502,"Antigua and Barbuda",11
-1503,"Antigua and Barbuda",11
-1504,"Antigua and Barbuda",11
-1505,"Antigua and Barbuda",11
-1506,"Antigua and Barbuda",11
-1507,"Antigua and Barbuda",11
-1508,"Angola",11
-1509,"Angola",11
-1510,"Angola",11
-1511,"Angola",11
-1512,"Angola",11
-1513,"Angola",11
-1514,"Angola",11
-1515,"Angola",11
-1516,"Antigua and Barbuda",10
-1517,"Antigua and Barbuda",10
-1518,"Antigua and Barbuda",7
-1519,"Angola",7
-1520,"Angola",7
-1521,"Angola",6
-1522,"Angola",6
-1523,"Angola",6
-1524,"Angola",6
-1525,"Angola",6
-1526,"Angola",6
-1527,"Angola",6
-1528,"Angola",6
-1529,"Angola",6
-1530,"Angola",6
-1531,"Angola",6
-1532,"Angola",5
-1533,"Angola",5
-1534,"Angola",5
-1535,"Angola",5
-1536,"Angola",4
-1537,"Angola",4
-1538,"Angola",4
-1539,"Angola",4
-1540,"Angola",4
-1541,"Angola",4
-1542,"Angola",4
-1543,"Angola",4
-1544,"Angola",4
-1545,"Angola",4
-1546,"Angola",4
-1547,"Angola",4
-1548,"Angola",4
-1549,"Angola",4
-1550,"Angola",4
-1551,"Angola",4
-1552,"Angola",4
-1553,"Angola",4
-1554,"Angola",4
-1555,"Angola",4
-1556,"Angola",4
-1557,"Angola",4
-1558,"Antigua and Barbuda",3
-1559,"Antigua and Barbuda",3
-1560,"Antigua and Barbuda",3
-1561,"Antigua and Barbuda",3
-1562,"Antigua and Barbuda",3
-1563,"Antigua and Barbuda",3
-1564,"Antigua and Barbuda",3
-1565,"Antigua and Barbuda",3
-1566,"Antigua and Barbuda",3
-1567,"Antigua and Barbuda",3
-1568,"Antigua and Barbuda",3
-1569,"Antigua and Barbuda",3
-1570,"Antigua and Barbuda",3
-1571,"Antigua and Barbuda",3
-1572,"Antigua and Barbuda",3
-1573,"Antigua and Barbuda",3
-1574,"Antigua and Barbuda",3
-1575,"Antigua and Barbuda",3
-1576,"Antigua and Barbuda",3
-1577,"Antigua and Barbuda",3
-1578,"Antigua and Barbuda",3
-1579,"Antigua and Barbuda",3
-1580,"Antigua and Barbuda",3
-1581,"Antigua and Barbuda",3
-1582,"Antigua and Barbuda",3
-1583,"Antigua and Barbuda",3
-1584,"Antigua and Barbuda",3
-1585,"Antigua and Barbuda",3
-1586,"Antigua and Barbuda",3
-1587,"Antigua and Barbuda",3
-1588,"Antigua and Barbuda",3
-1589,"Antigua and Barbuda",3
-1590,"Antigua and Barbuda",3
-1591,"Antigua and Barbuda",3
-1592,"Antigua and Barbuda",3
-1593,"Antigua and Barbuda",3
-1594,"Antigua and Barbuda",3
-1595,"Antigua and Barbuda",3
-1596,"Antigua and Barbuda",3
-1597,"Antigua and Barbuda",3
-1598,"Antigua and Barbuda",3
-1599,"Antigua and Barbuda",3
-1600,"Antigua and Barbuda",3
-1601,"Antigua and Barbuda",3
-1602,"Antigua and Barbuda",3
-1603,"Antigua and Barbuda",3
-1604,"Antigua and Barbuda",3
-1605,"Antigua and Barbuda",3
-1606,"Antigua and Barbuda",3
-1607,"Antigua and Barbuda",3
-1608,"Antigua and Barbuda",3
-1609,"Antigua and Barbuda",3
-1610,"Antigua and Barbuda",3
-1611,"Antigua and Barbuda",3
-1612,"Antigua and Barbuda",3
-1613,"Antigua and Barbuda",3
-1614,"Antigua and Barbuda",3
-1615,"Antigua and Barbuda",3
-1616,"Antigua and Barbuda",3
-1617,"Antigua and Barbuda",3
-1618,"Antigua and Barbuda",3
-1619,"Antigua and Barbuda",3
-1620,"Antigua and Barbuda",3
-1621,"Angola",3
-1622,"Angola",3
-1623,"Angola",3
-1624,"Angola",3
-1625,"Angola",3
-1626,"Antigua and Barbuda",2
-1627,"Antigua and Barbuda",2
-1628,"Antigua and Barbuda",2
-1629,"Antigua and Barbuda",2
-1630,"Antigua and Barbuda",2
-1631,"Antigua and Barbuda",2
-1632,"Angola",2
-1633,"Angola",2
-1634,"Angola",2
-1635,"Angola",2
-1636,"Angola",2
-1637,"Angola",2
-1638,"Angola",2
-1639,"Angola",2
-1640,"Angola",2
-1641,"Angola",2
-1642,"Angola",2
-1643,"Angola",2
-1644,"Angola",2
-1645,"Angola",2
-1646,"Angola",2
-1647,"Angola",2
-1648,"Angola",2
-1649,"Angola",2
-1650,"Angola",2
-1651,"Angola",2
-1652,"Angola",2
-1653,"Angola",2
-1654,"Angola",2
-1655,"Angola",2
-1656,"Angola",2
-1657,"Angola",2
-1658,"Angola",2
-1659,"Angola",2
-1660,"Angola",2
-1661,"Angola",2
-1662,"Angola",2
-1663,"Angola",2
-1664,"Angola",2
-1665,"Angola",2
-1666,"Angola",2
-1667,"Angola",2
-1668,"Angola",2
-1669,"Angola",2
-1670,"Angola",2
-1671,"Antigua and Barbuda",0
-1672,"Antigua and Barbuda",0
-1673,"Antigua and Barbuda",0
-1674,"Antigua and Barbuda",0
+Posição,País,CONFIRMADOS
+1,"Argentina",17415
+2,"Argentina",16851
+3,"Austria",16733
+4,"Austria",16731
+5,"Austria",16685
+6,"Austria",16655
+7,"Austria",16628
+8,"Austria",16591
+9,"Austria",16557
+10,"Austria",16539
+11,"Austria",16503
+12,"Austria",16486
+13,"Austria",16436
+14,"Austria",16404
+15,"Austria",16353
+16,"Austria",16321
+17,"Austria",16269
+18,"Austria",16242
+19,"Argentina",16214
+20,"Austria",16201
+21,"Austria",16109
+22,"Austria",16058
+23,"Austria",15997
+24,"Austria",15961
+25,"Austria",15882
+26,"Austria",15871
+27,"Austria",15833
+28,"Austria",15774
+29,"Austria",15752
+30,"Afghanistan",15750
+31,"Austria",15684
+32,"Austria",15650
+33,"Austria",15621
+34,"Austria",15597
+35,"Austria",15596
+36,"Austria",15593
+37,"Austria",15558
+38,"Austria",15531
+39,"Austria",15520
+40,"Argentina",15419
+41,"Austria",15347
+42,"Austria",15286
+43,"Austria",15228
+44,"Afghanistan",15205
+45,"Austria",15182
+46,"Austria",15138
+47,"Austria",15063
+48,"Austria",15037
+49,"Austria",15005
+50,"Austria",14951
+51,"Austria",14882
+52,"Argentina",14702
+53,"Austria",14678
+54,"Austria",14614
+55,"Austria",14563
+56,"Afghanistan",14525
+57,"Austria",14524
+58,"Austria",14471
+59,"Austria",14405
+60,"Austria",14304
+61,"Austria",14148
+62,"Austria",14061
+63,"Austria",13991
+64,"Argentina",13933
+65,"Austria",13928
+66,"Austria",13836
+67,"Austria",13698
+68,"Afghanistan",13659
+69,"Austria",13639
+70,"Austria",13462
+71,"Austria",13316
+72,"Austria",13228
+73,"Argentina",13228
+74,"Austria",13180
+75,"Austria",13110
+76,"Afghanistan",13036
+77,"Argentina",12628
+78,"Afghanistan",12456
+79,"Argentina",12076
+80,"Afghanistan",11831
+81,"Argentina",11353
+82,"Afghanistan",11173
+83,"Argentina",10649
+84,"Afghanistan",10582
+85,"Afghanistan",9998
+86,"Argentina",9931
+87,"Algeria",9513
+88,"Armenia",9492
+89,"Algeria",9394
+90,"Argentina",9283
+91,"Armenia",9282
+92,"Algeria",9267
+93,"Afghanistan",9216
+94,"Algeria",9134
+95,"Algeria",8997
+96,"Armenia",8927
+97,"Algeria",8857
+98,"Argentina",8809
+99,"Algeria",8697
+100,"Armenia",8676
+101,"Afghanistan",8676
+102,"Algeria",8503
+103,"Argentina",8371
+104,"Algeria",8306
+105,"Armenia",8216
+106,"Afghanistan",8145
+107,"Algeria",8113
+108,"Argentina",8068
+109,"Algeria",7918
+110,"Argentina",7805
+111,"Armenia",7774
+112,"Algeria",7728
+113,"Afghanistan",7653
+114,"Algeria",7542
+115,"Argentina",7479
+116,"Armenia",7402
+117,"Algeria",7377
+118,"Algeria",7201
+119,"Argentina",7134
+120,"Armenia",7113
+121,"Afghanistan",7072
+122,"Algeria",7019
+123,"Argentina",6879
+124,"Algeria",6821
+125,"Afghanistan",6664
+126,"Armenia",6661
+127,"Algeria",6629
+128,"Argentina",6563
+129,"Algeria",6442
+130,"Afghanistan",6402
+131,"Armenia",6302
+132,"Argentina",6278
+133,"Algeria",6253
+134,"Algeria",6067
+135,"Afghanistan",6053
+136,"Argentina",6034
+137,"Armenia",5928
+138,"Algeria",5894
+139,"Algeria",5891
+140,"Argentina",5776
+141,"Algeria",5748
+142,"Algeria",5723
+143,"Afghanistan",5639
+144,"Argentina",5611
+145,"Armenia",5606
+146,"Algeria",5558
+147,"Algeria",5549
+148,"Argentina",5521
+149,"Algeria",5422
+150,"Argentina",5371
+151,"Algeria",5369
+152,"Argentina",5336
+153,"Algeria",5277
+154,"Armenia",5271
+155,"Afghanistan",5226
+156,"Argentina",5208
+157,"Algeria",5182
+158,"Algeria",5129
+159,"Armenia",5041
+160,"Argentina",5020
+161,"Algeria",4997
+162,"Afghanistan",4963
+163,"Algeria",4918
+164,"Argentina",4887
+165,"Algeria",4838
+166,"Armenia",4823
+167,"Argentina",4788
+168,"Argentina",4788
+169,"Algeria",4784
+170,"Argentina",4783
+171,"Algeria",4747
+172,"Afghanistan",4687
+173,"Argentina",4681
+174,"Algeria",4648
+175,"Argentina",4617
+176,"Argentina",4532
+177,"Algeria",4474
+178,"Armenia",4472
+179,"Algeria",4426
+180,"Afghanistan",4402
+181,"Argentina",4349
+182,"Algeria",4295
+183,"Armenia",4283
+184,"Algeria",4256
+185,"Argentina",4167
+186,"Algeria",4154
+187,"Algeria",4062
+188,"Armenia",4044
+189,"Afghanistan",4033
+190,"Argentina",3999
+191,"Algeria",3968
+192,"Armenia",3860
+193,"Afghanistan",3778
+194,"Algeria",3746
+195,"Argentina",3732
+196,"Armenia",3718
+197,"Algeria",3625
+198,"Afghanistan",3563
+199,"Armenia",3538
+200,"Argentina",3530
+201,"Algeria",3507
+202,"Algeria",3409
+203,"Armenia",3402
+204,"Armenia",3392
+205,"Afghanistan",3392
+206,"Armenia",3386
+207,"Armenia",3317
+208,"Armenia",3313
+209,"Armenia",3297
+210,"Armenia",3287
+211,"Algeria",3271
+212,"Armenia",3255
+213,"Afghanistan",3224
+214,"Armenia",3220
+215,"Armenia",3175
+216,"Algeria",3158
+217,"Armenia",3145
+218,"Armenia",3064
+219,"Argentina",3062
+220,"Algeria",3058
+221,"Argentina",3032
+222,"Armenia",3029
+223,"Algeria",2998
+224,"Armenia",2936
+225,"Argentina",2933
+226,"Afghanistan",2894
+227,"Armenia",2884
+228,"Armenia",2874
+229,"Argentina",2872
+230,"Algeria",2841
+231,"Armenia",2782
+232,"Afghanistan",2704
+233,"Algeria",2678
+234,"Argentina",2625
+235,"Armenia",2619
+236,"Armenia",2581
+237,"Argentina",2569
+238,"Algeria",2546
+239,"Argentina",2534
+240,"Armenia",2507
+241,"Argentina",2497
+242,"Afghanistan",2469
+243,"Algeria",2467
+244,"Armenia",2419
+245,"Armenia",2386
+246,"Argentina",2385
+247,"Afghanistan",2335
+248,"Algeria",2323
+249,"Armenia",2273
+250,"Argentina",2266
+251,"Algeria",2197
+252,"Armenia",2164
+253,"Armenia",2148
+254,"Algeria",2067
+255,"Armenia",2019
+256,"Algeria",1998
+257,"Algeria",1936
+258,"Armenia",1925
+259,"Algeria",1872
+260,"Argentina",1862
+261,"Argentina",1837
+262,"Algeria",1821
+263,"Armenia",1791
+264,"Argentina",1757
+265,"Argentina",1728
+266,"Armenia",1666
+267,"Argentina",1659
+268,"Argentina",1601
+269,"Armenia",1572
+270,"Argentina",1524
+271,"Armenia",1500
+272,"Argentina",1472
+273,"Argentina",1442
+274,"Armenia",1430
+275,"Afghanistan",1428
+276,"Armenia",1359
+277,"Argentina",1354
+278,"Afghanistan",1328
+279,"Armenia",1325
+280,"Argentina",1320
+281,"Afghanistan",1303
+282,"Argentina",1292
+283,"Armenia",1267
+284,"Afghanistan",1259
+285,"Armenia",1218
+286,"Afghanistan",1209
+287,"Armenia",1185
+288,"Albania",1143
+289,"Afghanistan",1138
+290,"Albania",1137
+291,"Armenia",1135
+292,"Afghanistan",1128
+293,"Albania",1122
+294,"Armenia",1111
+295,"Albania",1099
+296,"Afghanistan",1097
+297,"Albania",1076
+298,"Afghanistan",1075
+299,"Armenia",1071
+300,"Albania",1050
+301,"Afghanistan",1040
+302,"Armenia",1035
+303,"Albania",1029
+304,"Armenia",1010
+305,"Albania",1004
+306,"Albania",998
+307,"Afghanistan",996
+308,"Albania",989
+309,"Albania",981
+310,"Armenia",977
+311,"Albania",969
+312,"Albania",964
+313,"Albania",949
+314,"Albania",948
+315,"Albania",946
+316,"Afghanistan",938
+317,"Albania",933
+318,"Afghanistan",930
+319,"Albania",916
+320,"Albania",898
+321,"Albania",880
+322,"Albania",877
+323,"Albania",876
+324,"Albania",872
+325,"Albania",872
+326,"Albania",868
+327,"Albania",857
+328,"Albania",856
+329,"Albania",851
+330,"Albania",850
+331,"Afghanistan",850
+332,"Albania",842
+333,"Albania",832
+334,"Albania",823
+335,"Albania",820
+336,"Albania",812
+337,"Albania",803
+338,"Albania",803
+339,"Afghanistan",801
+340,"Albania",795
+341,"Albania",795
+342,"Albania",789
+343,"Albania",789
+344,"Albania",783
+345,"Albania",782
+346,"Afghanistan",778
+347,"Albania",777
+348,"Albania",771
+349,"Andorra",765
+350,"Andorra",764
+351,"Andorra",764
+352,"Andorra",764
+353,"Andorra",763
+354,"Andorra",763
+355,"Andorra",763
+356,"Andorra",763
+357,"Andorra",762
+358,"Andorra",762
+359,"Andorra",762
+360,"Andorra",762
+361,"Andorra",762
+362,"Andorra",761
+363,"Andorra",761
+364,"Andorra",761
+365,"Andorra",761
+366,"Andorra",761
+367,"Andorra",761
+368,"Andorra",760
+369,"Andorra",758
+370,"Albania",758
+371,"Andorra",755
+372,"Andorra",755
+373,"Andorra",754
+374,"Andorra",752
+375,"Andorra",752
+376,"Andorra",751
+377,"Andorra",751
+378,"Andorra",750
+379,"Andorra",748
+380,"Andorra",747
+381,"Andorra",745
+382,"Afghanistan",745
+383,"Afghanistan",745
+384,"Albania",742
+385,"Albania",727
+386,"Albania",715
+387,"Albania",714
+388,"Albania",705
+389,"Andorra",698
+390,"Andorra",694
+391,"Albania",694
+392,"Andorra",692
+393,"Afghanistan",691
+394,"Albania",688
+395,"Andorra",684
+396,"Albania",682
+397,"Andorra",681
+398,"Andorra",676
+399,"Andorra",676
+400,"Austria",668
+401,"Austria",668
+402,"Austria",668
+403,"Austria",668
+404,"Austria",668
+405,"Andorra",663
+406,"Algeria",661
+407,"Albania",654
+408,"Andorra",653
+409,"Andorra",653
+410,"Algeria",653
+411,"Andorra",652
+412,"Albania",650
+413,"Afghanistan",648
+414,"Algeria",646
+415,"Austria",645
+416,"Austria",643
+417,"Austria",641
+418,"Austria",640
+419,"Austria",639
+420,"Andorra",639
+421,"Andorra",639
+422,"Algeria",638
+423,"Austria",635
+424,"Austria",633
+425,"Austria",633
+426,"Austria",632
+427,"Algeria",630
+428,"Austria",629
+429,"Austria",629
+430,"Austria",629
+431,"Austria",628
+432,"Andorra",628
+433,"Albania",627
+434,"Austria",626
+435,"Austria",624
+436,"Andorra",624
+437,"Austria",623
+438,"Algeria",623
+439,"Austria",620
+440,"Albania",620
+441,"Austria",618
+442,"Andorra",617
+443,"Algeria",617
+444,"Austria",615
+445,"Andorra",615
+446,"Austria",614
+447,"Afghanistan",610
+448,"Austria",609
+449,"Algeria",609
+450,"Austria",608
+451,"Austria",606
+452,"Albania",605
+453,"Andorra",604
+454,"Austria",600
+455,"Algeria",600
+456,"Austria",598
+457,"Austria",596
+458,"Andorra",596
+459,"Albania",595
+460,"Algeria",592
+461,"Austria",589
+462,"Algeria",582
+463,"Andorra",576
+464,"Algeria",575
+465,"Albania",570
+466,"Andorra",568
+467,"Algeria",568
+468,"Algeria",561
+469,"Afghanistan",558
+470,"Afghanistan",558
+471,"Argentina",556
+472,"Algeria",555
+473,"Andorra",550
+474,"Andorra",550
+475,"Algeria",548
+476,"Andorra",545
+477,"Albania",543
+478,"Algeria",542
+479,"Argentina",539
+480,"Andorra",537
+481,"Algeria",536
+482,"Albania",531
+483,"Algeria",529
+484,"Argentina",528
+485,"Andorra",526
+486,"Algeria",522
+487,"Andorra",521
+488,"Argentina",520
+489,"Albania",519
+490,"Algeria",515
+491,"Andorra",514
+492,"Argentina",508
+493,"Algeria",507
+494,"Algeria",502
+495,"Afghanistan",502
+496,"Argentina",500
+497,"Andorra",499
+498,"Algeria",494
+499,"Andorra",493
+500,"Algeria",488
+501,"Albania",488
+502,"Argentina",484
+503,"Algeria",483
+504,"Algeria",476
+505,"Andorra",472
+506,"Afghanistan",472
+507,"Algeria",470
+508,"Andorra",468
+509,"Afghanistan",468
+510,"Argentina",467
+511,"Algeria",465
+512,"Algeria",463
+513,"Algeria",459
+514,"Afghanistan",458
+515,"Algeria",453
+516,"Argentina",452
+517,"Argentina",445
+518,"Argentina",433
+519,"Afghanistan",421
+520,"Argentina",416
+521,"Argentina",403
+522,"Afghanistan",397
+523,"Argentina",393
+524,"Argentina",382
+525,"Argentina",373
+526,"Argentina",363
+527,"Argentina",356
+528,"Argentina",353
+529,"Afghanistan",345
+530,"Afghanistan",331
+531,"Argentina",329
+532,"Argentina",319
+533,"Argentina",314
+534,"Afghanistan",310
+535,"Argentina",305
+536,"Argentina",300
+537,"Argentina",293
+538,"Argentina",282
+539,"Argentina",273
+540,"Afghanistan",265
+541,"Argentina",264
+542,"Argentina",260
+543,"Afghanistan",257
+544,"Afghanistan",249
+545,"Argentina",246
+546,"Afghanistan",246
+547,"Argentina",237
+548,"Afghanistan",235
+549,"Afghanistan",227
+550,"Argentina",225
+551,"Afghanistan",220
+552,"Afghanistan",219
+553,"Afghanistan",218
+554,"Afghanistan",216
+555,"Afghanistan",205
+556,"Afghanistan",193
+557,"Afghanistan",187
+558,"Afghanistan",178
+559,"Afghanistan",173
+560,"Afghanistan",169
+561,"Afghanistan",168
+562,"Afghanistan",153
+563,"Armenia",139
+564,"Afghanistan",136
+565,"Afghanistan",132
+566,"Armenia",131
+567,"Armenia",127
+568,"Afghanistan",127
+569,"Afghanistan",122
+570,"Armenia",120
+571,"Afghanistan",120
+572,"Afghanistan",115
+573,"Armenia",113
+574,"Afghanistan",109
+575,"Afghanistan",106
+576,"Afghanistan",104
+577,"Armenia",98
+578,"Afghanistan",95
+579,"Armenia",91
+580,"Afghanistan",90
+581,"Armenia",87
+582,"Angola",86
+583,"Angola",86
+584,"Afghanistan",85
+585,"Angola",84
+586,"Armenia",81
+587,"Angola",81
+588,"Armenia",77
+589,"Armenia",74
+590,"Angola",74
+591,"Afghanistan",72
+592,"Angola",71
+593,"Armenia",70
+594,"Angola",70
+595,"Angola",70
+596,"Angola",69
+597,"Afghanistan",68
+598,"Armenia",67
+599,"Armenia",64
+600,"Armenia",61
+601,"Angola",61
+602,"Armenia",60
+603,"Angola",60
+604,"Angola",58
+605,"Armenia",55
+606,"Armenia",52
+607,"Angola",52
+608,"Angola",52
+609,"Andorra",51
+610,"Andorra",51
+611,"Andorra",51
+612,"Andorra",51
+613,"Andorra",51
+614,"Andorra",51
+615,"Andorra",51
+616,"Andorra",51
+617,"Andorra",51
+618,"Andorra",51
+619,"Andorra",51
+620,"Andorra",51
+621,"Andorra",51
+622,"Andorra",51
+623,"Andorra",51
+624,"Andorra",51
+625,"Andorra",51
+626,"Angola",50
+627,"Armenia",49
+628,"Andorra",49
+629,"Andorra",49
+630,"Andorra",49
+631,"Armenia",48
+632,"Angola",48
+633,"Angola",48
+634,"Angola",48
+635,"Angola",48
+636,"Andorra",48
+637,"Andorra",48
+638,"Andorra",48
+639,"Andorra",48
+640,"Armenia",47
+641,"Andorra",47
+642,"Andorra",47
+643,"Armenia",46
+644,"Andorra",46
+645,"Andorra",46
+646,"Armenia",45
+647,"Angola",45
+648,"Angola",45
+649,"Angola",45
+650,"Angola",45
+651,"Andorra",45
+652,"Andorra",45
+653,"Armenia",44
+654,"Andorra",44
+655,"Armenia",43
+656,"Angola",43
+657,"Angola",43
+658,"Andorra",43
+659,"Armenia",42
+660,"Armenia",40
+661,"Armenia",40
+662,"Armenia",39
+663,"Angola",36
+664,"Angola",36
+665,"Angola",36
+666,"Armenia",35
+667,"Angola",35
+668,"Angola",35
+669,"Angola",35
+670,"Armenia",33
+671,"Armenia",33
+672,"Albania",33
+673,"Albania",33
+674,"Albania",33
+675,"Albania",33
+676,"Albania",33
+677,"Albania",33
+678,"Albania",33
+679,"Albania",32
+680,"Albania",32
+681,"Albania",31
+682,"Albania",31
+683,"Albania",31
+684,"Albania",31
+685,"Albania",31
+686,"Albania",31
+687,"Albania",31
+688,"Albania",31
+689,"Albania",31
+690,"Albania",31
+691,"Albania",31
+692,"Albania",31
+693,"Albania",31
+694,"Albania",31
+695,"Albania",31
+696,"Albania",31
+697,"Albania",31
+698,"Albania",31
+699,"Albania",31
+700,"Albania",31
+701,"Albania",31
+702,"Albania",31
+703,"Albania",31
+704,"Angola",30
+705,"Antigua and Barbuda",26
+706,"Antigua and Barbuda",26
+707,"Antigua and Barbuda",25
+708,"Antigua and Barbuda",25
+709,"Antigua and Barbuda",25
+710,"Antigua and Barbuda",25
+711,"Antigua and Barbuda",25
+712,"Antigua and Barbuda",25
+713,"Antigua and Barbuda",25
+714,"Antigua and Barbuda",25
+715,"Antigua and Barbuda",25
+716,"Antigua and Barbuda",25
+717,"Antigua and Barbuda",25
+718,"Antigua and Barbuda",25
+719,"Antigua and Barbuda",25
+720,"Antigua and Barbuda",25
+721,"Antigua and Barbuda",25
+722,"Antigua and Barbuda",25
+723,"Antigua and Barbuda",25
+724,"Antigua and Barbuda",25
+725,"Antigua and Barbuda",25
+726,"Antigua and Barbuda",25
+727,"Antigua and Barbuda",25
+728,"Antigua and Barbuda",25
+729,"Antigua and Barbuda",25
+730,"Antigua and Barbuda",25
+731,"Antigua and Barbuda",25
+732,"Antigua and Barbuda",25
+733,"Antigua and Barbuda",25
+734,"Antigua and Barbuda",25
+735,"Antigua and Barbuda",25
+736,"Antigua and Barbuda",25
+737,"Antigua and Barbuda",19
+738,"Antigua and Barbuda",19
+739,"Antigua and Barbuda",19
+740,"Antigua and Barbuda",19
+741,"Antigua and Barbuda",19
+742,"Antigua and Barbuda",19
+743,"Antigua and Barbuda",19
+744,"Antigua and Barbuda",19
+745,"Antigua and Barbuda",19
+746,"Antigua and Barbuda",19
+747,"Antigua and Barbuda",19
+748,"Antigua and Barbuda",19
+749,"Antigua and Barbuda",19
+750,"Antigua and Barbuda",19
+751,"Antigua and Barbuda",19
+752,"Antigua and Barbuda",19
+753,"Antigua and Barbuda",19
+754,"Antigua and Barbuda",19
+755,"Antigua and Barbuda",19
+756,"Antigua and Barbuda",19
+757,"Antigua and Barbuda",19
+758,"Antigua and Barbuda",19
+759,"Antigua and Barbuda",19
+760,"Antigua and Barbuda",19
+761,"Angola",18
+762,"Angola",18
+763,"Angola",18
+764,"Angola",18
+765,"Angola",18
+766,"Angola",18
+767,"Angola",18
+768,"Angola",18
+769,"Angola",18
+770,"Angola",18
+771,"Angola",17
+772,"Angola",17
+773,"Angola",17
+774,"Angola",17
+775,"Angola",17
+776,"Angola",17
+777,"Angola",17
+778,"Angola",17
+779,"Antigua and Barbuda",16
+780,"Antigua and Barbuda",16
+781,"Antigua and Barbuda",16
+782,"Antigua and Barbuda",16
+783,"Antigua and Barbuda",15
+784,"Antigua and Barbuda",15
+785,"Antigua and Barbuda",15
+786,"Antigua and Barbuda",15
+787,"Angola",14
+788,"Angola",14
+789,"Angola",13
+790,"Angola",13
+791,"Angola",13
+792,"Angola",13
+793,"Angola",11
+794,"Angola",11
+795,"Angola",11
+796,"Angola",11
+797,"Angola",11
+798,"Angola",11
+799,"Angola",11
+800,"Angola",11
+801,"Angola",4
+802,"Angola",4
+803,"Angola",4
+804,"Angola",4
+805,"Angola",4
+806,"Angola",4
+807,"Angola",4
+808,"Angola",4
+809,"Angola",4
+810,"Angola",4
+811,"Antigua and Barbuda",3
+812,"Antigua and Barbuda",3
+813,"Antigua and Barbuda",3
+814,"Antigua and Barbuda",3
+815,"Antigua and Barbuda",3
+816,"Antigua and Barbuda",3
+817,"Antigua and Barbuda",3
+818,"Antigua and Barbuda",3
+819,"Antigua and Barbuda",3
+820,"Antigua and Barbuda",3
+821,"Antigua and Barbuda",3
+822,"Antigua and Barbuda",3
+823,"Antigua and Barbuda",3
+824,"Antigua and Barbuda",3
+825,"Antigua and Barbuda",3
+826,"Antigua and Barbuda",3
+827,"Antigua and Barbuda",3
+828,"Antigua and Barbuda",3
+829,"Antigua and Barbuda",3
+830,"Antigua and Barbuda",3
+831,"Antigua and Barbuda",3
+832,"Antigua and Barbuda",3
+833,"Antigua and Barbuda",3
+834,"Antigua and Barbuda",3
+835,"Antigua and Barbuda",3
+836,"Antigua and Barbuda",3
+837,"Antigua and Barbuda",3
+838,"Antigua and Barbuda",3
+839,"Antigua and Barbuda",3
+840,"Antigua and Barbuda",3
+841,"Antigua and Barbuda",3
+842,"Antigua and Barbuda",3
+843,"Angola",3
+844,"Angola",3
+845,"Angola",3
+846,"Angola",3
+847,"Angola",3
+848,"Angola",2
+849,"Angola",2
+850,"Angola",2
+851,"Angola",2
+852,"Angola",2
+853,"Angola",2
+854,"Angola",2
+855,"Angola",2
+856,"Angola",2
+857,"Angola",2
+858,"Angola",2
+859,"Angola",2
+860,"Angola",2
+861,"Angola",2
+862,"Angola",2
+863,"Angola",2
+864,"Angola",2

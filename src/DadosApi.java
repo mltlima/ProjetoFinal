@@ -169,7 +169,7 @@ public class DadosApi extends Estatistica{
 			super.restart();
 			break;
 		}
-		
+		super.er.close();
 	}
 	
 	
