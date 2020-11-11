@@ -431,26 +431,6 @@ public class View{
 		}
 	}
 	
-	//Resultado pesquisa
-	public void printOutput(List<String> output) {
-		
-		
-		   JScrollPane scrollpane = new JScrollPane(); 
-		  
-		   JList lista = new JList(output.toArray());
-		
-		   scrollpane = new JScrollPane(lista);
-		   scrollpane.setBounds(10, 45, 155, 300);
-		   JPanel panel = new JPanel(); 
-		   panel.add(scrollpane);
-		   
-		   scrollpane.getViewport().add(lista);
-		   JOptionPane.showMessageDialog(null, scrollpane, "Output",  
-		   JOptionPane.PLAIN_MESSAGE);
-		}
-	
-	
-	
 	
 	//Checa se o usuário está sobrescrevendo uma linha, e deleta essa linha 
 	private static boolean isOverwritingLine(String sessionName) {

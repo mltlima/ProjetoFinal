@@ -14,8 +14,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-
-
 /**
  * 
  * @author Miguel
@@ -34,9 +32,6 @@ public class DadosApi extends Estatistica{
 	 * @param requisicao A requisição de dados que veio do usuário
 	 */
 	public void start(Controller requisicao, View v) {//requição de dados
-		//Miguel, calcule qual pesquise deve ser feita. Mas preste atenção no uso de dados
-		//Não precisamos de todas as datas, apenas o final e o inicio dos rankings
-		//De preferência alguma que não exploda a API
 		String parts[] = requisicao.getDataInicial().split("-");
 		String parts2[] = requisicao.getDataFinal().split("-");
 		String dataInicial = parts[2] + "-" + parts[1] + "-" + parts[0];
@@ -45,11 +40,8 @@ public class DadosApi extends Estatistica{
 		readApi();
 		
 		
-		//exemplo de link para peguar todos os rankings necessários:
-		//https://api.covid19api.com/country/south-africa?from=2020-06-01T00:00:00Z&to=2020-06-01T00:00:01Z
 		
 		getDadosByDate(dataInicial, dataFinal);
-		//getDadosByDate(dataInicial + "T00:00:00Z", dataFinal + "T00:00:00Z");
 		super.copy(); //Copia medidas realizadas
 		
 		boolean tsv = requisicao.isTsv();
@@ -64,7 +56,7 @@ public class DadosApi extends Estatistica{
 			super.restart();
 			break;
 			
-		case 2:
+case 2:
 			
 			super.rankingNumerico(StatusCaso.MORTOS,tsv,csv);
 			super.restart();
@@ -169,10 +161,32 @@ public class DadosApi extends Estatistica{
 			super.restart();
 			break;
 		}
+
+		
+		
+		
+		boolean mortalidade = requisicao.isMaiorMortalidade();
+		
+		
+		if (mortalidade) {
+			super.rankingMortalidade(tsv, csv);
+			super.restart();
+		}
+		
+		
+		float raio = (float) requisicao.getDistancia();
+		
+		
+		if (raio > 0) {
+			super.distanciaKm(raio,tsv,csv);
+			super.restart();
+		}
+
+			
+
 		super.er.close();
+
 	}
-	
-	
 	
 	
 	/**
@@ -205,47 +219,6 @@ public class DadosApi extends Estatistica{
 			e.printStackTrace();         
 		}
 	}
-	/*
-	public void readApi() {
-
-		
-		HttpClient cliente = HttpClient.newBuilder()
-		        .version(Version.HTTP_2)
-		        .followRedirects(Redirect.ALWAYS)
-		        .build();
-		        
-		        HttpRequest hRequest = HttpRequest.newBuilder()
-		        .uri(URI.create("https://api.covid19api.com/countries"))
-		        .build();
-		        
-		        try {
-		            HttpResponse<String> resposta = cliente.send(hRequest, HttpResponse.BodyHandlers.ofString());
-
-		            
-					JsonArray paises =  JsonParser.parseString(resposta.body()).getAsJsonArray();
-		      
-					for (Object dados : paises) {
-						
-					    String strDados = dados.toString();
-					    JsonObject info = JsonParser.parseString(strDados).getAsJsonObject();
-					    
-					    String nome = info.get("Country").toString();
-					    //ISO2 = código com 2 letras apenas
-					    String codigo = info.get("ISO2").toString();
-					    String slug = info.get("Slug").toString();
-					    //System.out.println(slug);
-					    Pais pais = new Pais(nome,codigo,slug);
-					    this.paises.put(nome, pais);
-					}   
-					
-		        } catch (IOException e) {
-		            System.err.println("Problema com a conexão");
-		            e.printStackTrace();
-		        } catch (InterruptedException e) {
-		            System.err.println("Requisição interrompida");
-		            e.printStackTrace();
-		        }
-	}*/
 	
 
 	/**
@@ -254,17 +227,13 @@ public class DadosApi extends Estatistica{
 	 * @param dateEnd segunda data
 	 */
 	public void getDadosByDate(String dateStart, String dateEnd) {
-		int count = 0;
+		
 		for (String key : this.paises.keySet()) {
 			
 			String strPais = this.paises.get(key).getSlug();
 			Pais pais = this.paises.get(key);
-			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "&to=" + dateEnd;
-			getDadosPais(link,pais);
-			count++;
-			if(count == 10) { //desative isso, para pegar os outros países
-				break;
-			}
+			String link = "https://api.covid19api.com/country/" + strPais.replace("\"", "") + "?from=" + dateStart + "T00:00:00Z&to=" + dateEnd + "T00:00:00Z";
+			getDadosPais(link,pais,dateStart,dateEnd);
 		}
 	}
 	
@@ -276,7 +245,7 @@ public class DadosApi extends Estatistica{
 	 * @param linkFinal 
 	 * @param pais
 	 */
-private void getDadosPais(String link, Pais pais) {
+private void getDadosPais(String link, Pais pais, String dateStart, String dateEnd) {
 		
 		HttpClient cliente = HttpClient.newBuilder()
 		        .version(Version.HTTP_2)
@@ -309,10 +278,11 @@ private void getDadosPais(String link, Pais pais) {
 					  
 					    
 					    String province = info.get("Province").toString().replace("\"", "");
+					    String strData = info.get("Date").toString().replace("\"", "");
 					    
 					    
 					    //Pula dados se nao for dado geral do pais
-					    if (province.isBlank()) {
+					    if (province.isBlank() && (strData.equals(dateStart + "T00:00:00Z") || strData.equals(dateEnd + "T00:00:00Z"))) {
 							
 						
 					    
@@ -361,20 +331,6 @@ private void getDadosPais(String link, Pais pais) {
 						    medicao3.setMomento(data);
 					    
 					    }
-					    /*
-					    String name = info.get("Country").toString();
-					    String province = info.get("Province").toString().replace("\"", "");
-					    controller.getPais(name);
-					    
-					    if (province.isBlank()) {
-					    	float latitude = Float.parseFloat(info.get("Lat").toString().replace("\"", ""));
-						    float longitude = Float.parseFloat(info.get("Lon").toString().replace("\"", ""));
-						    controller.setLatitude(latitude);
-						    controller.setLongitude(longitude);
-						}
-					    
-					    */
-					  
 					     
 					}   
 		        } catch (IOException e) {
