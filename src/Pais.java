@@ -10,11 +10,12 @@ public class Pais {
 	private float latitude;
 	private float longitude;
 	/**
-	 * @param nome
-	 * @param codigo
-	 * @param slug
-	 * @param latitude
-	 * @param longitude
+	 * Gera uma instânica de pais
+	 * @param nome modifica o atributo nome
+	 * @param codigo modifica o atributo codigo
+	 * @param slug modifica o atributo slug
+	 * @param latitude modifica o atributo latiude
+	 * @param longitude modifica o atributo longitude
 	 */
 	public Pais(String nome, String codigo, String slug, float latitude, float longitude) {
 		this.nome = nome;
@@ -23,6 +24,12 @@ public class Pais {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	/**
+	 * Gera uma instânica de pais
+	 * @param nome modifica o atributo nome
+	 * @param codigo modifica o atributo codigo
+	 * @param slug modifica o atributo slug
+	 */
 	public Pais(String nome, String codigo, String slug) {
 		this.nome = nome;
 		this.codigo = codigo;
